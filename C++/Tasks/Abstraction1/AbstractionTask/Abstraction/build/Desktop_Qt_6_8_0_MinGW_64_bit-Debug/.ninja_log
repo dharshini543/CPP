@@ -1,0 +1,12 @@
+# ninja log v6
+6	257	7608696890859826	CMakeFiles/Abstraction.dir/atm.cpp.obj	6fd2c6c27dee8d4b
+12	260	7608696890859826	CMakeFiles/Abstraction.dir/bankaccount.cpp.obj	54c52c8483a292c5
+2	266	7608696890859826	CMakeFiles/Abstraction.dir/main.cpp.obj	e6923c616c187973
+266	324	7608696893529494	Abstraction.exe	ee083668fa6aa053
+3	188	7608713851767491	CMakeFiles/Abstraction.dir/main.cpp.obj	e6923c616c187973
+5	190	7608713851767491	CMakeFiles/Abstraction.dir/atm.cpp.obj	6fd2c6c27dee8d4b
+190	430	7608713853700902	Abstraction.exe	ee083668fa6aa053
+7	48	7608715230289538	CMakeFiles/Abstraction.dir/atm.cpp.obj	6fd2c6c27dee8d4b
+4	270	7608715230236070	CMakeFiles/Abstraction.dir/main.cpp.obj	e6923c616c187973
+9	281	7608715230289538	CMakeFiles/Abstraction.dir/bankaccount.cpp.obj	54c52c8483a292c5
+281	332	7608715232940941	Abstraction.exe	ee083668fa6aa053
