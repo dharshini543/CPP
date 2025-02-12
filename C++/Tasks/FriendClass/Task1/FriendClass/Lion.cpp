@@ -2,7 +2,7 @@
 
 Lion::Lion()
 {
-    ptr = new Animal("red",20);
+    ptr = new Animal("red",2);
 
     cout<<"Lion Constructor"<<endl;
 }
