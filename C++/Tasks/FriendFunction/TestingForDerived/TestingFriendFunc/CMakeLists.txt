@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(TestingFriendFunc main.cpp
 
+
+
 )
 
 include(GNUInstallDirs)
