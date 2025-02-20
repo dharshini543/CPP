@@ -1,6 +1,5 @@
 #include <iostream>
 #include<list>
-#include<vector>
 using namespace std;
 
 int main()
@@ -24,26 +23,7 @@ int main()
         cout<<list1<<endl;
     }*/
 
-    vector<std::string>Vector1;
-    Vector1.push_back("abc");
-    Vector1.push_back("def");
-    Vector1.push_back("ghi");
-    Vector1.push_back("lmn");
-    Vector1.push_back("opq");
-    Vector1.pop_back();
 
-    for(std::string str: Vector1)
-    {
-        cout<<&str<<endl;
-    }
-    for(int i = 0;i < size(Vector1);i++)
-    {
-        cout<<Vector1[i]<<endl;
-    }
-    for(int i = 0;i < size(Vector1);i++)
-    {
-        cout<<&Vector1[i]<<endl;
-    }
 
     return 0;
 }
