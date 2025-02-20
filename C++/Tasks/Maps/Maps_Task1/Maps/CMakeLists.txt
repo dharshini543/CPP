@@ -5,7 +5,8 @@ project(Maps LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Maps main.cpp)
+add_executable(Maps main.cpp
+    Student.h Student.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS Maps
