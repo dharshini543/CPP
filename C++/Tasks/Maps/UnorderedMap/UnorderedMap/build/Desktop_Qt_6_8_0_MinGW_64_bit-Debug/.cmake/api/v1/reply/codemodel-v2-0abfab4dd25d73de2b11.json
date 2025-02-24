@@ -1,0 +1,61 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-db5d907481ee36226aa9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "UnorderedMap",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "UnorderedMap::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-UnorderedMap-Debug-b547d1c907aeb35f1a05.json",
+					"name" : "UnorderedMap",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/C++/C++/Tasks/Maps/UnorderedMap/UnorderedMap/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug",
+		"source" : "C:/C++/C++/Tasks/Maps/UnorderedMap/UnorderedMap"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
