@@ -29,7 +29,7 @@ class MyUnorderedSet
 private:
     std::unordered_set<T> data;
 public:
-    void add(const T& value)
+    void add(const T value)
     {
         data.insert(value);
     }

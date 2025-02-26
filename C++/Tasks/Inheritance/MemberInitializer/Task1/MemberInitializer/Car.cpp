@@ -6,10 +6,7 @@ Car::Car(int model, int engineType):m_model(model),m_engineType(engineType)
 {
     cout<<"Car constructor"<<endl;
 }
-Car::~Car()
-{
-    cout<<"Car Desstructor"<<endl;
-}
+
 void Car::display()
 {
     cout<<"Model :"<<m_model<<endl;

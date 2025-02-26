@@ -7,9 +7,9 @@ Bike<D,I>::Bike()
 }
 
 template<typename D,typename I>
-D Bike<D,I>::sub(D a, I b)
+D Bike<D,I>::sub(D a, I b,D c)
 {
-    return a - b;
+    return a - b+c;
 }
 
 template<typename D, typename I>

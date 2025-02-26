@@ -45,7 +45,6 @@ int main()
               << std::quoted(word) << ":\n" << characters << '\n';
 }*/
 
-
 #include <iostream>
 #include <set>
 #include <string>

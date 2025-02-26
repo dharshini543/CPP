@@ -22,7 +22,7 @@ T add(T a,T b)
 //template <typename T>
 int main()
 {
-    Car car;
+    /*Car car;
     auto C = car.add<double>(10,20,30);
     cout<<C<<endl;
     auto D = car.add<int>(10,20);
@@ -34,13 +34,13 @@ int main()
     auto H = car.add<int,float>(10,10.5);
     cout<<H<<endl;
     auto z = car.add<int,int>(10,20);
-    cout<<z<<endl;
+    cout<<z<<endl;*/
 
-   /*Bike<int,double> bike;
-    auto c = bike.sub(20.5,10.5);
+   Bike<int,double> bike;
+    auto c = bike.sub(20.5,10.5,10);
     Bike<double,double> B1;
     auto d = B1.mul(1.5,10.7);
     cout<<c<<endl;
-    cout<<d<<endl;*/
+    cout<<d<<endl;
 
 }
