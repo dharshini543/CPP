@@ -8,7 +8,7 @@ class Bike
     I m_num;
 public:
     Bike();
-    D sub(D,I);
+    D sub(D,I,D);
     D mul(D,D);
 };
 
