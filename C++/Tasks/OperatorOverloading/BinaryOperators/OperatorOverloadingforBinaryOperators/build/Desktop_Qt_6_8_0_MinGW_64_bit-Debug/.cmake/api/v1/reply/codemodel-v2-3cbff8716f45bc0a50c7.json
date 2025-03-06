@@ -1,0 +1,61 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-ca21fdc4a1fe1b09cb97.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "OperatorOverloadingforBinaryOperators",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "OperatorOverloadingforBinaryOperators::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OperatorOverloadingforBinaryOperators-Debug-62ef7f995280747c46cc.json",
+					"name" : "OperatorOverloadingforBinaryOperators",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/C++/C++/Tasks/OperatorOverloading/BinaryOperators/OperatorOverloadingforBinaryOperators/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug",
+		"source" : "C:/C++/C++/Tasks/OperatorOverloading/BinaryOperators/OperatorOverloadingforBinaryOperators"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
