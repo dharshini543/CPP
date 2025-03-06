@@ -1,12 +1,19 @@
 #include <iostream>
 #include <map>
-#include <unordered_map>
-
+#include"State.h"
+#include"Capital.h"
 using namespace std;
 
 int main()
 {
-    unordered_map<string,string> India;
+    map<State,Capital> India;
+    India.emplace("Karnataka","Bengaluru");
+    for(auto i = India.begin(); i != India.end(); i++)
+    {
+        cout<<i->first<<"       "<<i->second<<endl;
+    }
+
+    /*map<string,string> India;
     India.insert({"Karnataka","Bengaluru"});
     India["Delhi"] = "NewDelhi";
     //India.emplace("Karnataka","Bengaluru");
@@ -30,7 +37,8 @@ int main()
     for(auto i = India.begin(); i != India.end(); i++)
     {
         cout<<i->first<<"       "<<i->second<<endl;
-    }
+    }*/
+
 
     return 0;
 }
