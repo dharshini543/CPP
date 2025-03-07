@@ -9,7 +9,8 @@ add_executable(Plugin_FO main.cpp
     Student.h Student.cpp
     StudentManager.h StudentManager.cpp
     File_operations.h File_operations.cpp
-    TXT.h TXT.cpp)
+    TXT_FileOperation.h TXT_FileOperation.cpp
+    CSV_FileOperation.h CSV_FileOperation.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS Plugin_FO
