@@ -1,19 +1,5 @@
 #include "Student.h"
-#include <iostream>
 
-istream& operator >>(istream& inf, Student& s)
-{
-    string temp;
-    getline(inf,s.m_name, ',');
-    inf >> s.m_age;
-    inf.ignore();
-    inf >> s.m_USN;
-    inf.ignore();
-
-    inf >> s.m_mobile;
-
-    return inf;
-}
 Student::Student()
 {
 
@@ -43,26 +29,6 @@ int Student::getMobile()
     return m_mobile;
 }
 
-void Student::setName(string name)
-{
-    m_name = name;
-
-}
-
-void Student::setAge(int age)
-{
-    m_age = age;
-}
-
-void Student::setUSN(int USN)
-{
-    m_USN = USN;
-}
-
-void Student::setMobile(int Mobile)
-{
-    m_mobile = Mobile;
-}
 Student::~Student()
 {
 

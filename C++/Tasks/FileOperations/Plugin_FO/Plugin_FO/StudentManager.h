@@ -6,11 +6,8 @@
 using namespace std;
 enum
 {
-    txt = 1,
-    csv,
-    xml,
-    json,
-    ui
+    txt_file = 1,
+    csv_file
 };
 class File_operations;
 class StudentManager
@@ -20,7 +17,7 @@ class StudentManager
 public:
     StudentManager();
     void initStudent(list<Student> student);
-    void selectFile();
+    void userInput();
     void display();
     ~StudentManager();
 };

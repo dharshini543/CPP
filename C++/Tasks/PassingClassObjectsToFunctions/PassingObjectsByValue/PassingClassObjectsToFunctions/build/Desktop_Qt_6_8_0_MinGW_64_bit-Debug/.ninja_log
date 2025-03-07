@@ -1,0 +1,9 @@
+# ninja log v6
+2	351	7630338677919193	CMakeFiles/PassingClassObjectsToFunctions.dir/main.cpp.obj	67965e89008b70e
+356	478	7630338681459527	PassingClassObjectsToFunctions.exe	d0b67b647d10ba64
+8	339	7630348238016718	CMakeFiles/PassingClassObjectsToFunctions.dir/main.cpp.obj	67965e89008b70e
+340	475	7630348241333477	PassingClassObjectsToFunctions.exe	d0b67b647d10ba64
+35	373	7630349895867595	CMakeFiles/PassingClassObjectsToFunctions.dir/main.cpp.obj	67965e89008b70e
+374	539	7630349899302607	PassingClassObjectsToFunctions.exe	d0b67b647d10ba64
+5	376	7630416301746560	CMakeFiles/PassingClassObjectsToFunctions.dir/main.cpp.obj	67965e89008b70e
+379	507	7630416305481752	PassingClassObjectsToFunctions.exe	d0b67b647d10ba64
