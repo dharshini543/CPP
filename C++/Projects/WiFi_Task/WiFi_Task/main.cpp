@@ -4,6 +4,11 @@
 #include "CSV_FileOperation.h"
 using namespace std;
 
+enum
+{
+    display = 1,
+    connect
+};
 int main()
 {
     list<WiFi> wifi;
@@ -12,22 +17,8 @@ int main()
     int signalstrength;
     string status;
     string password;
-    int count = 1;
-    /*while(count <= 10)
-    {
-    cout<<"Enter WiFi Details"<<endl;
-    cout << "Enter Name" << endl;
-    cin>>name;
-    cout << "Enter Signal strength" << endl;
-    cin>>signalstrength;
-    cout << "Enter Status" << endl;
-    cin>>status;
-    cout << "Enter Password" << endl;
-    cin>>password;
-    wifi.push_back(WiFi(name,signalstrength,status,password));
-    count++;
+    int choice = 0;
 
-    }*/
     wifi.push_back(WiFi("Dharshini",74,"Saved","789456"));
     wifi.push_back(WiFi("Pallavi",71,"Saved","852164"));
     wifi.push_back(WiFi("pThinks",75,"Connected","123456"));
@@ -41,6 +32,33 @@ int main()
 
 
     csv.initWiFi(wifi);
-    csv.display();
+    while(true)
+    {
+    cout<<"Enter 1. Display"<<endl<<"2. Connect"<<endl;
+    cin>>choice;
+    switch(choice)
+    {
+    case display:
+        csv.display();
+        break;
+    case connect:
+        csv.connect();
+        break;
+    default:
+        cout<<"Invalid input"<<endl;
+    }
+    }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
