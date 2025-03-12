@@ -25,7 +25,7 @@ void CSV_FileOperation::writeData(list<WiFi> &wifi)
         cout << "Error opening file for writing!" << endl;
         return ;
     }
-    file<<"Name          "<<"SignalStrength           "<<"Status          "<<"Password"<<endl;
+    file<<"Name          "<<"Strength           "<<"Status          "<<"Password"<<endl;
     for(auto i = wifi.begin(); i != wifi.end();i++)
     {
         file<<i->getName()<<","<<i->getSignalStrength()<<","<<i->getStatus()<<","<<i->getPassword()<<endl;
@@ -60,53 +60,86 @@ list<WiFi> CSV_FileOperation::readData()
     return wifi;
 }
 
-void CSV_FileOperation::display()
+void CSV_FileOperation::sortWiFiList(list<WiFi>& wifi)
 {
-    for(auto i = m_wifi.begin(); i != m_wifi.end();i++)
+    for(auto i = wifi.begin(); i != wifi.end();i++)
     {
-        if(i->getStatus() == "Connected")
+        for(auto j = next(i);j != wifi.end();j++)
         {
-            cout<<i->getName()<<","<<i->getSignalStrength()<<","<<i->getStatus()<<","<<i->getPassword()<<endl;
-
+            if(i->getStatus() != "Connected" && j->getStatus() == "Connected")
+            {
+                iter_swap(i, j);
+                /*auto temp = i;
+                i = j;
+                j = temp;*/
+            }
+            if(i->getStatus() == "Available" && j->getStatus() == "Saved")
+            {
+                iter_swap(i, j);
+            }
+            if(i->getStatus() == j->getStatus() && i->getSignalStrength() < j->getSignalStrength())
+            {
+                iter_swap(i, j);
+            }
         }
     }
-    int count = 0;
-    for(auto i = m_wifi.begin(); i != m_wifi.end();i++)
-    {
-        for(auto j = m_wifi.end();j != m_wifi.begin();j--)
-        {
-            if(i->getStatus() == "Saved" && j->getStatus() == "Saved")
-            {
-                if(i->getSignalStrength() > j->getSignalStrength())
-                {
-                    cout<<i->getName()<<","<<i->getSignalStrength()<<","<<i->getStatus()<<","<<i->getPassword()<<endl;
-                    break;
-                }
-                else if(j->getSignalStrength() > i->getSignalStrength())
-                {
-                    cout<<j->getName()<<","<<j->getSignalStrength()<<","<<j->getStatus()<<","<<j->getPassword()<<endl;
+}
 
+void CSV_FileOperation::connect()
+{
+    string password;
+    string name;
+    cout<<"Enter name of WiFi to connect"<<endl;
+    cin>>name;
+    for(auto i = m_wifi.begin();i != m_wifi.end();i++)
+    {
+        if(i->getStatus() == "Connected" && i->getName() == name)
+        {
+            cout<<"Already Connected"<<endl;
+            break;
+        }
+        if(i->getStatus() == "Connected")
+        {
+            i->setStatus("Saved");
+        }
+        if(i->getName() == name)
+        {
+            if(i->getStatus() == "Saved")
+            {
+                i->setStatus("Connected");
+                cout<<name<<" Connected"<<endl;
+                this->display();
+                return;
+            }
+            else if(i->getStatus() == "Available")
+            {
+                cout<<"Enter Password"<<endl;
+                cin>>password;
+                if(i->getPassword() == password)
+                {
+                    i->setStatus("Connected");
+                    cout<<name<<" Connected"<<endl;
+                    this->display();
                 }
                 else
                 {
-                    if(j->getSignalStrength() == i->getSignalStrength())
-                    {
-                        cout<<i->getName()<<","<<i->getSignalStrength()<<","<<i->getStatus()<<","<<i->getPassword()<<endl;
-
-                    }
-
+                    cout<<"wrong password"<<endl;
                 }
-
+                return;
             }
         }
 
     }
-    for(auto i = m_wifi.begin(); i != m_wifi.end();i++)
+    cout<<"WiFi with "<<name<<" not available"<<endl;
+
+}
+void CSV_FileOperation::display()
+{
+    this->sortWiFiList(m_wifi);
+    cout<<"Name\t\t"<<"Strength\t\t"<<"Status\t\t\t"<<"Password"<<endl;
+    for(auto i = m_wifi.begin();i != m_wifi.end();i++)
     {
-        if(i->getStatus() == "Available")
-        {
-            cout<<i->getName()<<","<<i->getSignalStrength()<<","<<i->getStatus()<<","<<i->getPassword()<<endl;
-        }
+        cout<<i->getName()<<"\t\t"<<i->getSignalStrength()<<"\t\t\t"<<i->getStatus()<<"\t\t\t"<<i->getPassword()<<endl;
     }
 }
 CSV_FileOperation::~CSV_FileOperation()

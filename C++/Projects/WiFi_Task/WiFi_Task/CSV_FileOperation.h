@@ -8,8 +8,10 @@ class CSV_FileOperation
 public:
     CSV_FileOperation();
     void initWiFi(list<WiFi> wifi);
-    void writeData(list<WiFi> &student);
+    void writeData(list<WiFi> &wifi);
     list<WiFi> readData();
+    void sortWiFiList(list<WiFi>& wifi);
+    void connect();
     void display();
     ~CSV_FileOperation();
 };

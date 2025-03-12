@@ -18,6 +18,7 @@ public:
     int getSignalStrength();
     string getStatus();
     string getPassword();
+    void setStatus(string status);
     ~WiFi();
 };
 
