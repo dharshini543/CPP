@@ -7,7 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(WiFi_Task main.cpp
     WiFi.h WiFi.cpp
-    CSV_FileOperation.h CSV_FileOperation.cpp)
+    CSV_FileOperation.h CSV_FileOperation.cpp
+    File_Operations.h File_Operations.cpp
+    WiFi_Operations.h WiFi_Operations.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS WiFi_Task

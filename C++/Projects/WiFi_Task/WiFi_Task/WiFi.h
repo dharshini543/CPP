@@ -1,6 +1,5 @@
 #ifndef WIFI_H
 #define WIFI_H
-#include <list>
 #include <string>
 using namespace std;
 
@@ -14,10 +13,10 @@ private:
 public:
     WiFi();
     WiFi(string name, int signalstrength, string status, string password);
-    string getName();
-    int getSignalStrength();
-    string getStatus();
-    string getPassword();
+    string getName() const;
+    int getSignalStrength() const;
+    string getStatus() const;
+    string getPassword() const;
     void setStatus(string status);
     ~WiFi();
 };
