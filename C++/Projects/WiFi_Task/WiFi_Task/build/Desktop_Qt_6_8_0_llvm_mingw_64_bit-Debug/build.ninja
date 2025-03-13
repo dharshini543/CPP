@@ -73,6 +73,22 @@ build CMakeFiles/WiFi_Task.dir/CSV_FileOperation.cpp.obj: CXX_COMPILER__WiFi_Tas
   TARGET_COMPILE_PDB = CMakeFiles\WiFi_Task.dir\
   TARGET_PDB = WiFi_Task.pdb
 
+build CMakeFiles/WiFi_Task.dir/File_Operations.cpp.obj: CXX_COMPILER__WiFi_Task_unscanned_Debug C$:/C++/C++/Projects/WiFi_Task/WiFi_Task/File_Operations.cpp || cmake_object_order_depends_target_WiFi_Task
+  DEP_FILE = CMakeFiles\WiFi_Task.dir\File_Operations.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles\WiFi_Task.dir
+  OBJECT_FILE_DIR = CMakeFiles\WiFi_Task.dir
+  TARGET_COMPILE_PDB = CMakeFiles\WiFi_Task.dir\
+  TARGET_PDB = WiFi_Task.pdb
+
+build CMakeFiles/WiFi_Task.dir/WiFi_Operations.cpp.obj: CXX_COMPILER__WiFi_Task_unscanned_Debug C$:/C++/C++/Projects/WiFi_Task/WiFi_Task/WiFi_Operations.cpp || cmake_object_order_depends_target_WiFi_Task
+  DEP_FILE = CMakeFiles\WiFi_Task.dir\WiFi_Operations.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles\WiFi_Task.dir
+  OBJECT_FILE_DIR = CMakeFiles\WiFi_Task.dir
+  TARGET_COMPILE_PDB = CMakeFiles\WiFi_Task.dir\
+  TARGET_PDB = WiFi_Task.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target WiFi_Task
@@ -81,7 +97,7 @@ build CMakeFiles/WiFi_Task.dir/CSV_FileOperation.cpp.obj: CXX_COMPILER__WiFi_Tas
 #############################################
 # Link the executable WiFi_Task.exe
 
-build WiFi_Task.exe: CXX_EXECUTABLE_LINKER__WiFi_Task_Debug CMakeFiles/WiFi_Task.dir/main.cpp.obj CMakeFiles/WiFi_Task.dir/WiFi.cpp.obj CMakeFiles/WiFi_Task.dir/CSV_FileOperation.cpp.obj
+build WiFi_Task.exe: CXX_EXECUTABLE_LINKER__WiFi_Task_Debug CMakeFiles/WiFi_Task.dir/main.cpp.obj CMakeFiles/WiFi_Task.dir/WiFi.cpp.obj CMakeFiles/WiFi_Task.dir/CSV_FileOperation.cpp.obj CMakeFiles/WiFi_Task.dir/File_Operations.cpp.obj CMakeFiles/WiFi_Task.dir/WiFi_Operations.cpp.obj
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\WiFi_Task.dir
