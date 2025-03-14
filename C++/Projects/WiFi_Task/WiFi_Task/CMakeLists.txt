@@ -9,7 +9,7 @@ add_executable(WiFi_Task main.cpp
     WiFi.h WiFi.cpp
     CSV_FileOperation.h CSV_FileOperation.cpp
     File_Operations.h File_Operations.cpp
-    WiFi_Operations.h WiFi_Operations.cpp)
+    WiFi_Manager.h WiFi_Manager.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS WiFi_Task

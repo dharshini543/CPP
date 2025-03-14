@@ -1,4 +1,4 @@
-#include "WiFi_Operations.h"
+#include "WiFi_Manager.h"
 #include"WiFi.h"
 #include "CSV_FileOperation.h"
 #include <iostream>
@@ -14,32 +14,14 @@ void WiFi_Operations::initWiFi(list<WiFi*> wifi)
     fp = new CSV_FileOperation;
     fp->writeData(m_wifi);
     m_wifi = fp->readData();
+    this->sortWiFiList();
 }
 
 void WiFi_Operations::sortWiFiList()
 {
-    /*for(auto i = m_wifi.begin();i != m_wifi.end();i++)
+    for(WiFi* i :m_wifi)
     {
-        for(auto j = next(i);j != m_wifi.end();j++)
-        {
-            if(i->getStatus() != "Connected" && j->getStatus() == "Connected")
-            {
-                iter_swap(i, j);
-            }
-            if(i->getStatus() == "Available" && j->getStatus() == "Saved")
-            {
-                iter_swap(i, j);
-            }
-            if(i->getStatus() == j->getStatus() && i->getSignalStrength() < j->getSignalStrength())
-            {
-                iter_swap(i, j);
-            }
-        }
-    }*/
-
-    for(auto *i :m_wifi)
-    {
-        for(auto *j:m_wifi)
+        for(auto j:m_wifi)
         {
             if(j->getStatus() != "Connected" && i->getStatus() == "Connected")
             {
@@ -59,6 +41,7 @@ void WiFi_Operations::sortWiFiList()
 
 void WiFi_Operations::connect()
 {
+    int found = 0;
     string password;
     string name;
     cout<<"Enter name of WiFi to connect"<<endl;
@@ -80,8 +63,8 @@ void WiFi_Operations::connect()
             {
                 i->setStatus("Connected");
                 cout<<name<<" Connected"<<endl;
-                this->sortWiFiList();
-                return;
+                found = 1;
+                break;
             }
             else if(i->getStatus() == "Available")
             {
@@ -91,18 +74,25 @@ void WiFi_Operations::connect()
                 {
                     i->setStatus("Connected");
                     cout<<name<<" Connected"<<endl;
-                    this->sortWiFiList();
+                    found = 1;
                 }
                 else
                 {
                     cout<<"wrong password"<<endl;
                 }
-                return;
+                break;
             }
         }
 
     }
-    cout<<"WiFi with "<<name<<" not available"<<endl;
+    if(found == 1)
+    {
+        this->sortWiFiList();
+    }
+    if(found == 0)
+    {
+        cout<<"WiFi with "<<name<<" not available"<<endl;
+    }
 
 }
 
