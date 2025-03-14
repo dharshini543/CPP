@@ -1,0 +1,16 @@
+# ninja log v6
+23	667	7635682668371599	CMakeFiles/Vehicle_project.dir/main.cpp.obj	31f2f964a0f8b052
+42	768	7635682668551494	CMakeFiles/Vehicle_project.dir/Vehicle_Manager.cpp.obj	fef5fb86663ff1d8
+49	662	7635682668631792	CMakeFiles/Vehicle_project.dir/File_Operations.cpp.obj	7f5d23941ce6aac0
+53	714	7635682668667004	CMakeFiles/Vehicle_project.dir/Bike_FileOperation.cpp.obj	b0c28ea173515078
+38	625	7635682668509989	CMakeFiles/Vehicle_project.dir/Car.cpp.obj	c29c67e914c5625f
+56	714	7635682668687083	CMakeFiles/Vehicle_project.dir/Car_FileOperation.cpp.obj	f269b9cb4b845d27
+30	622	7635682668431840	CMakeFiles/Vehicle_project.dir/Vehicle.cpp.obj	b3f172b548d0e4b9
+34	629	7635682668472480	CMakeFiles/Vehicle_project.dir/Bike.cpp.obj	61193dd3ef13e0db
+45	621	7635682668591642	CMakeFiles/Vehicle_project.dir/Rental_Customer_details.cpp.obj	584ff2892715cad8
+768	884	7635682675827448	Vehicle_project.exe	a0818e84e5a85d03
+42	940	7635688651908393	CMakeFiles/Vehicle_project.dir/main.cpp.obj	31f2f964a0f8b052
+103	944	7635688652532353	CMakeFiles/Vehicle_project.dir/Car_FileOperation.cpp.obj	f269b9cb4b845d27
+99	982	7635688652492316	CMakeFiles/Vehicle_project.dir/Bike_FileOperation.cpp.obj	b0c28ea173515078
+95	1077	7635688652452316	CMakeFiles/Vehicle_project.dir/Vehicle_Manager.cpp.obj	fef5fb86663ff1d8
+1077	1192	7635688662232520	Vehicle_project.exe	cfc731b192557d04

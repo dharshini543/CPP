@@ -1,11 +1,15 @@
 # ninja log v6
 10	1030	7634785282645051	CMakeFiles/WiFi_Task.dir/WiFi.cpp.obj	388570db22e32c9c
-19	1189	7634785282725415	CMakeFiles/WiFi_Task.dir/File_Operations.cpp.obj	cdee0ae106fe5589
-5	1220	7634785282576484	CMakeFiles/WiFi_Task.dir/main.cpp.obj	caa773654f6486e
-23	1312	7634785282770681	CMakeFiles/WiFi_Task.dir/WiFi_Operations.cpp.obj	73699fcdfaa9f863
-15	1412	7634785282685227	CMakeFiles/WiFi_Task.dir/CSV_FileOperation.cpp.obj	24de336119be47e7
-1412	1507	7634785296665697	WiFi_Task.exe	b15a00d5ae8e1fc
-10	1090	7634786229135872	CMakeFiles/WiFi_Task.dir/WiFi_Operations.cpp.obj	73699fcdfaa9f863
-1091	1212	7634786239960271	WiFi_Task.exe	b15a00d5ae8e1fc
-42	1054	7634799733955083	CMakeFiles/WiFi_Task.dir/WiFi_Operations.cpp.obj	73699fcdfaa9f863
-1055	1159	7634799744091621	WiFi_Task.exe	b15a00d5ae8e1fc
+11	594	7635504545168452	CMakeFiles/WiFi_Task.dir/File_Operations.cpp.obj	cdee0ae106fe5589
+13	655	7635504545178453	CMakeFiles/WiFi_Task.dir/WiFi_Operations.cpp.obj	73699fcdfaa9f863
+30	605	7635505331448593	CMakeFiles/WiFi_Task.dir/main.cpp.obj	caa773654f6486e
+9	746	7635504545148452	CMakeFiles/WiFi_Task.dir/CSV_FileOperation.cpp.obj	24de336119be47e7
+605	670	7635505337208668	WiFi_Task.exe	b15a00d5ae8e1fc
+29	876	7635511608733878	CMakeFiles/WiFi_Task.dir/main.cpp.obj	caa773654f6486e
+36	920	7635511608803881	CMakeFiles/WiFi_Task.dir/WiFi_Manager.cpp.obj	90b6c743529be45d
+923	1011	7635511617670744	WiFi_Task.exe	fe61127463a08ae0
+29	937	7635514171409208	CMakeFiles/WiFi_Task.dir/WiFi_Manager.cpp.obj	90b6c743529be45d
+25	939	7635514171338451	CMakeFiles/WiFi_Task.dir/CSV_FileOperation.cpp.obj	24de336119be47e7
+939	1026	7635514180518500	WiFi_Task.exe	fe61127463a08ae0
+69	988	7635682450435087	CMakeFiles/WiFi_Task.dir/WiFi_Manager.cpp.obj	90b6c743529be45d
+989	1185	7635682459640143	WiFi_Task.exe	fe61127463a08ae0

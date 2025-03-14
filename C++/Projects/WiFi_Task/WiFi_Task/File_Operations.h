@@ -6,7 +6,6 @@
 
 class File_Operations
 {
-    list<WiFi*> m_wifi;
 public:
     File_Operations();
     virtual void writeData(list<WiFi*>wifi);

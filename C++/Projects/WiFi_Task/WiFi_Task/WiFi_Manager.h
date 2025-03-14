@@ -1,5 +1,5 @@
-#ifndef WIFI_OPERATIONS_H
-#define WIFI_OPERATIONS_H
+#ifndef WIFI_MANAGER_H
+#define WIFI_MANAGER_H
 
 #include "WiFi.h"
 #include"File_Operations.h"
@@ -19,4 +19,4 @@ public:
     ~WiFi_Operations();
 };
 
-#endif // WIFI_OPERATIONS_H
+#endif // WIFI_MANAGER_H
