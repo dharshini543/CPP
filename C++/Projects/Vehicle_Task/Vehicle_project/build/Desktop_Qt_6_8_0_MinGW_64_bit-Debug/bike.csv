@@ -1,9 +1,5 @@
-Name                   Status           Duration          Cost,,,
-Royal Enfield,Available,1,1500
-KTM,Available,1,1200
-Pulsar,Available,1,1000
-Discover,Available,1,800
-Royal Enfield,Available,1,1500
-KTM,Available,1,1200
-HeroHonda,Available,1,700
-Discover,Available,1,600
+Name          Number           Status           Duration          Cost
+KTM,KA600  ,Available,5,5000
+
+
+KTM,KA500  ,Available,4,3000
