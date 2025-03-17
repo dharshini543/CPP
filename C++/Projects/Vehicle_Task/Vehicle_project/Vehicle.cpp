@@ -31,6 +31,21 @@ float Vehicle::getCost()
     return m_cost;
 }
 
+string Vehicle::getVehicleNum()
+{
+    return m_vehicleNum;
+}
+
+void Vehicle::setVehicleNum(string vehicleNum)
+{
+    m_vehicleNum = vehicleNum;
+}
+
+void Vehicle::setName(string name)
+{
+    m_name = name;
+}
+
 void Vehicle::setStatus(string status)
 {
     m_status = status;

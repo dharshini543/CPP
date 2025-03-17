@@ -13,7 +13,8 @@ add_executable(Vehicle_project main.cpp
     Rental_Customer_details.h Rental_Customer_details.cpp
 
     Bike_FileOperation.h Bike_FileOperation.cpp
-    Car_FileOperation.h Car_FileOperation.cpp)
+    Car_FileOperation.h Car_FileOperation.cpp
+    Customer_FileOperation.h Customer_FileOperation.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS Vehicle_project

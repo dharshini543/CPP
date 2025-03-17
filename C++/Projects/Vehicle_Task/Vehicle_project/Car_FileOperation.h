@@ -9,8 +9,8 @@ class Car_FileOperation
 public:
     Car_FileOperation();
     ~Car_FileOperation();
-    void writeData(list<Car> car);
-    list<Car> readData();
+    void writeData(list<Car*> car);
+    list<Car*> readData();
 };
 
 #endif // CAR_FILEOPERATION_H

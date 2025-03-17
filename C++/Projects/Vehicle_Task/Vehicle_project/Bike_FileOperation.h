@@ -8,8 +8,8 @@ class Bike_FO
 public:
     Bike_FO();
     ~Bike_FO();
-    void writeData(list<Bike> bike);
-    list<Bike> readData();
+    void writeData(list<Bike*> bike);
+    list<Bike *> readData();
 };
 
 #endif // BIKE_FILEOPERATION_H

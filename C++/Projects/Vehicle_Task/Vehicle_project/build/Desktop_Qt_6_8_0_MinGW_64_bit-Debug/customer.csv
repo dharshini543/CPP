@@ -1,0 +1,3 @@
+CustomerName          BookingID           VehicleName           VehicleNumber          RentalDuration       AmountStatus,,,,,
+Dharshini,              101               RoyalEnfield            KA102                   5                   paid,,,5,paid
+Likitha,102,KTM,KA150,4,paid
