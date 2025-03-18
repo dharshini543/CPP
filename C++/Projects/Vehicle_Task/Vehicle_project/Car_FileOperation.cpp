@@ -2,54 +2,55 @@
 #include <iostream>
 #include<fstream>
 
-Car_FileOperation::Car_FileOperation() {}
+Car_FileOperation::Car_FileOperation()
+{
+    cout<<"Car File Operation Constructor"<<endl;
+}
 
 Car_FileOperation::~Car_FileOperation()
 {
-
+    cout<<"Car File Operation Destructor"<<endl;
 }
 
 void Car_FileOperation::writeData(list<Car*> car)
 {
-    cout<<"Writing Car data to CSV file"<<endl;
     ofstream file("car.csv");
     if (!file)
     {
-        cout << "Error opening file for writing!" << endl;
+        cout << "Error opening car  file for writing!" << endl;
         return ;
     }
-    file<<"Name          "<<"Number          "<<"Status           "<<"Duration          "<<"Cost"<<endl;
-    for(auto i:car)
+    file<<"Name          "<<"Duration           "<<"Number           "<<"Cost          "<<"Status"<<endl;
+    for(auto* i:car)
     {
-        file<<i->getName()<<","<<i->getVehicleNum()<<","<<i->getStatus()<<","<<i->getDuration()<<","<<i->getCost()<<endl;
+        file<<i->getName()<<","<<i->getDuration()<<","<<i->getVehicleNum()<<","<<i->getCost()<<","<<i->getStatus()<<endl;
     }
-    cout<<"Data written to Car file"<<endl<<endl;
+    cout<<"Data written to Car CSV file"<<endl;
     file.close();
 }
 
 list<Car*> Car_FileOperation::readData()
 {
-    cout<<"Reading data from Car file"<<endl;
-
     list<Car*> car;
     ifstream file("car.csv");
     if (!file)
     {
-        cout << "Error opening file for reading!" << endl;
+        cout << "Error opening Car file for reading!" << endl;
         return car;
     }
 
-    string line, name, number, status;
+    string line, name, status,number;
     int duration;
     float cost;
 
     getline(file, line);
-    while (getline(file, name, ',') && getline(file, number,',') && getline(file, status, ',') && file >> duration && file.ignore() && file >> cost)
+    while (getline(file, name, ',') && file >> duration && file.ignore() && getline(file, number,',') && file >> cost && file.ignore() && getline(file, status))
     {
-        car.push_back(new Car(name, number, status, duration, cost));
+        car.push_back(new Car(name, duration, number, cost,status));
     }
+
     file.close();
-    cout<<"Data read from Car file"<<endl<<endl;
+    cout<<"Data read from Car file"<<endl;
 
     return car;
 }

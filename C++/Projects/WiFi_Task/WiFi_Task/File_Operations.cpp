@@ -21,3 +21,8 @@ File_Operations::~File_Operations()
 {
     cout<<"File operations Destructor"<<endl;
 }
+
+void File_Operations::writeData(list<Bike *> bike)
+{
+
+}

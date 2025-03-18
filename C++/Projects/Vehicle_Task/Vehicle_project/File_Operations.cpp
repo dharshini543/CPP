@@ -1,24 +1,28 @@
 #include "File_Operations.h"
-#include <iostream>
 
-File_Operations::File_Operations()
-{
-    cout<<"File operations Constructor"<<endl;
-
-}
+File_Operations::File_Operations() {}
 
 File_Operations::~File_Operations()
 {
-    cout<<"File operations Destructor"<<endl;
 
 }
 
-void File_Operations::writeData()
+void File_Operations::writeData(list<Bike *> bike)
 {
 
 }
 
-void File_Operations::readData()
+auto File_Operations::readData()
+{
+
+}
+
+void File_Operations::writeData(list<Car *> car)
+{
+
+}
+
+void File_Operations::writeData(list<Rental_Customer_details *> customer)
 {
 
 }

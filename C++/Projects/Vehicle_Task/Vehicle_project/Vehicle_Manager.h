@@ -9,14 +9,53 @@
 #include "Rental_Customer_details.h"
 #include <list>
 
+enum
+{
+    ADD_VEHICLE = 1,
+    DISPLAY_VEHICLES,
+    BOOK_VEHICLE,
+    RETURN_VEHICLE,
+    UPDATE_VEHICLE_PRICE,
+    CUSTOMER_RECORD,
+    LOGOUT
+};
+
+enum ADD_VEHICLE
+{
+   Add_Bike = 1,
+   Add_Car
+};
+enum DISPLAY_VEHICLES
+{
+    Display_Bike = 1,
+    Display_Car,
+
+};
+enum BOOK_VEHICLE
+{
+    Book_Bike = 1,
+    Book_Car
+};
+enum RETURN_VEHICLE
+{
+    Return_Bike = 1,
+    Return_Car
+};
+enum UPDATE_VEHICLE_PRICE
+{
+    Update_Bike_price = 1,
+    Update_Car_price
+};
+
 class Vehicle_Manager
 {
 public:
     Vehicle_Manager();
     ~Vehicle_Manager();
 
-    void addBike(string name,string number, string status, int duration, float cost);
-    void addCar(string name,string number, string status, int duration, float cost);
+    int main_menu();
+    void addBike();
+    void addCar();
     void bookBike();
     void bookCar();
     void returnBike();
@@ -26,15 +65,18 @@ public:
     void displayCustomerList();
     void updateBikeCost();
     void updateCarCost();
-    void addCustomer(string cusName, int bookingID, string Vehicle_name, string Vehicle_num, int rental_duration, string isAmountPaid);
+    void addCustomer();
+    void writeDataToFile();
 
 private:
     Car_FileOperation* m_carFO;
     Bike_FO* m_bikeFO;
     Customer_FileOperation* m_cusFO;
-    list<Bike*> m_bike;
-    list<Car*> m_car;
-    list<Rental_Customer_details*> m_customer;
+    list<Bike*> m_bikelist;
+    list<Car*> m_carlist;
+    list<Rental_Customer_details*> m_customerlist;
 };
+
+
 
 #endif // VEHICLE_MANAGER_H
