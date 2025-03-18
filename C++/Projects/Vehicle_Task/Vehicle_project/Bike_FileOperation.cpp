@@ -14,31 +14,28 @@ Bike_FO::~Bike_FO()
 
 void Bike_FO::writeData(list<Bike*> bike)
 {
-    cout<<"Writing Bike data to CSV file"<<endl;
     ofstream file("bike.csv");
     if (!file)
     {
-        cout << "Error opening file for writing!" << endl;
+        cout << "Error opening Bike  file for writing!" << endl;
         return ;
     }
-    file<<"Name          "<<"Number           "<<"Status           "<<"Duration          "<<"Cost"<<endl;
+    file<<"Name          "<<"Duration           "<<"Number           "<<"Cost          "<<"Status"<<endl;
     for(auto* i:bike)
     {
-        file<<i->getName()<<","<<i->getVehicleNum()<<" ,"<<i->getStatus()<<","<<i->getDuration()<<","<<i->getCost()<<endl;
+        file<<i->getName()<<","<<i->getDuration()<<","<<i->getVehicleNum()<<","<<i->getCost()<<","<<i->getStatus()<<endl;
     }
-    cout<<"Data written to CSV file"<<endl<<endl;
+    cout<<"Data written to Bike file"<<endl;
     file.close();
 }
 
 list<Bike*> Bike_FO::readData()
 {
-    cout<<"Reading data from Bike file"<<endl;
-
     list<Bike*> bike;
     ifstream file("bike.csv");
     if (!file)
     {
-        cout << "Error opening file for reading!" << endl;
+        cout << "Error opening Bike file for reading!" << endl;
         return bike;
     }
 
@@ -47,12 +44,13 @@ list<Bike*> Bike_FO::readData()
     float cost;
 
     getline(file, line);
-    while (getline(file, name, ',') && getline(file, number,',') && getline(file, status, ',') && file >> duration && file.ignore() && file >> cost)
+    while (getline(file, name, ',') && file >> duration && file.ignore() && getline(file, number,',') && file >> cost && file.ignore() && getline(file, status))
     {
-        bike.push_back(new Bike(name, number, status, duration, cost));
+        bike.push_back(new Bike(name, duration, number, cost,status));
     }
+
     file.close();
-    cout<<"Data read from Bike file"<<endl<<endl;
+    cout<<"Data read from Bike file"<<endl;
 
     return bike;
 }

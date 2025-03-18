@@ -7,7 +7,7 @@ Bike::Bike()
     cout<<"Bike Constructor"<<endl;
 }
 
-Bike::Bike(string name, string number, string status, int duration, float cost)
+Bike::Bike(string name, int duration, string number, float cost, string status)
 {
     m_name = name;
     m_vehicleNum = number;
@@ -20,50 +20,4 @@ Bike::~Bike()
 {
     cout<<"Bike Destructor"<<endl;
 }
-
-string Bike::getName()
-{
-    return m_name;
-}
-
-string Bike::getStatus()
-{
-    return m_status;
-}
-
-int Bike::getDuration()
-{
-    return m_duration;
-}
-
-float Bike::getCost()
-{
-    return m_cost;
-}
-
-string Bike::getVehicleNum()
-{
-    return m_vehicleNum;
-}
-
-void Bike::setVehicleNum(string vehicleNum)
-{
-    m_vehicleNum = vehicleNum;
-}
-
-void Bike::setName(string name)
-{
-    m_name = name;
-}
-
-void Bike::setStatus(string status)
-{
-    m_status = status;
-}
-
-void Bike::setCost(float cost)
-{
-    m_cost = cost;
-}
-
 

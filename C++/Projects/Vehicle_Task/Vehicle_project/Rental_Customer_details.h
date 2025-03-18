@@ -2,6 +2,7 @@
 #define RENTAL_CUSTOMER_DETAILS_H
 
 #include "Vehicle.h"
+
 class Rental_Customer_details
 {
 public:
