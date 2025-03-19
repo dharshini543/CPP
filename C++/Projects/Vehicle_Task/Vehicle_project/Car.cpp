@@ -7,13 +7,12 @@ Car::Car()
     cout<<"Car Constructor"<<endl;
 }
 
-Car::Car(string name, int duration, string number, float cost, string status)
+Car::Car(string carName, string carNumber, float carCost, string carStatus)
 {
-    m_name = name;
-    m_vehicleNum = number;
-    m_status = status;
-    m_duration = duration;
-    m_cost = cost;
+    m_vehicleName = carName;
+    m_vehicleNum = carNumber;
+    m_vehicleStatus = carStatus;
+    m_vehicleCost = carCost;
 }
 
 Car::~Car()

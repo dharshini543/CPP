@@ -7,7 +7,7 @@ class Bike:public Vehicle
 {
 public:
     Bike();
-    Bike(string name, int duration, string number, float cost, string status);
+    Bike(string bikeName, string bikeNumber, float bikeCost, string bikeStatus);
     ~Bike();
 
 };

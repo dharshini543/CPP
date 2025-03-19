@@ -12,20 +12,18 @@ public:
 
     string getName();
     string getStatus();
-    int getDuration();
     float getCost();
     string getVehicleNum();
     void setVehicleNum(string vehicleNum);
-    void setName(string name);
-    void setStatus(string status);
-    void setCost(float cost);
+    void setName(string vehicleName);
+    void setStatus(string vehicleStatus);
+    void setCost(float vehicleCost);
 
 protected:
     string m_vehicleNum;
-    string m_name;
-    string m_status;
-    int m_duration;
-    float m_cost;
+    string m_vehicleName;
+    string m_vehicleStatus;
+    float m_vehicleCost;
 };
 
 

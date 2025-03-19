@@ -12,7 +12,7 @@ Car_FileOperation::~Car_FileOperation()
     cout<<"Car File Operation Destructor"<<endl;
 }
 
-void Car_FileOperation::writeData(list<Car*> car)
+void Car_FileOperation::writeData(list<Car*> carList)
 {
     ofstream file("car.csv");
     if (!file)
@@ -20,10 +20,10 @@ void Car_FileOperation::writeData(list<Car*> car)
         cout << "Error opening car  file for writing!" << endl;
         return ;
     }
-    file<<"Name          "<<"Duration           "<<"Number           "<<"Cost          "<<"Status"<<endl;
-    for(auto* i:car)
+    file<<"Name          "<<"Number           "<<"Cost          "<<"Status"<<endl;
+    for(auto* i:carList)
     {
-        file<<i->getName()<<","<<i->getDuration()<<","<<i->getVehicleNum()<<","<<i->getCost()<<","<<i->getStatus()<<endl;
+        file<<i->getName()<<","<<i->getVehicleNum()<<","<<i->getCost()<<","<<i->getStatus()<<endl;
     }
     cout<<"Data written to Car CSV file"<<endl;
     file.close();
@@ -31,26 +31,25 @@ void Car_FileOperation::writeData(list<Car*> car)
 
 list<Car*> Car_FileOperation::readData()
 {
-    list<Car*> car;
+    list<Car*> carList;
     ifstream file("car.csv");
     if (!file)
     {
         cout << "Error opening Car file for reading!" << endl;
-        return car;
+        return carList;
     }
 
-    string line, name, status,number;
-    int duration;
-    float cost;
+    string line, carName, carStatus,carNumber;
+    float carCost;
 
     getline(file, line);
-    while (getline(file, name, ',') && file >> duration && file.ignore() && getline(file, number,',') && file >> cost && file.ignore() && getline(file, status))
+    while (getline(file, carName, ',') && getline(file, carNumber,',') && file >> carCost && file.ignore() && getline(file, carStatus))
     {
-        car.push_back(new Car(name, duration, number, cost,status));
+        carList.push_back(new Car(carName, carNumber, carCost,carStatus));
     }
 
     file.close();
     cout<<"Data read from Car file"<<endl;
 
-    return car;
+    return carList;
 }

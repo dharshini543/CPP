@@ -7,13 +7,12 @@ Bike::Bike()
     cout<<"Bike Constructor"<<endl;
 }
 
-Bike::Bike(string name, int duration, string number, float cost, string status)
+Bike::Bike(string bikeName, string bikeNumber, float bikeCost, string bikeStatus)
 {
-    m_name = name;
-    m_vehicleNum = number;
-    m_status = status;
-    m_duration = duration;
-    m_cost = cost;
+    m_vehicleName = bikeName;
+    m_vehicleNum = bikeNumber;
+    m_vehicleStatus = bikeStatus;
+    m_vehicleCost = bikeCost;
 }
 
 Bike::~Bike()

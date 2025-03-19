@@ -9,7 +9,7 @@ class Customer_FileOperation
 public:
     Customer_FileOperation();
     ~Customer_FileOperation();
-    void writeData(list<Rental_Customer_details*> customer);
+    void writeData(list<Rental_Customer_details*> customerList);
     list<Rental_Customer_details *> readData();
 };
 
