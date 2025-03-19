@@ -12,6 +12,8 @@
 enum
 {
     ADD_VEHICLE = 1,
+    DELETE_VEHICLE,
+    SEARCH_VEHICLE,
     DISPLAY_VEHICLES,
     BOOK_VEHICLE,
     RETURN_VEHICLE,
@@ -25,12 +27,35 @@ enum ADD_VEHICLE
    Add_Bike = 1,
    Add_Car
 };
-enum DISPLAY_VEHICLES
+enum DELETE_VEHICLE
 {
-    Display_Bike = 1,
-    Display_Car,
-
+    Delete_Bike = 1,
+    Delete_Car
 };
+enum SEARCH_VEHICLE
+{
+    Search_Bike = 1,
+    Search_Car
+};
+enum DISPLAY_BIKE
+{
+    Display_Bike  = 1,
+    Sort_By_Price,
+    Sort_By_Name,
+    Sort_By_Status
+};
+enum DISPLAY_CAR
+{
+    DisplayCar = 1,
+    SortByPrice,
+    SortByName,
+    SortByStatus
+};
+enum Display{
+    DISPLAY_BIKE = 1,
+    DISPLAY_CAR
+};
+
 enum BOOK_VEHICLE
 {
     Book_Bike = 1,
@@ -56,6 +81,16 @@ public:
     int main_menu();
     void addBike();
     void addCar();
+    void deleteBike();
+    void deleteCar();
+    void searchBike();
+    void searchCar();
+    void sortByBikePrice();
+    void sortByBikeName();
+    void sortByBikeStatus();
+    void sortByCarPrice();
+    void sortByCarName();
+    void sortByCarStatus();
     void bookBike();
     void bookCar();
     void returnBike();
@@ -65,7 +100,7 @@ public:
     void displayCustomerList();
     void updateBikeCost();
     void updateCarCost();
-    void addCustomer();
+    void addCustomer(string vehicleName, string vehicleStatus, float vehicleCost, string vehicleNumber);
     void writeDataToFile();
 
 private:

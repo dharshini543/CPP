@@ -1,2 +1,2 @@
-Name          Duration           Number           Cost          Status,,,,
-KTM,1,KA100,1000,Booked
+Name          Number           Cost          Status
+KTM,KA100,1000,Available

@@ -1,15 +1,23 @@
 #include "Rental_Customer_details.h"
 #include <iostream>
 
-Rental_Customer_details::Rental_Customer_details(string cusName, int bookingID, string Vehicle_name, string Vehicle_num, int rental_duration, string isAmountPaid)
+Rental_Customer_details::Rental_Customer_details()
 {
     cout<<"Customer Constructor"<<endl;
-    m_cus_name = cusName;
+}
+
+Rental_Customer_details::Rental_Customer_details(string customerName, int bookingID, Vehicle* vehicle, string vehicleStatus, string vehicleType, int rentalDuration, string isAmountPaid, float amountPaid,float balanceAmount)
+{
+    cout<<"Customer Constructor"<<endl;
+    m_customerName = customerName;
     m_bookingID = bookingID;
-    m_vehicle.setName(Vehicle_name);
-    m_vehicle.setVehicleNum(Vehicle_num);
-    m_rental_duration = rental_duration;
+    m_vehicle = vehicle;
+    m_vehicleStatus = vehicleStatus;
+    m_vehicleType = vehicleType;
+    m_rentalDuration = rentalDuration;
     m_isAmountPaid = isAmountPaid;
+    m_amountPaid = amountPaid;
+    m_balanceAmount = balanceAmount;
 }
 
 Rental_Customer_details::~Rental_Customer_details()
@@ -19,7 +27,7 @@ Rental_Customer_details::~Rental_Customer_details()
 
 string Rental_Customer_details::getCusName()
 {
-    return m_cus_name;
+    return m_customerName;
 }
 
 int Rental_Customer_details::getBookingID()
@@ -29,12 +37,42 @@ int Rental_Customer_details::getBookingID()
 
 string Rental_Customer_details::getVehicleName()
 {
-    return m_vehicle.getName();
+    return m_vehicle->getName();
 }
 
 string Rental_Customer_details::getVehicleNum()
 {
-    return m_vehicle.getVehicleNum();
+    return m_vehicle->getVehicleNum();
+}
+
+string Rental_Customer_details::getVehicleStatus()
+{
+    return m_vehicleStatus;
+}
+
+void Rental_Customer_details::setVehicleStatus(string vehicleStatus)
+{
+    m_vehicleStatus = vehicleStatus;
+}
+
+float Rental_Customer_details::getAmountPaid()
+{
+    return m_amountPaid;
+}
+
+float Rental_Customer_details::getBalanceAmount()
+{
+    return m_balanceAmount;
+}
+
+string Rental_Customer_details::getVehicleType()
+{
+    return m_vehicleType;
+}
+
+float Rental_Customer_details::getVehicleCost()
+{
+    return m_vehicle->getCost();
 }
 
 string Rental_Customer_details::getIsAmountPaid()
@@ -44,5 +82,6 @@ string Rental_Customer_details::getIsAmountPaid()
 
 int Rental_Customer_details::getRentalDuration()
 {
-    return m_rental_duration;
+    return m_rentalDuration;
 }
+

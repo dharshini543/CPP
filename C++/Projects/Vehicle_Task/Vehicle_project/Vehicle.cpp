@@ -9,26 +9,22 @@ Vehicle::Vehicle()
 Vehicle::~Vehicle()
 {
     cout<<"Vehicle Destructor"<<endl;
+
 }
 
 string Vehicle::getName()
 {
-    return m_name;
+    return m_vehicleName;
 }
 
 string Vehicle::getStatus()
 {
-    return m_status;
-}
-
-int Vehicle::getDuration()
-{
-    return m_duration;
+    return m_vehicleStatus;
 }
 
 float Vehicle::getCost()
 {
-    return m_cost;
+    return m_vehicleCost;
 }
 
 string Vehicle::getVehicleNum()
@@ -41,19 +37,19 @@ void Vehicle::setVehicleNum(string vehicleNum)
     m_vehicleNum = vehicleNum;
 }
 
-void Vehicle::setName(string name)
+void Vehicle::setName(string vehicleName)
 {
-    m_name = name;
+    m_vehicleName = vehicleName;
 }
 
-void Vehicle::setStatus(string status)
+void Vehicle::setStatus(string vehicleStatus)
 {
-    m_status = status;
+    m_vehicleStatus = vehicleStatus;
 }
 
-void Vehicle::setCost(float cost)
+void Vehicle::setCost(float vehicleCost)
 {
-    m_cost = cost;
+    m_vehicleCost = vehicleCost;
 }
 
 

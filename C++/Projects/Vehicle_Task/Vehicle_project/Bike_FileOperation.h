@@ -8,7 +8,7 @@ class Bike_FO
 public:
     Bike_FO();
     ~Bike_FO();
-    void writeData(list<Bike*> bike);
+    void writeData(list<Bike*> bikeList);
     list<Bike *> readData();
 };
 
