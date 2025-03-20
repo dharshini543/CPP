@@ -1,13 +1,15 @@
 #ifndef RENTAL_CUSTOMER_DETAILS_H
 #define RENTAL_CUSTOMER_DETAILS_H
 
+#include "PaymentMode.h"
 #include "Vehicle.h"
 
 class Rental_Customer_details
 {
 public:
     Rental_Customer_details();
-    Rental_Customer_details(string customerName, int bookingID, Vehicle* vehicle,string vehicleStatus,string m_vehicleType,int rentalDuration, string isAmountPaid,float amountPaid,float balanceAmount);
+    Rental_Customer_details(string customerName, int bookingID, Vehicle* vehicle, string vehicleStatus,string m_vehicleType,int rentalDuration, string isAmountPaid,float amountPaid,float balanceAmount);
+    Rental_Customer_details(string customerName, int bookingID, Vehicle* vehicle,PaymentMode* payMode, string vehicleStatus,string m_vehicleType,int rentalDuration, string isAmountPaid,float amountPaid,float balanceAmount);
     ~Rental_Customer_details();
 
     string getCusName();
@@ -17,11 +19,19 @@ public:
     string getVehicleStatus();
     void setVehicleStatus(string vehicleStatus);
     float getAmountPaid();
+    void setAmountPaid(float amountPaid);
     float getBalanceAmount();
+    void setBalanceAmount(float balanceAmount);
     string getVehicleType();
     float getVehicleCost();
     string getIsAmountPaid();
     int getRentalDuration();
+    void setID(string ID);
+    void setTransactionID(int transactionID);
+    string getID();
+    int getTransactionID();
+    void setPaymentStatus(string paymentStatus);
+    string getpaymentStatus();
 
 private:
     string m_customerName;
@@ -33,6 +43,8 @@ private:
     Vehicle* m_vehicle;
     string m_isAmountPaid;
     int m_rentalDuration;
+    PaymentMode* m_payMode;
+
 };
 
 #endif // RENTAL_CUSTOMER_DETAILS_H

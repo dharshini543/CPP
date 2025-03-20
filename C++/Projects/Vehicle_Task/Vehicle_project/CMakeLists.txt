@@ -15,6 +15,9 @@ add_executable(Vehicle_project main.cpp
     Bike_FileOperation.h Bike_FileOperation.cpp
     Car_FileOperation.h Car_FileOperation.cpp
     Customer_FileOperation.h Customer_FileOperation.cpp
+    PaymentMode.h PaymentMode.cpp
+    UPI.h UPI.cpp
+    Cash.h Cash.cpp
 )
 
 include(GNUInstallDirs)

@@ -102,6 +102,8 @@ public:
     void updateCarCost();
     void addCustomer(string vehicleName, string vehicleStatus, float vehicleCost, string vehicleNumber);
     void writeDataToFile();
+    int payment(float balanceAmount);
+
 
 private:
     Car_FileOperation* m_carFO;
@@ -110,6 +112,8 @@ private:
     list<Bike*> m_bikelist;
     list<Car*> m_carlist;
     list<Rental_Customer_details*> m_customerlist;
+    PaymentMode* m_payMode;
+    Vehicle* m_vehicle;
 };
 
 
