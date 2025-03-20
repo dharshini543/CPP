@@ -1,0 +1,6 @@
+CustomerNameBookingIDVehicleNameVehicleNumberRentalDurationvehicleTypeVehicleCostPaymentModePaymentIDTransactionIDVehicleStatusAmountPaidDueAmountPaymentStatus,,,,,,,,,,,,,
+Dharshini,100,KTM,KA300,2,Bike,1300,Cash,A,0,Returned,2600,0,Success
+Likitha,101,Thar,KA1000,2,Car,4000,UPI,likitha@1,1001,Returned,8000,0,Success
+Pallavi,102,KTM,KA300,2,Bike,1300,UPI,pallavi@1,1002,Returned,2600,0,Success
+Darshan,105,KTM,KA500,2,Bike,1500,UPI,darshan@1,1003,Booked,2000,1000,Pending
+Pallavi,106,KTM,KA300,2,Bike,1300,UPI,pallavi@1,1004,Booked,2600,0,Success

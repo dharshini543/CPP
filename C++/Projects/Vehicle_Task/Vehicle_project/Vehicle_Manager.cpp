@@ -1,8 +1,10 @@
 #include "Vehicle_Manager.h"
 #include "Bike_FileOperation.h"
 #include "Car_FileOperation.h"
+#include "Cash.h"
 #include "Customer_FileOperation.h"
 #include "Rental_Customer_details.h"
+#include "UPI.h"
 #include <cstring>
 #include <string>
 #include<iostream>
@@ -28,14 +30,21 @@ Vehicle_Manager::~Vehicle_Manager()
     delete m_bikeFO;
     delete m_cusFO;
     delete m_carFO;
-    for(auto *i : m_bikelist)
+    for(auto* bike : m_bikelist)
     {
-        delete i;
+        delete bike;
     }
-    for(auto *i : m_carlist)
+    for(auto* car : m_carlist)
     {
-        delete i;
+        delete car;
     }
+    for(auto* customer : m_customerlist)
+    {
+        delete customer;
+    }
+    delete m_payMode;
+    delete m_vehicle;
+
 }
 
 int Vehicle_Manager::main_menu()
@@ -232,14 +241,12 @@ int Vehicle_Manager::main_menu()
             case Return_Bike:
             {
                 this->returnBike();
-                this->displayBikeList();
                 this->displayCustomerList();
             }
             break;
             case Return_Car:
             {
                 this->returnCar();
-                this->displayBikeList();
                 this->displayCustomerList();
             }
             break;
@@ -287,7 +294,6 @@ int Vehicle_Manager::main_menu()
 
     return 0;
 }
-
 
 void Vehicle_Manager::addBike()
 {
@@ -420,15 +426,15 @@ void Vehicle_Manager::deleteBike()
             break;
         }
     }
-    for(auto* i:m_bikelist)
+    for(auto* bike:m_bikelist)
     {
-        cout<<i->getVehicleNum()<<" "<<bikeNumber<<" "<<i->getName()<<" "<<bikeName<<" "<<i->getStatus()<<endl;
-        if((bikeNumber == i->getVehicleNum()) && (bikeName == i->getName()) )
+        cout<<bike->getVehicleNum()<<" "<<bikeNumber<<" "<<bike->getName()<<" "<<bikeName<<" "<<bike->getStatus()<<endl;
+        if((bikeNumber == bike->getVehicleNum()) && (bikeName == bike->getName()) )
         {
-            cout<<i->getVehicleNum()<<" "<<bikeNumber<<" "<<i->getName()<<" "<<bikeName<<" "<<i->getStatus()<<endl;
-            if("Available" == i->getStatus() || "Booked" == i->getStatus())
+            cout<<bike->getVehicleNum()<<" "<<bikeNumber<<" "<<bike->getName()<<" "<<bikeName<<" "<<bike->getStatus()<<endl;
+            if("Available" == bike->getStatus() || "Booked" == bike->getStatus())
             {
-                i->setStatus("Deleted");
+                bike->setStatus("Deleted");
                 cout<<bikeName<<" with "<<bikeNumber<<" deleted "<<endl;
             }
             bikeFound++;
@@ -470,13 +476,13 @@ void Vehicle_Manager::deleteCar()
             break;
         }
     }
-    for(auto* i:m_carlist)
+    for(auto* car:m_carlist)
     {
-        if((carNumber == i->getVehicleNum()) && (carName == i->getName()) )
+        if((carNumber == car->getVehicleNum()) && (carName == car->getName()) )
         {
-            if("Available" == i->getStatus()|| "Booked" == i->getStatus())
+            if("Available" == car->getStatus()|| "Booked" == car->getStatus())
             {
-                i->setStatus("Deleted");
+                car->setStatus("Deleted");
                 cout<<carName<<" with "<<carNumber<<" deleted "<<endl;
             }
             carFound++;
@@ -519,9 +525,9 @@ void Vehicle_Manager::searchBike()
         }
     }
 
-    for(auto* i:m_bikelist)
+    for(auto* bike:m_bikelist)
     {
-        if(bikeName == i->getName() && bikeNumber == i->getVehicleNum())
+        if(bikeName == bike->getName() && bikeNumber == bike->getVehicleNum())
         {
             cout<<"bikeName";
             cout.width(20);
@@ -530,13 +536,13 @@ void Vehicle_Manager::searchBike()
             cout<<"BikeCost";
             cout.width(20);
             cout<<"BikeStatus"<<endl;
-            cout<<i->getName();
+            cout<<bike->getName();
             cout.width(20);
-            cout<<i->getVehicleNum();
+            cout<<bike->getVehicleNum();
             cout.width(21);
-            cout<<i->getCost();
+            cout<<bike->getCost();
             cout.width(24);
-            cout<<i->getStatus()<<endl;
+            cout<<bike->getStatus()<<endl;
             bikeFound++;
         }
     }
@@ -577,9 +583,9 @@ void Vehicle_Manager::searchCar()
         }
     }
 
-    for(auto* i:m_carlist)
+    for(auto* car:m_carlist)
     {
-        if(carName == i->getName() && carNumber == i->getVehicleNum())
+        if(carName == car->getName() && carNumber == car->getVehicleNum())
         {
             cout<<"carName";
             cout.width(20);
@@ -588,13 +594,13 @@ void Vehicle_Manager::searchCar()
             cout<<"CarCost";
             cout.width(20);
             cout<<"CarStatus"<<endl;
-            cout<<i->getName();
+            cout<<car->getName();
             cout.width(20);
-            cout<<i->getVehicleNum();
+            cout<<car->getVehicleNum();
             cout.width(21);
-            cout<<i->getCost();
+            cout<<car->getCost();
             cout.width(24);
-            cout<<i->getStatus()<<endl;
+            cout<<car->getStatus()<<endl;
             carFound++;
         }
     }
@@ -653,7 +659,7 @@ void Vehicle_Manager::sortByBikePrice()
     {
         for(auto* j:m_bikelist)
         {
-            if(j->getCost() > i->getCost())
+            if(j->getCost() > j->getCost())
             {
                 iter_swap(i,j);
             }
@@ -691,10 +697,11 @@ void Vehicle_Manager::sortByBikeStatus()
 
 void Vehicle_Manager::addCustomer(string vehicleName,string vehicleStatus,float vehicleCost,string vehicleNumber)
 {
-    string cusName,paymentMode,vehicleType,cusVehicleStatus,upiID;
+    string cusName,paymentMode,vehicleType,cusVehicleStatus,upiID,cashID = "A",paymentStatus;
     int bookingID,choice;
-    int rentalDuration,transactionID = 1000;
-    float amount,amountPaid,balanceAmount;
+    int rentalDuration,cashTransactionID = 0;
+    static int UPItransactionID = 1000;
+    float amountPaid,balanceAmount = 0;
     cusVehicleStatus = vehicleStatus;
     while(true)
     {
@@ -738,12 +745,13 @@ void Vehicle_Manager::addCustomer(string vehicleName,string vehicleStatus,float 
         paymentMode = "Cash";
         cout<<"Pay "<<vehicleCost*rentalDuration<<" ruppees"<<endl;
         cout<<"Enter Amount"<<endl;
-        cin>>amount;
-        amountPaid = amount;
-        cout<<"Amount of rupees "<<amount<<" recieved through "<<paymentMode<<endl;
-        if(amount < vehicleCost*rentalDuration)
+        cin>>amountPaid;
+        cout<<"Amount of rupees "<<amountPaid<<" recieved through "<<paymentMode<<endl;
+        paymentStatus = "Success";
+        cout<<"payment "<<paymentStatus;
+        if(amountPaid < vehicleCost*rentalDuration)
         {
-            balanceAmount = (vehicleCost*rentalDuration) - amount;
+            balanceAmount = (vehicleCost*rentalDuration) - amountPaid;
             cout<<"Balance Amount : "<<balanceAmount<<endl;
         }
 
@@ -755,19 +763,25 @@ void Vehicle_Manager::addCustomer(string vehicleName,string vehicleStatus,float 
         cin>>upiID;
         cout<<"Pay "<<vehicleCost*rentalDuration<<" ruppees"<<endl;
         cout<<"Enter Amount"<<endl;
-        cin>>amount;
-        if(upiID == cusName && amount > 0)
+        cin>>amountPaid;
+        if(amountPaid == vehicleCost*rentalDuration)
         {
-            cout<<"Amount of rupees "<<amount<<" recieved through"<<paymentMode<<endl;
+            cout<<"Amount of rupees "<<amountPaid<<" recieved through"<<paymentMode<<endl;
+            paymentStatus = "Success";
+            cout<<"payment "<<paymentStatus<<endl;
             cout<<"Transaction successfull"<<endl;
-            cout<<"Transaction ID :"<<++transactionID<<endl;
+            cout<<"Transaction ID :"<<++UPItransactionID<<endl;
         }
-        if(amount < vehicleCost*rentalDuration)
+        else
         {
-            balanceAmount =(vehicleCost*rentalDuration) - amount;
+            paymentStatus = "Pending";
+            cout<<"payment "<<paymentStatus<<endl;
+        }
+        if(amountPaid < vehicleCost*rentalDuration)
+        {
+            balanceAmount =(vehicleCost*rentalDuration) - amountPaid;
             cout<<"Balance Amount : "<<balanceAmount<<endl;
         }
-        amountPaid = amount;
 
     }
     else
@@ -777,13 +791,31 @@ void Vehicle_Manager::addCustomer(string vehicleName,string vehicleStatus,float 
 
     if(vehicleType == "Bike")
     {
-        Bike* bike = new Bike(vehicleName, vehicleNumber, vehicleCost, vehicleStatus);
-        m_customerlist.push_back(new Rental_Customer_details(cusName, bookingID, bike,cusVehicleStatus,vehicleType,rentalDuration,paymentMode,amountPaid,balanceAmount));
+        m_vehicle = new Bike(vehicleName, vehicleNumber, vehicleCost, vehicleStatus);
+        if("UPI" == paymentMode)
+        {
+            m_payMode = new UPI(upiID,UPItransactionID,paymentStatus);
+            m_customerlist.push_back(new Rental_Customer_details(cusName, bookingID, m_vehicle,m_payMode,cusVehicleStatus,vehicleType,rentalDuration,paymentMode,amountPaid,balanceAmount));
+        }
+        else if("Cash" == paymentMode)
+        {
+            m_payMode = new Cash(cashID,cashTransactionID,paymentStatus);
+            m_customerlist.push_back(new Rental_Customer_details(cusName, bookingID, m_vehicle,m_payMode, cusVehicleStatus, vehicleType, rentalDuration, paymentMode,amountPaid,balanceAmount));
+        }
     }
     else if(vehicleType == "Car")
     {
-        Car* car = new Car(vehicleName,vehicleNumber,vehicleCost,vehicleStatus);
-        m_customerlist.push_back(new Rental_Customer_details(cusName, bookingID, car, cusVehicleStatus, vehicleType, rentalDuration, paymentMode,amountPaid,balanceAmount));
+        m_vehicle = new Car(vehicleName,vehicleNumber,vehicleCost,vehicleStatus);
+        if("UPI" == paymentMode)
+        {
+            m_payMode = new UPI(upiID,UPItransactionID,paymentStatus);
+            m_customerlist.push_back(new Rental_Customer_details(cusName, bookingID, m_vehicle,m_payMode,cusVehicleStatus,vehicleType,rentalDuration,paymentMode,amountPaid,balanceAmount));
+        }
+        else if("Cash" == paymentMode)
+        {
+            m_payMode = new Cash(cashID,cashTransactionID,paymentStatus);
+            m_customerlist.push_back(new Rental_Customer_details(cusName, bookingID, m_vehicle,m_payMode, cusVehicleStatus, vehicleType, rentalDuration, paymentMode,amountPaid,balanceAmount));
+        }
     }
 }
 
@@ -804,17 +836,17 @@ void Vehicle_Manager::bookBike()
     cout<<"Enter Bike number"<<endl;
     cin>>bikeNumber;
 
-    for(auto* i:m_bikelist)
+    for(auto* bike:m_bikelist)
     {
-        if((bikeNumber == i->getVehicleNum()) && (bikeName == i->getName()) )
+        if((bikeNumber == bike->getVehicleNum()) && (bikeName == bike->getName()) )
         {
-            if("Available" == i->getStatus())
+            if("Available" == bike->getStatus())
             {
-                i->setStatus("Booked");
+                bike->setStatus("Booked");
                 cout<<bikeName<<" bike is Booked"<<endl;
-                this->addCustomer(i->getName(),i->getStatus(),i->getCost(),i->getVehicleNum());
+                this->addCustomer(bike->getName(),bike->getStatus(),bike->getCost(),bike->getVehicleNum());
             }
-            else if("Booked" == i->getStatus())
+            else if("Booked" == bike->getStatus())
             {
                 cout<<bikeName<<" bike is already Booked"<<endl;
             }
@@ -835,17 +867,17 @@ void Vehicle_Manager::bookCar()
     cin>>carName;
     cout<<"Enter Car number"<<endl;
     cin>>carNumber;
-    for(auto* i:m_carlist)
+    for(auto* car:m_carlist)
     {
-        if(i->getName() == carName && i->getVehicleNum() == carNumber)
+        if(car->getName() == carName && car->getVehicleNum() == carNumber)
         {
-            if(i->getStatus() == "Available")
+            if(car->getStatus() == "Available")
             {
-                i->setStatus("Booked");
+                car->setStatus("Booked");
                 cout<<carName<<" Car is Booked"<<endl;
-                this->addCustomer(i->getName(),i->getStatus(),i->getCost(),i->getVehicleNum());
+                this->addCustomer(car->getName(),car->getStatus(),car->getCost(),car->getVehicleNum());
             }
-            else if("Booked" == i->getStatus())
+            else if("Booked" == car->getStatus())
             {
                 cout<<carName<<" car is already Booked"<<endl;
             }
@@ -861,35 +893,44 @@ void Vehicle_Manager::bookCar()
 void Vehicle_Manager::returnBike()
 {
     string bikeName,bikeNumber;
+    int success = 0;
     cout<<"Enter name of Bike to return"<<endl;
     cin>>bikeName;
     cout<<"Enter Bike number"<<endl;
     cin>>bikeNumber;
-    for(auto* i:m_bikelist)
+    for(auto* bike:m_bikelist)
     {
-        cout<<i->getVehicleNum()<<bikeNumber<<endl;
-        if(i->getName() == bikeName && i->getVehicleNum() == bikeNumber)
+        if(bike->getName() == bikeName && bike->getVehicleNum() == bikeNumber)
         {
-            if(i->getStatus() == "Booked")
+            if(bike->getStatus() == "Booked")
             {
-                for(auto* i:m_customerlist)
+                for(auto* customer:m_customerlist)
                 {
-                    if(bikeNumber == i->getVehicleNum() &&  "Booked" == i->getVehicleStatus())
+                    if(bikeNumber == customer->getVehicleNum() &&  "Booked" == customer->getVehicleStatus())
                     {
-                        if(i->getBalanceAmount() == NULL)
+                        if(customer->getBalanceAmount() == 0)
                         {
                             cout<<bikeName<<" Bike is returned"<<endl;
-                            i->setVehicleStatus("Returned");
+                            customer->setVehicleStatus("Returned");
                         }
                         else
                         {
-                            cout<<"Please pay balance Amount of "<<i->getBalanceAmount()<<"rupees"<<endl;
+                            cout<<"Please pay balance Amount of "<<customer->getBalanceAmount()<<" rupees"<<endl;
+                            success = this->payment(customer->getBalanceAmount());
+                            if(success)
+                            {
+                                customer->setAmountPaid(customer->getAmountPaid()+customer->getBalanceAmount());
+                                customer->setBalanceAmount(0);
+                                cout<<bikeName<<" Bike is returned"<<endl;
+                                customer->setVehicleStatus("Returned");
+                                customer->setPaymentStatus("Success");
+                            }
+
                         }
                     }
 
                 }
-                i->setStatus("Available");
-                cout<<bikeName<<" Bike is returned"<<endl;
+                bike->setStatus("Available");
             }
         }
     }
@@ -898,28 +939,46 @@ void Vehicle_Manager::returnBike()
 void Vehicle_Manager::returnCar()
 {
     string carName,carNumber;
+    int success = 0;
     cout<<"Enter name of car to return"<<endl;
     cin>>carName;
     cout<<"Enter Car number"<<endl;
     cin>>carNumber;
-    for(auto i:m_carlist)
+    for(auto car:m_carlist)
     {
-        cout<<i->getVehicleNum()<<carNumber<<endl;
-        if(i->getName() == carName && i->getVehicleNum() == carNumber)
+        if(car->getName() == carName && car->getVehicleNum() == carNumber)
         {
-            if(i->getStatus() == "Booked")
+            if(car->getStatus() == "Booked")
             {
-                i->setStatus("Available");
-                cout<<carName<<" Car is returned"<<endl;
-                for(auto i:m_customerlist)
+                for(auto* customer:m_customerlist)
                 {
-                    if(i->getVehicleNum() == carNumber && i->getVehicleStatus() == "Booked")
+                    if(carNumber == customer->getVehicleNum() &&  "Booked" == customer->getVehicleStatus())
                     {
-                        i->setVehicleStatus("Returned");
-                    }
-                }
+                        if(customer->getBalanceAmount() == 0)
+                        {
+                            cout<<carName<<" Car is returned"<<endl;
+                            customer->setVehicleStatus("Returned");
+                        }
+                        else
+                        {
+                            cout<<"Please pay balance Amount of "<<customer->getBalanceAmount()<<" rupees"<<endl;
+                            success = this->payment(customer->getBalanceAmount());
+                            if(success)
+                            {
+                                customer->setAmountPaid(customer->getAmountPaid()+customer->getBalanceAmount());
+                                customer->setBalanceAmount(0);
+                                cout<<carName<<" Car is returned"<<endl;
+                                customer->setVehicleStatus("Returned");
+                                customer->setPaymentStatus("Success");
+                            }
 
+                        }
+                    }
+
+                }
+                car->setStatus("Available");
             }
+
         }
     }
 }
@@ -934,17 +993,17 @@ void Vehicle_Manager::displayBikeList()
     cout.width(20);
     cout<<"BikeStatus"<<endl;
 
-    for(auto* i:m_bikelist)
+    for(auto* bike:m_bikelist)
     {
-        if("Available" == i->getStatus() || "Booked" == i->getStatus())
+        if("Available" == bike->getStatus() || "Booked" == bike->getStatus())
         {
-            cout<<i->getName();
+            cout<<bike->getName();
             cout.width(20);
-            cout<<i->getVehicleNum();
+            cout<<bike->getVehicleNum();
             cout.width(21);
-            cout<<i->getCost();
+            cout<<bike->getCost();
             cout.width(24);
-            cout<<i->getStatus()<<endl;
+            cout<<bike->getStatus()<<endl;
         }
     }
 }
@@ -959,17 +1018,17 @@ void Vehicle_Manager::displayCarList()
     cout.width(20);
     cout<<"CarStatus"<<endl;
 
-    for(auto* i:m_carlist)
+    for(auto* car:m_carlist)
     {
-        if("Available" == i->getStatus() || "Booked" == i->getStatus())
+        if("Available" == car->getStatus() || "Booked" == car->getStatus())
         {
-            cout<<i->getName();
+            cout<<car->getName();
             cout.width(20);
-            cout<<i->getVehicleNum();
+            cout<<car->getVehicleNum();
             cout.width(21);
-            cout<<i->getCost();
+            cout<<car->getCost();
             cout.width(24);
-            cout<<i->getStatus()<<endl;
+            cout<<car->getStatus()<<endl;
         }
     }
 }
@@ -977,42 +1036,54 @@ void Vehicle_Manager::displayCarList()
 void Vehicle_Manager::displayCustomerList()
 {
     cout<<"CustomerName";
-    cout.width(15);
+    cout.width(12);
     cout<<"BookingID";
-    cout.width(15);
+    cout.width(12);
     cout<<"VehicleName";
-    cout.width(15);
+    cout.width(12);
     cout<<"VehicleNum";
-    cout.width(15);
+    cout.width(12);
     cout<<"RentalDuration";
-    cout.width(15);
-    cout<<"AmountStatus";
-    cout.width(15);
+    cout.width(12);
+    cout<<"PaymentMode";
+    cout.width(12);
+    cout<<"paymentID";
+    cout.width(12);
+    cout<<"TransactionID";
+    cout.width(12);
     cout<<"VehicleStatus";
-    cout.width(15);
+    cout.width(12);
     cout<<"AmountPaid";
-    cout.width(15);
-    cout<<"BalanceAmount"<<endl;
+    cout.width(12);
+    cout<<"DueAmount";
+    cout.width(12);
+    cout<<"PaymentStatus"<<endl;
 
     for(auto* i:m_customerlist)
     {
         cout<<i->getCusName();
-        cout.width(15);
+        cout.width(12);
         cout<<i->getBookingID();
-        cout.width(15);
+        cout.width(12);
         cout<<i->getVehicleName();
-        cout.width(15);
+        cout.width(12);
         cout<<i->getVehicleNum();
-        cout.width(15);
+        cout.width(12);
         cout<<i->getRentalDuration();
-        cout.width(15);
+        cout.width(12);
         cout<<i->getIsAmountPaid();
-        cout.width(15);
+        cout.width(12);
+        cout<<i->getID();
+        cout.width(12);
+        cout<<i->getTransactionID();
+        cout.width(12);
         cout<<i->getVehicleStatus();
-        cout.width(15);
-        cout<<i->getAmountPaid()<<endl;
-        cout.width(15);
-        cout<<i->getBalanceAmount()<<endl;
+        cout.width(12);
+        cout<<i->getAmountPaid();
+        cout.width(12);
+        cout<<i->getBalanceAmount();
+        cout.width(12);
+        cout<<i->getpaymentStatus()<<endl;
     }
 }
 
@@ -1026,11 +1097,11 @@ void Vehicle_Manager::updateBikeCost()
     cin>>bikeNumber;
     cout<<"Enter updated bike cost"<<endl;
     cin>>bikeNewAmount;
-    for(auto* i:m_bikelist)
+    for(auto* bike:m_bikelist)
     {
-        if(i->getVehicleNum() == bikeNumber)
+        if(bike->getVehicleNum() == bikeNumber)
         {
-            i->setCost(bikeNewAmount);
+            bike->setCost(bikeNewAmount);
             cout<<bikeName<<" with vehicle number"<<bikeNumber<<"updated"<<endl;
         }
     }
@@ -1046,13 +1117,60 @@ void Vehicle_Manager::updateCarCost()
     cin>>carNumber;
     cout<<"Enter updated bike cost"<<endl;
     cin>>CarnewAmount;
-    for(auto* i:m_carlist)
+    for(auto* car:m_carlist)
     {
-        if(i->getName() == carName && i->getVehicleNum() == carNumber)
+        if(car->getName() == carName && car->getVehicleNum() == carNumber)
         {
-            i->setCost(CarnewAmount);
+            car->setCost(CarnewAmount);
             cout<<carName<<" with vehicle number"<<carNumber<<"updated"<<endl;
         }
     }
+}
+
+int Vehicle_Manager::payment(float balanceAmount)
+{
+    int choice,success = 0;
+    string paymentMode;
+    float amountPaid;
+    cout<<"Enter Payment mode"<<endl;
+    cout<<"Enter"<<endl<<"1. Cash"<<endl<<"2. UPI"<<endl;
+    cin>>choice;
+    if(choice == 1)
+    {
+        paymentMode = "Cash";
+        cout<<"Pay "<<balanceAmount<<" ruppees"<<endl;
+        cout<<"Enter Amount"<<endl;
+        cin>>amountPaid;
+        if(amountPaid == balanceAmount)
+        {
+            cout<<"Amount of rupees "<<amountPaid<<" recieved through "<<paymentMode<<endl;
+            success = 1;
+        }
+
+    }
+    else if (choice == 2)
+    {
+        string upiID;
+        int transactionID = 2000;
+        paymentMode = "UPI";
+        cout<<"Enter UPI ID"<<endl;
+        cin>>upiID;
+        cout<<"Pay "<<balanceAmount<<" ruppees"<<endl;
+        cout<<"Enter Amount"<<endl;
+        cin>>amountPaid;
+        if(amountPaid  == balanceAmount)
+        {
+            cout<<"Amount of rupees "<<amountPaid<<" recieved through"<<paymentMode<<endl;
+            cout<<"Transaction successfull"<<endl;
+            cout<<"Transaction ID :"<<++transactionID<<endl;
+            success = 1;
+        }
+    }
+    else
+    {
+        cout<<"Invalid input"<<endl;
+    }
+    return success;
+
 }
 

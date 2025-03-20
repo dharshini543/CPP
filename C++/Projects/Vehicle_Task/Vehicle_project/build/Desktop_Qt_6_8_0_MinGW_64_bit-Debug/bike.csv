@@ -1,2 +1,7 @@
 Name          Number           Cost          Status
-KTM,KA100,1000,Available
+Duke,KA200,1200,Booked
+KTM,KA300,1300,Booked
+KTM,KA100,1000,Booked
+RoyalEnfield,KA400,1500,Deleted
+Pulsar,KA400,1000,Available
+KTM,KA500,1500,Booked
