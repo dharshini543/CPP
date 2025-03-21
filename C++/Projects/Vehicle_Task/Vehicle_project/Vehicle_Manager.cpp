@@ -16,12 +16,17 @@ Vehicle_Manager::Vehicle_Manager()
     m_bikeFO = new Bike_FO;
     m_carFO = new Car_FileOperation;
     m_cusFO = new Customer_FileOperation;
-    /*m_bikeFO->writeData(m_bikelist);
-    m_carFO->writeData(m_carlist);
-    m_cusFO->writeData(m_customerlist);*/
+    /*m_bikeFO->writeData(m_bikeList);
+    m_carFO->writeData(m_carList);
+    m_cusFO->writeData(m_customerList);*/
+    /*m_userList = m_loginManager.getUserList();
+    m_userFO->writeData(m_userList);*/
     m_customerList = m_cusFO->readData();
     m_carList = m_carFO->readData();
     m_bikeList = m_bikeFO->readData();
+    m_userList = m_userFO->readData();
+    m_loginManager.setUserList(m_userList);
+
 }
 
 Vehicle_Manager::~Vehicle_Manager()
@@ -47,256 +52,444 @@ Vehicle_Manager::~Vehicle_Manager()
 
 int Vehicle_Manager::main_menu()
 {
-    int choice,option,input;
-    for(auto* i:m_userList)
+    int choice,option,input,Success;
+    User* currentUser;
+    if(m_loginManager.getUserCount() == 0)
     {
-        if(i->getUserCount() == 0)
-        {
-            this->addAdmin();
-        }
+        currentUser = m_loginManager.addAdmin();
     }
-
     while(true)
     {
-        cout<<"Enter"<<endl<<"1. Add Vehicle"<<endl<<"2. Delete Vehicle"<<endl<<"3. Search Vehicle"<<endl<<"4. Display Vehicles"<<endl<<"5. Book Vehicle"<<endl;
-        cout<<"6. Return Vehicle"<<endl<<"7. Update Vehicle Price"<<endl<<"8. View Customers Record"<<endl<<"9. LOGOUT"<<endl;;
+        cout<<"Enter"<<endl<<"1. SignUp to create account"<<endl<<"2. Login"<<endl<<"3. Exit"<<endl;
         cin>>choice;
-        switch(choice)
+        if(choice == 1)
         {
-        case ADD_VEHICLE:{
-            cout<<"Enter"<<endl<<"1. Add Bike"<<endl<<"2. Add Car"<<endl<<"Any Other number to exit"<<endl;
-            cin>>option;
-            switch(option)
+            if(m_loginManager.getUserCount() > 0)
             {
-            case Add_Bike:
-            {
-                this->addBike();
-            }
-            break;
-            case Add_Car:
-            {
-                this->addCar();
-            }
-            break;
-            default:
-                cout<<"Invalid input"<<endl;
+                currentUser = m_loginManager.signUp();
             }
         }
-        break;
-        case DELETE_VEHICLE:{
-            cout<<"Enter"<<endl<<"1. Delete Bike"<<endl<<"2. Delete Car"<<endl<<"Any Other number to exit"<<endl;
-            cin>>option;
-            switch(option)
-            {
-            case Delete_Bike:
-            {
-                this->deleteBike();
-            }
-            break;
-            case Delete_Car:
-            {
-                this->deleteCar();
-            }
-            break;
-            default:
-                cout<<"Invalid input"<<endl;
-            }
-        }
-        break;
-        case SEARCH_VEHICLE:{
-            cout<<"Enter"<<endl<<"1. Search Bike"<<endl<<"2. Search Car"<<endl<<"Any Other number to exit"<<endl;
-            cin>>option;
-            switch(option)
-            {
-            case Search_Bike:
-            {
-                this->searchBike();
-            }
-            break;
-            case Search_Car:
-            {
-                this->searchCar();
-            }
-            break;
-            default:
-                cout<<"Invalid input"<<endl;
-            }
-        }
-        break;
-        case DISPLAY_VEHICLES:
+        else if(choice == 2)
         {
-            int True = 1;
-            cout<<"Enter"<<endl<<"1.Display Bike Details"<<endl<<"2. Display Car details"<<endl<<"Any Other number to exit"<<endl;
-            cin>>option;
-            switch(option)
+            if(m_loginManager.getUserCount() > 0)
             {
-            case DISPLAY_BIKE:
-            {
-                while(True)
-                {
-                    cout<<"Enter"<<endl<<"1.Display Bike Details"<<endl<<"2. Sort By price"<<endl<<"3. Sort BY Name"<<endl<<"4. Sort by Status"<<endl<<"Any Other number to exit"<<endl;
-                    cin>>input;
-                    switch(input)
-                    {
-                    case Display_Bike:
-                    {
-                        this->displayBikeList();
-                    }
-                    break;
-                    case Sort_By_Price:
-                    {
-                        this->sortByBikePrice();
-                        this->displayBikeList();
-                    }
-                    break;
-                    case Sort_By_Name:
-                    {
-                        this->sortByBikeName();
-                        this->displayBikeList();
-
-                    }
-                    break;
-                    case Sort_By_Status:
-                    {
-                        this->sortByBikeStatus();
-                        this->displayBikeList();
-
-                    }
-                    break;
-                    default:
-                        cout<<"Invalid input"<<endl;
-                        True = 0;
-                    }
-                }
-            }
-            break;
-            case DISPLAY_CAR:
-            {
-                while(True)
-                {
-                    cout<<"Enter"<<endl<<"1.Display Car Details"<<endl<<"2. Sort By price"<<endl<<"3. Sort BY Name"<<endl<<"4. Sort by Status"<<endl<<"Any Other number to exit"<<endl;
-                    cin>>input;
-                    switch(input)
-                    {
-                    case DisplayCar:
-                    {
-                        this->displayCarList();
-                    }
-                    break;
-                    case SortByPrice:
-                    {
-                        this->sortByCarPrice();
-                        this->displayCarList();
-
-                    }
-                    break;
-                    case SortByName:
-                    {
-                        this->sortByCarName();
-                        this->displayCarList();
-
-                    }
-                    break;
-                    case SortByStatus:
-                    {
-                        this->sortByCarStatus();
-                        this->displayCarList();
-
-                    }
-                    break;
-                    default:
-                        cout<<"Invalid input"<<endl;
-                        True = 0;
-                    }
-                }
-
-            }
-
-            }
-
-        }
-        break;
-        case BOOK_VEHICLE:
-        {
-            cout<<"Enter"<<endl<<"1. Book Bike"<<endl<<"2. Book Car"<<endl<<"Any Other number to exit"<<endl;
-            cin>>option;
-            switch(option)
-            {
-            case Book_Bike:
-            {
-                this->bookBike();
-            }
-            break;
-            case Book_Car:
-            {
-                this->bookCar();
-            }
-            break;
-            default:
-                cout<<"Invalid input"<<endl;
+                currentUser = m_loginManager.login();
             }
         }
-        break;
-        case RETURN_VEHICLE:
+        else
         {
-            cout<<"Enter"<<endl<<"1. Return Bike"<<endl<<"2. Return Car"<<endl<<"Any Other number to exit"<<endl;
-            cin>>option;
-            switch(option)
-            {
-            case Return_Bike:
-            {
-                this->returnBike();
-                this->displayCustomerList();
-            }
-            break;
-            case Return_Car:
-            {
-                this->returnCar();
-                this->displayCustomerList();
-            }
-            break;
-            default:
-                cout<<"Invalid input"<<endl;
-            }
-        }
-        break;
-        case UPDATE_VEHICLE_PRICE:
-        {
-            cout<<"Enter"<<endl<<"1. Update Bike Price"<<endl<<"2. Update Car Price"<<endl<<"Any Other number to exit"<<endl;
-            cin>>option;
-            switch(option)
-            {
-            case Update_Bike_price:
-            {
-                this->updateBikeCost();
-            }
-            break;
-            case Update_Car_price:
-            {
-                this->updateCarCost();
-            }
-            break;
-            default:
-                cout<<"Invalid input"<<endl;
-            }
-        }
-        break;
-        case CUSTOMER_RECORD:
-        {
-            this->displayCustomerList();
-        }
-        break;
-        case LOGOUT:
-        {
-            this->writeDataToFile();
             exit(0);
         }
-        default:
-            cout<<"Invalid input"<<endl;
+        if(currentUser != NULL)
+        {
+            if(currentUser->getUserRole() == "ADMIN")
+            {
+                int True = 1;
+                while(True)
+                {
+                    cout<<"Enter"<<endl<<"1. Add Vehicle"<<endl<<"2. Delete Vehicle"<<endl<<"3. Search Vehicle"<<endl<<"4. Display Vehicles"<<endl<<"5. Book Vehicle"<<endl;
+                    cout<<"6. Return Vehicle"<<endl<<"7. Update Vehicle Price"<<endl<<"8. View Customers Record"<<endl<<"9. LOGOUT"<<endl;;
+                    cin>>choice;
+                    switch(choice)
+                    {
+                    case ADMIN_ADD_VEHICLE:{
+                        cout<<"Enter"<<endl<<"1. Add Bike"<<endl<<"2. Add Car"<<endl<<"Any Other number to exit"<<endl;
+                        cin>>option;
+                        switch(option)
+                        {
+                        case Add_Bike:
+                        {
+                            this->addBike();
+                        }
+                        break;
+                        case Add_Car:
+                        {
+                            this->addCar();
+                        }
+                        break;
+                        default:
+                            cout<<"Invalid input"<<endl;
+                        }
+                    }
+                    break;
+                    case ADMIN_DELETE_VEHICLE:{
+                        cout<<"Enter"<<endl<<"1. Delete Bike"<<endl<<"2. Delete Car"<<endl<<"Any Other number to exit"<<endl;
+                        cin>>option;
+                        switch(option)
+                        {
+                        case Delete_Bike:
+                        {
+                            this->deleteBike();
+                        }
+                        break;
+                        case Delete_Car:
+                        {
+                            this->deleteCar();
+                        }
+                        break;
+                        default:
+                            cout<<"Invalid input"<<endl;
+                        }
+                    }
+                    break;
+                    case ADMIN_SEARCH_VEHICLE:{
+                        cout<<"Enter"<<endl<<"1. Search Bike"<<endl<<"2. Search Car"<<endl<<"Any Other number to exit"<<endl;
+                        cin>>option;
+                        switch(option)
+                        {
+                        case Search_Bike:
+                        {
+                            this->searchBike();
+                        }
+                        break;
+                        case Search_Car:
+                        {
+                            this->searchCar();
+                        }
+                        break;
+                        default:
+                            cout<<"Invalid input"<<endl;
+                        }
+                    }
+                    break;
+                    case ADMIN_DISPLAY_VEHICLES:
+                    {
+                        int True = 1;
+                        cout<<"Enter"<<endl<<"1.Display Bike Details"<<endl<<"2. Display Car details"<<endl<<"Any Other number to exit"<<endl;
+                        cin>>option;
+                        switch(option)
+                        {
+                        case DISPLAY_BIKE:
+                        {
+                            while(True)
+                            {
+                                cout<<"Enter"<<endl<<"1.Display Bike Details"<<endl<<"2. Sort By price"<<endl<<"3. Sort BY Name"<<endl<<"4. Sort by Status"<<endl<<"Any Other number to exit"<<endl;
+                                cin>>input;
+                                switch(input)
+                                {
+                                case Display_Bike:
+                                {
+                                    this->displayBikeList();
+                                }
+                                break;
+                                case Sort_By_Price:
+                                {
+                                    this->sortByBikePrice();
+                                    this->displayBikeList();
+                                }
+                                break;
+                                case Sort_By_Name:
+                                {
+                                    this->sortByBikeName();
+                                    this->displayBikeList();
 
+                                }
+                                break;
+                                case Sort_By_Status:
+                                {
+                                    this->sortByBikeStatus();
+                                    this->displayBikeList();
+
+                                }
+                                break;
+                                default:
+                                    cout<<"Invalid input"<<endl;
+                                    True = 0;
+                                }
+                            }
+                        }
+                        break;
+                        case DISPLAY_CAR:
+                        {
+                            while(True)
+                            {
+                                cout<<"Enter"<<endl<<"1.Display Car Details"<<endl<<"2. Sort By price"<<endl<<"3. Sort BY Name"<<endl<<"4. Sort by Status"<<endl<<"Any Other number to exit"<<endl;
+                                cin>>input;
+                                switch(input)
+                                {
+                                case DisplayCar:
+                                {
+                                    this->displayCarList();
+                                }
+                                break;
+                                case SortByPrice:
+                                {
+                                    this->sortByCarPrice();
+                                    this->displayCarList();
+
+                                }
+                                break;
+                                case SortByName:
+                                {
+                                    this->sortByCarName();
+                                    this->displayCarList();
+
+                                }
+                                break;
+                                case SortByStatus:
+                                {
+                                    this->sortByCarStatus();
+                                    this->displayCarList();
+
+                                }
+                                break;
+                                default:
+                                    cout<<"Invalid input"<<endl;
+                                    True = 0;
+                                }
+                            }
+
+                        }
+
+                        }
+
+                    }
+                    break;
+                    case ADMIN_BOOK_VEHICLE:
+                    {
+                        cout<<"Enter"<<endl<<"1. Book Bike"<<endl<<"2. Book Car"<<endl<<"Any Other number to exit"<<endl;
+                        cin>>option;
+                        switch(option)
+                        {
+                        case Book_Bike:
+                        {
+                            this->bookBike();
+                        }
+                        break;
+                        case Book_Car:
+                        {
+                            this->bookCar();
+                        }
+                        break;
+                        default:
+                            cout<<"Invalid input"<<endl;
+                        }
+                    }
+                    break;
+                    case ADMIN_RETURN_VEHICLE:
+                    {
+                        cout<<"Enter"<<endl<<"1. Return Bike"<<endl<<"2. Return Car"<<endl<<"Any Other number to exit"<<endl;
+                        cin>>option;
+                        switch(option)
+                        {
+                        case Return_Bike:
+                        {
+                            this->returnBike();
+                            this->displayCustomerList();
+                        }
+                        break;
+                        case Return_Car:
+                        {
+                            this->returnCar();
+                            this->displayCustomerList();
+                        }
+                        break;
+                        default:
+                            cout<<"Invalid input"<<endl;
+                        }
+                    }
+                    break;
+                    case ADMIN_UPDATE_VEHICLE_PRICE:
+                    {
+                        cout<<"Enter"<<endl<<"1. Update Bike Price"<<endl<<"2. Update Car Price"<<endl<<"Any Other number to exit"<<endl;
+                        cin>>option;
+                        switch(option)
+                        {
+                        case Update_Bike_price:
+                        {
+                            this->updateBikeCost();
+                        }
+                        break;
+                        case Update_Car_price:
+                        {
+                            this->updateCarCost();
+                        }
+                        break;
+                        default:
+                            cout<<"Invalid input"<<endl;
+                        }
+                    }
+                    break;
+                    case ADMIN_CUSTOMER_RECORD:
+                    {
+                        this->displayCustomerList();
+                    }
+                    break;
+                    case ADMIN_LOGOUT:
+                    {
+                        this->writeDataToFile();
+                        cout<<"Logging out......"<<endl;
+                        True = 0;
+                    }
+                    break;
+                    default:
+                        cout<<"Invalid input"<<endl;
+
+                    }
+                }
+            }
+            else if(currentUser->getUserRole() == "CUSTOMER")
+            {
+                int True = 1;
+                while(True)
+                {
+                    cout<<"Enter"<<endl<<"1. Book Vehicle"<<endl<<"2. Search Vehicle"<<endl<<"3. Display Vehicle"<<endl<<"4. Logout"<<endl;
+                    cin>>choice;
+                    switch(choice)
+                    {
+                    case CUSTOMER_BOOK_VEHICLE:
+                    {
+                        cout<<"Enter"<<endl<<"1. Book Bike"<<endl<<"2. Book Car"<<endl<<"Any Other number to exit"<<endl;
+                        cin>>option;
+                        switch(option)
+                        {
+                        case Book_Bike:
+                        {
+                            this->bookBike();
+                        }
+                        break;
+                        case Book_Car:
+                        {
+                            this->bookCar();
+                        }
+                        break;
+                        default:
+                            cout<<"Invalid input"<<endl;
+                        }
+                    }
+                    break;
+                    case CUSTOMER_SEARCH_VEHICLE:{
+                        cout<<"Enter"<<endl<<"1. Search Bike"<<endl<<"2. Search Car"<<endl<<"Any Other number to exit"<<endl;
+                        cin>>option;
+                        switch(option)
+                        {
+                        case Search_Bike:
+                        {
+                            this->searchBike();
+                        }
+                        break;
+                        case Search_Car:
+                        {
+                            this->searchCar();
+                        }
+                        break;
+                        default:
+                            cout<<"Invalid input"<<endl;
+                        }
+                    }
+                    break;
+                    case CUSTOMER_DISPLAY_VEHICLES:
+                    {
+                        int True = 1;
+                        cout<<"Enter"<<endl<<"1.Display Bike Details"<<endl<<"2. Display Car details"<<endl<<"Any Other number to exit"<<endl;
+                        cin>>option;
+                        switch(option)
+                        {
+                        case DISPLAY_BIKE:
+                        {
+                            while(True)
+                            {
+                                cout<<"Enter"<<endl<<"1.Display Bike Details"<<endl<<"2. Sort By price"<<endl<<"3. Sort BY Name"<<endl<<"4. Sort by Status"<<endl<<"Any Other number to exit"<<endl;
+                                cin>>input;
+                                switch(input)
+                                {
+                                case Display_Bike:
+                                {
+                                    this->displayBikeList();
+                                }
+                                break;
+                                case Sort_By_Price:
+                                {
+                                    this->sortByBikePrice();
+                                    this->displayBikeList();
+                                }
+                                break;
+                                case Sort_By_Name:
+                                {
+                                    this->sortByBikeName();
+                                    this->displayBikeList();
+
+                                }
+                                break;
+                                case Sort_By_Status:
+                                {
+                                    this->sortByBikeStatus();
+                                    this->displayBikeList();
+
+                                }
+                                break;
+                                default:
+                                    cout<<"Invalid input"<<endl;
+                                    True = 0;
+                                }
+                            }
+                        }
+                        break;
+                        case DISPLAY_CAR:
+                        {
+                            while(True)
+                            {
+                                cout<<"Enter"<<endl<<"1.Display Car Details"<<endl<<"2. Sort By price"<<endl<<"3. Sort BY Name"<<endl<<"4. Sort by Status"<<endl<<"Any Other number to exit"<<endl;
+                                cin>>input;
+                                switch(input)
+                                {
+                                case DisplayCar:
+                                {
+                                    this->displayCarList();
+                                }
+                                break;
+                                case SortByPrice:
+                                {
+                                    this->sortByCarPrice();
+                                    this->displayCarList();
+
+                                }
+                                break;
+                                case SortByName:
+                                {
+                                    this->sortByCarName();
+                                    this->displayCarList();
+
+                                }
+                                break;
+                                case SortByStatus:
+                                {
+                                    this->sortByCarStatus();
+                                    this->displayCarList();
+
+                                }
+                                break;
+                                default:
+                                    cout<<"Invalid input"<<endl;
+                                    True = 0;
+                                }
+                            }
+
+                        }
+
+                        }
+
+                    }
+                    break;
+                    case CUSTOMER_LOGOUT:{
+                        this->writeDataToFile();
+                        cout<<"Logging out......"<<endl;
+                        True = 0;
+
+                    }
+                    break;
+                    default:
+                        cout<<"Invalid input"<<endl;
+                    }
+
+                }
+            }
+            else
+            {
+                cout<<"Invalid Input"<<endl;
+            }
         }
     }
-
     return 0;
 }
 
@@ -695,7 +888,7 @@ void Vehicle_Manager::sortByBikePrice()
     {
         for(auto* j:m_bikeList)
         {
-            if(j->getVehicleCost() > j->getVehicleCost())
+            if(j->getVehicleCost() > i->getVehicleCost())
             {
                 iter_swap(i,j);
             }
@@ -733,7 +926,7 @@ void Vehicle_Manager::sortByBikeStatus()
 
 void Vehicle_Manager::addCustomer(string vehicleName,string vehicleModel,string vehicleStatus,float vehicleCost,string vehicleNumber)
 {
-    string cusName,paymentMode,vehicleType,cusVehicleStatus,upiID,cashID = "A",paymentStatus;
+    string cusName,paymentMode,vehicleType,cusVehicleStatus,upiID,cashID = "NULL",paymentStatus;
     int bookingID,choice;
     int rentalDuration,cashTransactionID = 0;
     static int UPItransactionID = 1000;
@@ -860,6 +1053,10 @@ void Vehicle_Manager::writeDataToFile()
     m_bikeFO->writeData(m_bikeList);
     m_carFO->writeData(m_carList);
     m_cusFO->writeData(m_customerList);
+    m_userList = m_loginManager.getUserList();
+    m_userFO->writeData(m_userList);
+
+
 }
 
 void Vehicle_Manager::bookBike()
@@ -1150,7 +1347,7 @@ void Vehicle_Manager::updateBikeCost()
         if(bike->getVehicleNumber() == bikeNumber)
         {
             bike->setVehicleCost(bikeNewAmount);
-            cout<<bikeName<<" with vehicle number"<<bikeNumber<<"updated"<<endl;
+            cout<<bikeName<<" with vehicle number "<<bikeNumber<<" updated"<<endl;
         }
     }
 }
@@ -1170,7 +1367,7 @@ void Vehicle_Manager::updateCarCost()
         if(car->getVehicleName() == carName && car->getVehicleNumber() == carNumber)
         {
             car->setVehicleCost(CarnewAmount);
-            cout<<carName<<" with vehicle number"<<carNumber<<"updated"<<endl;
+            cout<<carName<<" with vehicle number "<<carNumber<<" updated"<<endl;
         }
     }
 }
@@ -1186,7 +1383,7 @@ int Vehicle_Manager::payment(float balanceAmount)
     if(choice == 1)
     {
         paymentMode = "Cash";
-        cout<<"Pay "<<balanceAmount<<" ruppees"<<endl;
+        cout<<"Pay "<<balanceAmount<<" rupees"<<endl;
         cout<<"Enter Amount"<<endl;
         cin>>amountPaid;
         if(amountPaid == balanceAmount)
@@ -1222,15 +1419,4 @@ int Vehicle_Manager::payment(float balanceAmount)
 
 }
 
-void Vehicle_Manager::addAdmin()
-{
-    string userName,passWord;
-    int usercount = 0;
-    cout<<"Enter Username"<<endl;
-    cin>>userName;
-    cout<<"Enter Password"<<endl;
-    cin>>passWord;
-
-    m_userList.push_back(new User(userName,passWord,"Admin",usercount++));
-}
 
