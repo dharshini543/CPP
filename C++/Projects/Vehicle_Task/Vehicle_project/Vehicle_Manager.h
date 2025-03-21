@@ -1,25 +1,36 @@
 #ifndef VEHICLE_MANAGER_H
 #define VEHICLE_MANAGER_H
 
+#include "LoginManagement.h"
 #include "Rental_Bike_Details.h"
 #include "Bike_FileOperation.h"
 #include "Rental_Car_Details.h"
 #include "Car_FileOperation.h"
 #include "Customer_FileOperation.h"
 #include "Rental_Customer_details.h"
+#include "User_FileOperation.h"
 #include <list>
 
-enum
+enum ADMIN
 {
-    ADD_VEHICLE = 1,
-    DELETE_VEHICLE,
-    SEARCH_VEHICLE,
-    DISPLAY_VEHICLES,
-    BOOK_VEHICLE,
-    RETURN_VEHICLE,
-    UPDATE_VEHICLE_PRICE,
-    CUSTOMER_RECORD,
-    LOGOUT
+    ADMIN_ADD_VEHICLE = 1,
+    ADMIN_DELETE_VEHICLE,
+    ADMIN_SEARCH_VEHICLE,
+    ADMIN_DISPLAY_VEHICLES,
+    ADMIN_BOOK_VEHICLE,
+    ADMIN_RETURN_VEHICLE,
+    ADMIN_UPDATE_VEHICLE_PRICE,
+    ADMIN_CUSTOMER_RECORD,
+    ADMIN_LOGOUT
+};
+
+enum Customer
+{
+    CUSTOMER_BOOK_VEHICLE = 1,
+    CUSTOMER_SEARCH_VEHICLE,
+    CUSTOMER_DISPLAY_VEHICLES,
+    CUSTOMER_LOGOUT
+
 };
 
 enum ADD_VEHICLE
@@ -109,9 +120,12 @@ private:
     Car_FileOperation* m_carFO;
     Bike_FO* m_bikeFO;
     Customer_FileOperation* m_cusFO;
-    list<RentalBikeDetails*> m_bikelist;
-    list<RentalCarDetails*> m_carlist;
-    list<Rental_Customer_details*> m_customerlist;
+    list<RentalBikeDetails*> m_bikeList;
+    list<RentalCarDetails*> m_carList;
+    list<User*> m_userList;
+    list<Rental_Customer_details*> m_customerList;
+    User_FileOperation* m_userFO;
+    LoginManagement m_loginManager;
 };
 
 
