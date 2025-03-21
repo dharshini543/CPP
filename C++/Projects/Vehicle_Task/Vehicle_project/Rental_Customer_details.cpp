@@ -6,7 +6,7 @@ Rental_Customer_details::Rental_Customer_details()
     cout<<"Customer Constructor"<<endl;
 }
 
-Rental_Customer_details::Rental_Customer_details(string customerName, int bookingID, Vehicle* vehicle, string vehicleStatus, string vehicleType, int rentalDuration, string isAmountPaid, float amountPaid, float balanceAmount)
+Rental_Customer_details::Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails* vehicle, string vehicleStatus, string vehicleType, int rentalDuration, string isAmountPaid, float amountPaid, float balanceAmount)
 {
     cout<<"Customer Constructor"<<endl;
     m_customerName = customerName;
@@ -20,7 +20,7 @@ Rental_Customer_details::Rental_Customer_details(string customerName, int bookin
     m_balanceAmount = balanceAmount;
 }
 
-Rental_Customer_details::Rental_Customer_details(string customerName, int bookingID, Vehicle *vehicle, PaymentMode *payMode, string vehicleStatus, string vehicleType, int rentalDuration, string isAmountPaid, float amountPaid, float balanceAmount)
+Rental_Customer_details::Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails *vehicle, PaymentMode *payMode, string vehicleStatus, string vehicleType, int rentalDuration, string isAmountPaid, float amountPaid, float balanceAmount)
 {
     cout<<"Customer Constructor"<<endl;
     m_customerName = customerName;
@@ -52,17 +52,27 @@ int Rental_Customer_details::getBookingID()
 
 string Rental_Customer_details::getVehicleName()
 {
-    return m_vehicle->getName();
+    return m_vehicle->getVehicleName();
 }
 
-string Rental_Customer_details::getVehicleNum()
+string Rental_Customer_details::getVehicleNumber()
 {
-    return m_vehicle->getVehicleNum();
+    return m_vehicle->getVehicleNumber();
 }
 
 string Rental_Customer_details::getVehicleStatus()
 {
     return m_vehicleStatus;
+}
+
+void Rental_Customer_details::setVehicleModel(string vehicleModel)
+{
+    m_vehicle->setVehicleModel(vehicleModel);
+}
+
+string Rental_Customer_details::getVehicleModel()
+{
+    return m_vehicle->getVehicleModel();
 }
 
 void Rental_Customer_details::setVehicleStatus(string vehicleStatus)
@@ -97,7 +107,7 @@ string Rental_Customer_details::getVehicleType()
 
 float Rental_Customer_details::getVehicleCost()
 {
-    return m_vehicle->getCost();
+    return m_vehicle->getVehicleCost();
 }
 
 string Rental_Customer_details::getIsAmountPaid()

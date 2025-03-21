@@ -6,9 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(Vehicle_project main.cpp
-    Vehicle.h Vehicle.cpp
-    Bike.h Bike.cpp
-    Car.h Car.cpp
+    Rental_Vehicle_Details.h Rental_Vehicle_Details.cpp
+    Rental_Bike_Details.h Rental_Bike_Details.cpp
+    Rental_Car_Details.h Rental_Car_Details.cpp
     Vehicle_Manager.h Vehicle_Manager.cpp
     Rental_Customer_details.h Rental_Customer_details.cpp
 
@@ -18,6 +18,8 @@ add_executable(Vehicle_project main.cpp
     PaymentMode.h PaymentMode.cpp
     UPI.h UPI.cpp
     Cash.h Cash.cpp
+    User.h User.cpp
+    LoginManagement.h LoginManagement.cpp
 )
 
 include(GNUInstallDirs)
