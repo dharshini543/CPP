@@ -7,7 +7,6 @@ UPI::UPI(string upiID, int transactionID, string paymentStatus)
     m_ID = upiID;
     m_transactionID = transactionID;
     m_paymentStatus = paymentStatus;
-
 }
 
 UPI::~UPI()

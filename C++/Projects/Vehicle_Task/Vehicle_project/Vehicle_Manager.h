@@ -1,9 +1,9 @@
 #ifndef VEHICLE_MANAGER_H
 #define VEHICLE_MANAGER_H
 
-#include "Bike.h"
+#include "Rental_Bike_Details.h"
 #include "Bike_FileOperation.h"
-#include "Car.h"
+#include "Rental_Car_Details.h"
 #include "Car_FileOperation.h"
 #include "Customer_FileOperation.h"
 #include "Rental_Customer_details.h"
@@ -100,7 +100,7 @@ public:
     void displayCustomerList();
     void updateBikeCost();
     void updateCarCost();
-    void addCustomer(string vehicleName, string vehicleStatus, float vehicleCost, string vehicleNumber);
+    void addCustomer(string vehicleName,string vehicleModel, string vehicleStatus, float vehicleCost, string vehicleNumber);
     void writeDataToFile();
     int payment(float balanceAmount);
 
@@ -109,11 +109,9 @@ private:
     Car_FileOperation* m_carFO;
     Bike_FO* m_bikeFO;
     Customer_FileOperation* m_cusFO;
-    list<Bike*> m_bikelist;
-    list<Car*> m_carlist;
+    list<RentalBikeDetails*> m_bikelist;
+    list<RentalCarDetails*> m_carlist;
     list<Rental_Customer_details*> m_customerlist;
-    PaymentMode* m_payMode;
-    Vehicle* m_vehicle;
 };
 
 

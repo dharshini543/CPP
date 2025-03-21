@@ -1,6 +1,2 @@
-Name          Number           Cost          Status
-Benz,KA200,1000,Deleted
-Benz,KA1100,5000,Available
-Fortuner,KA1300,5000,Available
-Thar,KA1000,4000,Available
-Thar,KA1200,4500,Available
+Name          Model      Number           Cost          Status
+1,werty,KA123,1500,Available
