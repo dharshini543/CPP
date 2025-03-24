@@ -4,7 +4,7 @@
 UPI::UPI(string upiID, int transactionID, string paymentStatus)
 {
     cout<<"UPI Constructor"<<endl;
-    m_ID = upiID;
+    m_paymentID = upiID;
     m_transactionID = transactionID;
     m_paymentStatus = paymentStatus;
 }
@@ -16,7 +16,7 @@ UPI::~UPI()
 }
 void UPI::setID(string ID)
 {
-    m_ID = ID;
+    m_paymentID = ID;
 }
 
 void UPI::setTransactionID(int transactionID)
@@ -26,7 +26,7 @@ void UPI::setTransactionID(int transactionID)
 
 string UPI::getID()
 {
-    return m_ID;
+    return m_paymentID;
 }
 
 int UPI::getTransactionID()

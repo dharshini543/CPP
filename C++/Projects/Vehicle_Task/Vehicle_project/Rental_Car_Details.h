@@ -5,22 +5,26 @@
 
 class RentalCarDetails:public RentalVehicleDetails
 {
+
 public:
     RentalCarDetails();
-    RentalCarDetails(string carName,string carModel, string carNumber, float carCost, string carStatus);
+    RentalCarDetails(string carName, string carModel, string carNumber, float carCost, string carStatus);
     ~RentalCarDetails();
 
     string getVehicleName();
-    string getVehicleStatus();
-    float getVehicleCost();
-    string getVehicleNumber();
-    string getVehicleModel();
-    void setVehicleModel(string vehicleModel);
-    void setVehicleNumber(string vehicleNumber);
     void setVehicleName(string vehicleName);
+
+    string getVehicleStatus();
     void setVehicleStatus(string vehicleStatus);
+
+    float getVehicleCost();
     void setVehicleCost(float vehicleCost);
 
+    string getVehicleNumber();
+    void setVehicleNumber(string vehicleNumber);
+
+    string getVehicleModel();
+    void setVehicleModel(string vehicleModel);
 
 };
 

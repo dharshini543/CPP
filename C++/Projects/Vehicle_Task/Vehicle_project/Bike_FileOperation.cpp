@@ -39,14 +39,13 @@ list<RentalBikeDetails*> Bike_FO::readData()
         return bikeList;
     }
 
-    string line, bikeName, bikeStatus,bikeNumber,bikeModel;
-    int bikeDuration;
+    string line, bikeName, bikeStatus, bikeNumber, bikeModel;
     float bikeCost;
 
     getline(file, line);
-    while (getline(file, bikeName, ',') && getline(file, bikeModel,',') && getline(file, bikeNumber,',') && file >> bikeCost && file.ignore() && getline(file, bikeStatus))
+    while (getline(file, bikeName, ',') && getline(file, bikeModel, ',') && getline(file, bikeNumber,',') && file >> bikeCost && file.ignore() && getline(file, bikeStatus))
     {
-        bikeList.push_back(new RentalBikeDetails(bikeName, bikeModel, bikeNumber, bikeCost,bikeStatus));
+        bikeList.push_back(new RentalBikeDetails(bikeName, bikeModel, bikeNumber, bikeCost, bikeStatus));
     }
 
     file.close();

@@ -7,7 +7,7 @@ RentalCarDetails::RentalCarDetails()
     cout<<"RentalCarDetails Constructor"<<endl;
 }
 
-RentalCarDetails::RentalCarDetails(string carName,string carModel, string carNumber,float carCost, string carStatus)
+RentalCarDetails::RentalCarDetails(string carName, string carModel, string carNumber, float carCost, string carStatus)
 {
     cout<<"RentalCarDetails Constructor"<<endl;
     m_vehicleName = carName;

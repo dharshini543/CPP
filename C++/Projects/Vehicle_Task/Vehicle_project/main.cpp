@@ -4,5 +4,5 @@ using namespace std;
 int main()
 {
     Vehicle_Manager vehicleManager;
-    vehicleManager.main_menu();
+    return vehicleManager.main_menu();
 }

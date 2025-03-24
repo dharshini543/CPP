@@ -6,13 +6,15 @@
 class UPI:public PaymentMode
 {
 public:
-    UPI(string upiID,int transactionID, string paymentStatus);
+    UPI(string upiID, int transactionID, string paymentStatus);
     ~UPI();
 
-    void setID(string ID);
-    void setTransactionID(int transactionID);
     string getID();
+    void setID(string ID);
+
     int getTransactionID();
+    void setTransactionID(int transactionID);
+
     string getPaymentStatus();
     void setPaymentStatus(string paymentStatus);
 };

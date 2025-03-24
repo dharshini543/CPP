@@ -1,7 +1,9 @@
 #include "User.h"
+#include <iostream>
 
 User::User(string userName, string passWord, string userRole)
 {
+    cout<<"User Constructor"<<endl;
     m_userName = userName;
     m_passWord = passWord;
     m_userRole = userRole;
@@ -9,7 +11,7 @@ User::User(string userName, string passWord, string userRole)
 
 User::~User()
 {
-
+    cout<<"User Destructor"<<endl;
 }
 
 string User::getUserName()

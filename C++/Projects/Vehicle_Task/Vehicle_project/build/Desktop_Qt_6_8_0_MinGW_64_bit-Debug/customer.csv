@@ -1,3 +1,5 @@
-CustomerNameBookingIDVehicleNameVehicleModelVehicleNumberRentalDurationvehicleTypeVehicleCostPaymentModePaymentIDTransactionIDVehicleStatusAmountPaidDueAmountPaymentStatus,,,,,,,,,,,,,,
-Pallavi,101,KTM,2020,KA100,2,Bike,1000,UPI,pallavi@1,1000,Returned,2000,0,Success
-Likitha,100,KTM,2020,KA100,2,Bike,1000,UPI,pallavi@1,1000,Booked,1000,1000,Pending
+CustomerNameBookingIDVehicleNameVehicleModelVehicleNumberRentalDurationvehicleTypeVehicleCostPaymentModePaymentIDTransactionIDVehicleStatusAmountPaidDueAmountPaymentStatus
+Pallavi,101,KTM,RC390,KA100,2,Bike,1000,UPI,pallavi@1,1000,Returned,2000,0,Success
+Likitha,100,KTM,RC200,KA100,2,Bike,1000,UPI,pallavi@1,1000,Returned,2000,0,Success
+Darshan,105,KTM,RC390,KA100,2,Bike,1000,Cash,NULL,0,Returned,2000,0,Success
+Prathik,101,KTM,RC200,KA101,2,Bike,1001,Cash,NULL,0,Booked,1001,1001,Pending

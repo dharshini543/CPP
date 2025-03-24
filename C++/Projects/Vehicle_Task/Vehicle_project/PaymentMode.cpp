@@ -9,7 +9,7 @@ PaymentMode::PaymentMode()
 PaymentMode::PaymentMode(string ID, int transactionID, string paymentStatus)
 {
     cout<<"Paymentmode Constructor"<<endl;
-    m_ID = ID;
+    m_paymentID = ID;
     m_transactionID = transactionID;
     m_paymentStatus = paymentStatus;
 }
@@ -19,9 +19,9 @@ PaymentMode::~PaymentMode()
     cout<<"Paymentmode Destructor"<<endl;
 }
 
-void PaymentMode::setID(string ID)
+void PaymentMode::setID(string paymentID)
 {
-    m_ID = ID;
+    m_paymentID = paymentID;
 }
 
 void PaymentMode::setTransactionID(int transactionID)
@@ -31,7 +31,7 @@ void PaymentMode::setTransactionID(int transactionID)
 
 string PaymentMode::getID()
 {
-    return m_ID;
+    return m_paymentID;
 }
 
 int PaymentMode::getTransactionID()

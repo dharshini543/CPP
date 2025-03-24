@@ -7,7 +7,7 @@ RentalBikeDetails::RentalBikeDetails()
     cout<<"RentalBikeDetails Constructor"<<endl;
 }
 
-RentalBikeDetails::RentalBikeDetails(string bikeName,string bikeModel, string bikeNumber, float bikeCost, string bikeStatus)
+RentalBikeDetails::RentalBikeDetails(string bikeName, string bikeModel, string bikeNumber, float bikeCost, string bikeStatus)
 {
     cout<<"RentalBikeDetails Constructor"<<endl;
     m_vehicleName = bikeName;

@@ -13,7 +13,9 @@
 
 enum ADMIN
 {
-    ADMIN_ADD_VEHICLE = 1,
+    ADD_ADMIN = 1,
+    DELETE_ADMIN,
+    ADMIN_ADD_VEHICLE,
     ADMIN_DELETE_VEHICLE,
     ADMIN_SEARCH_VEHICLE,
     ADMIN_DISPLAY_VEHICLES,
@@ -21,7 +23,7 @@ enum ADMIN
     ADMIN_RETURN_VEHICLE,
     ADMIN_UPDATE_VEHICLE_PRICE,
     ADMIN_CUSTOMER_RECORD,
-    ADMIN_LOGOUT
+    ADMIN_LOGOUT,
 };
 
 enum Customer
@@ -90,28 +92,38 @@ public:
     ~Vehicle_Manager();
 
     int main_menu();
+
     void addBike();
     void addCar();
+    void addCustomer(string vehicleName, string vehicleModel, string vehicleStatus, float vehicleCost, string vehicleNumber);
+
     void deleteBike();
     void deleteCar();
+
     void searchBike();
     void searchCar();
+
     void sortByBikePrice();
     void sortByBikeName();
     void sortByBikeStatus();
+
     void sortByCarPrice();
     void sortByCarName();
     void sortByCarStatus();
+
     void bookBike();
     void bookCar();
+
     void returnBike();
     void returnCar();
+
     void displayBikeList();
     void displayCarList();
     void displayCustomerList();
+
     void updateBikeCost();
     void updateCarCost();
-    void addCustomer(string vehicleName,string vehicleModel, string vehicleStatus, float vehicleCost, string vehicleNumber);
+
     void writeDataToFile();
     int payment(float balanceAmount);
 
@@ -120,12 +132,13 @@ private:
     Car_FileOperation* m_carFO;
     Bike_FO* m_bikeFO;
     Customer_FileOperation* m_cusFO;
+    User_FileOperation* m_userFO;
+    LoginManagement* m_loginManager;
     list<RentalBikeDetails*> m_bikeList;
     list<RentalCarDetails*> m_carList;
     list<User*> m_userList;
     list<Rental_Customer_details*> m_customerList;
-    User_FileOperation* m_userFO;
-    LoginManagement m_loginManager;
+
 };
 
 

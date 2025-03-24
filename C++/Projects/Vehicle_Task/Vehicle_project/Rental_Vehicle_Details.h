@@ -11,15 +11,19 @@ public:
     virtual ~RentalVehicleDetails();
 
     virtual string getVehicleName();
+    virtual void setVehicleName(string vehicleName);
+
     virtual string getVehicleStatus();
+    virtual void setVehicleStatus(string vehicleStatus);
+
     virtual float getVehicleCost();
+    virtual void setVehicleCost(float vehicleCost);
+
     virtual string getVehicleNumber();
+    virtual void setVehicleNumber(string vehicleNumber);
+
     virtual string getVehicleModel();
     virtual void setVehicleModel(string vehicleModel);
-    virtual void setVehicleNumber(string vehicleNumber);
-    virtual void setVehicleName(string vehicleName);
-    virtual void setVehicleStatus(string vehicleStatus);
-    virtual void setVehicleCost(float vehicleCost);
 
 protected:
     string m_vehicleNumber;

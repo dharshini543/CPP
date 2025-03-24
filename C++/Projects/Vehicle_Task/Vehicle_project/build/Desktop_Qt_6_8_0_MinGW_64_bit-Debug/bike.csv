@@ -1,9 +1,9 @@
 Name          Model       Number           Cost          Status
-KTM,2020,KA100,1000,Booked
-KTM,2021,KA101,1001,Available
-KTM,2022,KA102,1002,Available
-KTM,2023,KA103,1003,Available
-KTM,2024,KA104,1004,Available
-KTM,2025,KA105,1005,Available
-KTM,2026,KA106,1006,Available
-KTM,2027,KA107,1007,Available
+KTM,RC390,KA100,3000,Available
+KTM,RC200,KA101,1001,Booked
+KTM,Duke200,KA102,1002,Available
+KTM,Duke390,KA103,1003,Available
+KTM,Duke250,KA104,1004,Available
+KTM,Adventure390,KA105,1005,Available
+KTM,Adventure250,KA106,1006,Available
+KTM,RC200,KA107,1007,Available
