@@ -39,13 +39,13 @@ list<RentalCarDetails*> Car_FileOperation::readData()
         return carList;
     }
 
-    string line, carName, carStatus,carNumber,carModel;
+    string line, carName, carStatus, carNumber, carModel;
     float carCost;
 
     getline(file, line);
     while (getline(file, carName, ',') && getline(file, carModel,',') && getline(file, carNumber,',') && file >> carCost && file.ignore() && getline(file, carStatus))
     {
-        carList.push_back(new RentalCarDetails(carName, carModel, carNumber, carCost,carStatus));
+        carList.push_back(new RentalCarDetails(carName, carModel, carNumber, carCost, carStatus));
     }
 
     file.close();

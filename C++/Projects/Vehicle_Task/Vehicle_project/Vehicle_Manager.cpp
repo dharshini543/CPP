@@ -12,10 +12,13 @@ using namespace std;
 
 Vehicle_Manager::Vehicle_Manager()
 {
+    int userCount = 0;
     cout<<"Vehicle Manager Constructor"<<endl;
     m_bikeFO = new Bike_FO;
     m_carFO = new Car_FileOperation;
     m_cusFO = new Customer_FileOperation;
+    m_userFO = new User_FileOperation;
+    m_loginManager = new LoginManagement;
     /*m_bikeFO->writeData(m_bikeList);
     m_carFO->writeData(m_carList);
     m_cusFO->writeData(m_customerList);*/
@@ -25,7 +28,12 @@ Vehicle_Manager::Vehicle_Manager()
     m_carList = m_carFO->readData();
     m_bikeList = m_bikeFO->readData();
     m_userList = m_userFO->readData();
-    m_loginManager.setUserList(m_userList);
+    for(auto* user:m_userList)
+    {
+        ++userCount;
+    }
+    m_loginManager->setUserCount(userCount);
+    m_loginManager->setUserList(m_userList);
 
 }
 
@@ -33,52 +41,58 @@ Vehicle_Manager::~Vehicle_Manager()
 {
     cout<<"Vehicle Manager Destructor"<<endl;
     delete m_bikeFO;
-    delete m_cusFO;
     delete m_carFO;
+    delete m_cusFO;
+    delete m_userFO;
+    delete m_loginManager;
+
     for(auto* bike : m_bikeList)
     {
         delete bike;
     }
+
     for(auto* car : m_carList)
     {
         delete car;
     }
+
     for(auto* customer : m_customerList)
     {
         delete customer;
     }
-
 }
 
 int Vehicle_Manager::main_menu()
 {
-    int choice,option,input,Success;
+    int choice,option,input;
     User* currentUser;
-    if(m_loginManager.getUserCount() == 0)
+
+    if(m_loginManager->getUserCount() == 0 )
     {
-        currentUser = m_loginManager.addAdmin();
+        currentUser = m_loginManager->addAdmin();
     }
+
     while(true)
     {
         cout<<"Enter"<<endl<<"1. SignUp to create account"<<endl<<"2. Login"<<endl<<"3. Exit"<<endl;
         cin>>choice;
         if(choice == 1)
         {
-            if(m_loginManager.getUserCount() > 0)
+            if(m_loginManager->getUserCount() > 0)
             {
-                currentUser = m_loginManager.signUp();
+                currentUser = m_loginManager->signUp();
             }
         }
         else if(choice == 2)
         {
-            if(m_loginManager.getUserCount() > 0)
+            if(m_loginManager->getUserCount() > 0)
             {
-                currentUser = m_loginManager.login();
+                currentUser = m_loginManager->login();
             }
         }
         else
         {
-            exit(0);
+            return 0;
         }
         if(currentUser != NULL)
         {
@@ -87,13 +101,33 @@ int Vehicle_Manager::main_menu()
                 int True = 1;
                 while(True)
                 {
-                    cout<<"Enter"<<endl<<"1. Add Vehicle"<<endl<<"2. Delete Vehicle"<<endl<<"3. Search Vehicle"<<endl<<"4. Display Vehicles"<<endl<<"5. Book Vehicle"<<endl;
-                    cout<<"6. Return Vehicle"<<endl<<"7. Update Vehicle Price"<<endl<<"8. View Customers Record"<<endl<<"9. LOGOUT"<<endl;;
+                    cout<<"Enter"<<endl<<"1. Add ADMIN"<<endl<<"2. Delete ADMIN"<<endl<<"3. Add Vehicle"<<endl<<"4. Delete Vehicle"<<endl<<"5. Search Vehicle"<<endl<<"6. Display Vehicles"<<endl<<"7. Book Vehicle"<<endl;
+                    cout<<"8. Return Vehicle"<<endl<<"9. Update Vehicle Price"<<endl<<"10. View Customers Record"<<endl<<"11. LOGOUT"<<endl<<endl;
                     cin>>choice;
                     switch(choice)
                     {
-                    case ADMIN_ADD_VEHICLE:{
-                        cout<<"Enter"<<endl<<"1. Add Bike"<<endl<<"2. Add Car"<<endl<<"Any Other number to exit"<<endl;
+                    case ADD_ADMIN:
+                    {
+                        currentUser = m_loginManager->addAdmin();
+                    }
+                    break;
+                    case DELETE_ADMIN:
+                    {
+                        string userName;
+                        cout<<"Enter username to delete ADMIN"<<endl;
+                        cin>>userName;
+                        for(auto* admin:m_userList)
+                        {
+                            if(admin->getUserName() == userName)
+                            {
+                                admin->setUserRole("Deleted");
+                            }
+                        }
+                    }
+                    break;
+                    case ADMIN_ADD_VEHICLE:
+                    {
+                        cout<<"Enter"<<endl<<"1. Add Bike"<<endl<<"2. Add Car"<<endl<<"Any Other number to exit"<<endl<<endl;
                         cin>>option;
                         switch(option)
                         {
@@ -216,21 +250,18 @@ int Vehicle_Manager::main_menu()
                                 {
                                     this->sortByCarPrice();
                                     this->displayCarList();
-
                                 }
                                 break;
                                 case SortByName:
                                 {
                                     this->sortByCarName();
                                     this->displayCarList();
-
                                 }
                                 break;
                                 case SortByStatus:
                                 {
                                     this->sortByCarStatus();
                                     this->displayCarList();
-
                                 }
                                 break;
                                 default:
@@ -617,7 +648,132 @@ void Vehicle_Manager::addCar()
     cin>>carCost;
     m_carList.push_back(new RentalCarDetails(carName,carModel,carNumber, carCost, carStatus));
 }
+void Vehicle_Manager::addCustomer(string vehicleName,string vehicleModel,string vehicleStatus,float vehicleCost,string vehicleNumber)
+{
+    string cusName, paymentMode, vehicleType, cusVehicleStatus, upiID, cashID = "NULL", paymentStatus;
+    int bookingID, choice;
+    int rentalDuration, cashTransactionID = 0;
+    static int UPItransactionID = 1000;
+    float amountPaid, balanceAmount = 0;
 
+    cusVehicleStatus = vehicleStatus;
+
+    while(true)
+    {
+        cout<<"Enter Customer Name"<<endl;
+        cin>>cusName;
+        if(cusName.length() > 15)
+        {
+            cout<<"Please enter maximum 15 Characters"<<endl;
+        }
+        else
+        {
+            break;
+        }
+    }
+    cout<<"Enter BookingID"<<endl;
+    cin>>bookingID;
+    while(true)
+    {
+        cout<<"Enter Vehicle Type"<<endl;
+        cin>>vehicleType;
+        if(vehicleType.length() > 15)
+        {
+            cout<<"Please enter maximum 15 Characters"<<endl;
+        }
+        else
+        {
+            break;
+        }
+    }
+    cout<<"Enter Rental duration"<<endl;
+    cin>>rentalDuration;
+    if(rentalDuration > 5)
+    {
+        cout<<"Maximum rental duration is 5 days"<<endl;
+    }
+    cout<<"Enter Payment mode"<<endl;
+    cout<<"Enter"<<endl<<"1. Cash"<<endl<<"2. UPI"<<endl;
+    cin>>choice;
+    if(choice == 1)
+    {
+        paymentMode = "Cash";
+        cout<<"Pay "<<vehicleCost * rentalDuration<<" ruppees"<<endl;
+        cout<<"Enter Amount"<<endl;
+        cin>>amountPaid;
+        cout<<"Amount of rupees "<<amountPaid<<" recieved through "<<paymentMode<<endl;
+        paymentStatus = "Success";
+        cout<<"payment "<<paymentStatus;
+        if(amountPaid < vehicleCost*rentalDuration)
+        {
+            paymentStatus = "Pending";
+            balanceAmount = (vehicleCost * rentalDuration) - amountPaid;
+            cout<<"Balance Amount : "<<balanceAmount<<endl;
+        }
+
+    }
+    else if (choice == 2)
+    {
+        paymentMode = "UPI";
+        cout<<"Enter UPI ID"<<endl;
+        cin>>upiID;
+        cout<<"Pay "<<vehicleCost*rentalDuration<<" ruppees"<<endl;
+        cout<<"Enter Amount"<<endl;
+        cin>>amountPaid;
+        if(amountPaid == vehicleCost*rentalDuration)
+        {
+            cout<<"Amount of rupees "<<amountPaid<<" recieved through"<<paymentMode<<endl;
+            paymentStatus = "Success";
+            cout<<"payment "<<paymentStatus<<endl;
+            cout<<"Transaction successfull"<<endl;
+            cout<<"Transaction ID :"<<++UPItransactionID<<endl;
+        }
+        else
+        {
+            paymentStatus = "Pending";
+            cout<<"payment "<<paymentStatus<<endl;
+        }
+        if(amountPaid < vehicleCost*rentalDuration)
+        {
+            balanceAmount =(vehicleCost*rentalDuration) - amountPaid;
+            cout<<"Balance Amount : "<<balanceAmount<<endl;
+        }
+
+    }
+    else
+    {
+        cout<<"Invalid input"<<endl;
+    }
+
+    if(vehicleType == "Bike")
+    {
+        RentalBikeDetails* bike = new RentalBikeDetails(vehicleName,vehicleModel, vehicleNumber, vehicleCost, vehicleStatus);
+        if("UPI" == paymentMode)
+        {
+            UPI* upi = new UPI(upiID,UPItransactionID,paymentStatus);
+            m_customerList.push_back(new Rental_Customer_details(cusName, bookingID, bike,upi,cusVehicleStatus,vehicleType,rentalDuration,paymentMode,amountPaid,balanceAmount));
+        }
+        else if("Cash" == paymentMode)
+        {
+            Cash* cash = new Cash(cashID,cashTransactionID,paymentStatus);
+            m_customerList.push_back(new Rental_Customer_details(cusName, bookingID, bike,cash, cusVehicleStatus, vehicleType, rentalDuration, paymentMode,amountPaid,balanceAmount));
+        }
+    }
+    else if(vehicleType == "Car")
+    {
+        RentalCarDetails* car = new RentalCarDetails(vehicleName,vehicleModel,vehicleNumber,vehicleCost,vehicleStatus);
+        if("UPI" == paymentMode)
+        {
+            UPI* upi = new UPI(upiID,UPItransactionID,paymentStatus);
+            m_customerList.push_back(new Rental_Customer_details(cusName, bookingID, car,upi,cusVehicleStatus,vehicleType,rentalDuration,paymentMode,amountPaid,balanceAmount));
+        }
+        else if("Cash" == paymentMode)
+        {
+            Cash* cash = new Cash(cashID,cashTransactionID,paymentStatus);
+            m_customerList.push_back(new Rental_Customer_details(cusName, bookingID, car,cash, cusVehicleStatus, vehicleType, rentalDuration, paymentMode,amountPaid,balanceAmount));
+        }
+    }
+}
 void Vehicle_Manager::deleteBike()
 {
     string bikeName,bikeNumber;
@@ -924,139 +1080,15 @@ void Vehicle_Manager::sortByBikeStatus()
     }
 }
 
-void Vehicle_Manager::addCustomer(string vehicleName,string vehicleModel,string vehicleStatus,float vehicleCost,string vehicleNumber)
-{
-    string cusName,paymentMode,vehicleType,cusVehicleStatus,upiID,cashID = "NULL",paymentStatus;
-    int bookingID,choice;
-    int rentalDuration,cashTransactionID = 0;
-    static int UPItransactionID = 1000;
-    float amountPaid,balanceAmount = 0;
-    cusVehicleStatus = vehicleStatus;
-    while(true)
-    {
-        cout<<"Enter Customer Name"<<endl;
-        cin>>cusName;
-        if(cusName.length() > 15)
-        {
-            cout<<"Please enter maximum 15 Characters"<<endl;
-        }
-        else
-        {
-            break;
-        }
-    }
-    cout<<"Enter BookingID"<<endl;
-    cin>>bookingID;
-    while(true)
-    {
-        cout<<"Enter Vehicle Type"<<endl;
-        cin>>vehicleType;
-        if(vehicleType.length() > 15)
-        {
-            cout<<"Please enter maximum 15 Characters"<<endl;
-        }
-        else
-        {
-            break;
-        }
-    }
-    cout<<"Enter Rental duration"<<endl;
-    cin>>rentalDuration;
-    if(rentalDuration > 5)
-    {
-        cout<<"Maximum rental duration is 5 days"<<endl;
-    }
-    cout<<"Enter Payment mode"<<endl;
-    cout<<"Enter"<<endl<<"1. Cash"<<endl<<"2. UPI"<<endl;
-    cin>>choice;
-    if(choice == 1)
-    {
-        paymentMode = "Cash";
-        cout<<"Pay "<<vehicleCost*rentalDuration<<" ruppees"<<endl;
-        cout<<"Enter Amount"<<endl;
-        cin>>amountPaid;
-        cout<<"Amount of rupees "<<amountPaid<<" recieved through "<<paymentMode<<endl;
-        paymentStatus = "Success";
-        cout<<"payment "<<paymentStatus;
-        if(amountPaid < vehicleCost*rentalDuration)
-        {
-            balanceAmount = (vehicleCost*rentalDuration) - amountPaid;
-            cout<<"Balance Amount : "<<balanceAmount<<endl;
-        }
 
-    }
-    else if (choice == 2)
-    {
-        paymentMode = "UPI";
-        cout<<"Enter UPI ID"<<endl;
-        cin>>upiID;
-        cout<<"Pay "<<vehicleCost*rentalDuration<<" ruppees"<<endl;
-        cout<<"Enter Amount"<<endl;
-        cin>>amountPaid;
-        if(amountPaid == vehicleCost*rentalDuration)
-        {
-            cout<<"Amount of rupees "<<amountPaid<<" recieved through"<<paymentMode<<endl;
-            paymentStatus = "Success";
-            cout<<"payment "<<paymentStatus<<endl;
-            cout<<"Transaction successfull"<<endl;
-            cout<<"Transaction ID :"<<++UPItransactionID<<endl;
-        }
-        else
-        {
-            paymentStatus = "Pending";
-            cout<<"payment "<<paymentStatus<<endl;
-        }
-        if(amountPaid < vehicleCost*rentalDuration)
-        {
-            balanceAmount =(vehicleCost*rentalDuration) - amountPaid;
-            cout<<"Balance Amount : "<<balanceAmount<<endl;
-        }
-
-    }
-    else
-    {
-        cout<<"Invalid input"<<endl;
-    }
-
-    if(vehicleType == "Bike")
-    {
-        RentalBikeDetails* bike = new RentalBikeDetails(vehicleName,vehicleModel, vehicleNumber, vehicleCost, vehicleStatus);
-        if("UPI" == paymentMode)
-        {
-            UPI* upi = new UPI(upiID,UPItransactionID,paymentStatus);
-            m_customerList.push_back(new Rental_Customer_details(cusName, bookingID, bike,upi,cusVehicleStatus,vehicleType,rentalDuration,paymentMode,amountPaid,balanceAmount));
-        }
-        else if("Cash" == paymentMode)
-        {
-            Cash* cash = new Cash(cashID,cashTransactionID,paymentStatus);
-            m_customerList.push_back(new Rental_Customer_details(cusName, bookingID, bike,cash, cusVehicleStatus, vehicleType, rentalDuration, paymentMode,amountPaid,balanceAmount));
-        }
-    }
-    else if(vehicleType == "Car")
-    {
-        RentalCarDetails* car = new RentalCarDetails(vehicleName,vehicleModel,vehicleNumber,vehicleCost,vehicleStatus);
-        if("UPI" == paymentMode)
-        {
-            UPI* upi = new UPI(upiID,UPItransactionID,paymentStatus);
-            m_customerList.push_back(new Rental_Customer_details(cusName, bookingID, car,upi,cusVehicleStatus,vehicleType,rentalDuration,paymentMode,amountPaid,balanceAmount));
-        }
-        else if("Cash" == paymentMode)
-        {
-            Cash* cash = new Cash(cashID,cashTransactionID,paymentStatus);
-            m_customerList.push_back(new Rental_Customer_details(cusName, bookingID, car,cash, cusVehicleStatus, vehicleType, rentalDuration, paymentMode,amountPaid,balanceAmount));
-        }
-    }
-}
 
 void Vehicle_Manager::writeDataToFile()
 {
     m_bikeFO->writeData(m_bikeList);
     m_carFO->writeData(m_carList);
     m_cusFO->writeData(m_customerList);
-    m_userList = m_loginManager.getUserList();
+    m_userList = m_loginManager->getUserList();
     m_userFO->writeData(m_userList);
-
-
 }
 
 void Vehicle_Manager::bookBike()
@@ -1316,7 +1348,7 @@ void Vehicle_Manager::displayCustomerList()
         cout.width(12);
         cout<<i->getRentalDuration();
         cout.width(12);
-        cout<<i->getIsAmountPaid();
+        cout<<i->getPaymentMode();
         cout.width(12);
         cout<<i->getID();
         cout.width(12);
@@ -1418,5 +1450,6 @@ int Vehicle_Manager::payment(float balanceAmount)
     return success;
 
 }
+
 
 

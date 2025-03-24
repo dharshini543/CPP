@@ -2,11 +2,14 @@
 #include<fstream>
 #include <iostream>
 
-User_FileOperation::User_FileOperation() {}
+User_FileOperation::User_FileOperation()
+{
+    cout<<"User File operations Constructor"<<endl;
+}
 
 User_FileOperation::~User_FileOperation()
 {
-
+    cout<<"User File operations Destructor"<<endl;
 }
 
 void User_FileOperation::writeData(list<User *> userList)
@@ -37,11 +40,12 @@ list<User *> User_FileOperation::readData()
     }
 
     string line, userName, passWord, userRole;
+    int userID;
 
     getline(file, line);
-    while (getline(file, userName, ',') && getline(file, passWord,',') && getline(file, userRole))
+    while (getline(file, userName, ',') && getline(file, passWord, ',') && getline(file, userRole))
     {
-        userList.push_back(new User(userName,passWord,userRole));
+        userList.push_back(new User(userName, passWord, userRole));
     }
 
     file.close();

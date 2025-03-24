@@ -4,7 +4,7 @@
 Cash::Cash(string cashID, int transactionID, string paymentStatus)
 {
     cout<<"Cash Constructor"<<endl;
-    m_ID = cashID;
+    m_paymentID = cashID;
     m_transactionID = transactionID;
     m_paymentStatus = paymentStatus;
 }
@@ -15,7 +15,7 @@ Cash::~Cash()
 }
 void Cash::setID(string ID)
 {
-    m_ID = ID;
+    m_paymentID = ID;
 }
 
 void Cash::setTransactionID(int transactionID)
@@ -25,7 +25,7 @@ void Cash::setTransactionID(int transactionID)
 
 string Cash::getID()
 {
-    return m_ID;
+    return m_paymentID;
 }
 
 int Cash::getTransactionID()

@@ -2,18 +2,23 @@
 #define USER_H
 #include <string>
 using namespace std;
+
 class User
 {
 public:
-    User(string userName,string passWord,string userRole);
+    User(string userName, string passWord, string userRole);
     ~User();
+
     string getUserName();
-    string getPassWord();
-    string getUserRole();
-    int getisLoggedIn();
     void setUserName(string UserName);
+
+    string getPassWord();
     void setPassWord(string PassWord);
+
+    string getUserRole();
     void setUserRole(string UserRole);
+
+    int getisLoggedIn();
     void setUserLogin(int isLoggedIn);
 
 private:

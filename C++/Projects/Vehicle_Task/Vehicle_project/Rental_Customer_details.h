@@ -8,32 +8,40 @@ class Rental_Customer_details
 {
 public:
     Rental_Customer_details();
-    Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails* vehicle, string vehicleStatus,string m_vehicleType,int rentalDuration, string isAmountPaid,float amountPaid,float balanceAmount);
-    Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails* vehicle,PaymentMode* payMode, string vehicleStatus,string m_vehicleType,int rentalDuration, string isAmountPaid,float amountPaid,float balanceAmount);
+    Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails* vehicle, PaymentMode* payMode, string vehicleStatus, string m_vehicleType, int rentalDuration, string paymentMode, float amountPaid, float balanceAmount);
     ~Rental_Customer_details();
 
     string getCusName();
     int getBookingID();
     string getVehicleName();
     string getVehicleNumber();
-    string getVehicleStatus();
-    void setVehicleModel(string vehicleModel);
-    string getVehicleModel();
-    void setVehicleStatus(string vehicleStatus);
-    float getAmountPaid();
-    void setAmountPaid(float amountPaid);
-    float getBalanceAmount();
-    void setBalanceAmount(float balanceAmount);
     string getVehicleType();
     float getVehicleCost();
-    string getIsAmountPaid();
+    string getPaymentMode();
     int getRentalDuration();
-    void setID(string ID);
-    void setTransactionID(int transactionID);
+
+
+    string getVehicleStatus();
+    void setVehicleStatus(string vehicleStatus);
+
+    string getVehicleModel();
+    void setVehicleModel(string vehicleModel);
+
+    float getAmountPaid();
+    void setAmountPaid(float amountPaid);
+
+    float getBalanceAmount();
+    void setBalanceAmount(float balanceAmount);
+
     string getID();
+    void setID(string ID);
+
     int getTransactionID();
-    void setPaymentStatus(string paymentStatus);
+    void setTransactionID(int transactionID);
+
     string getpaymentStatus();
+    void setPaymentStatus(string paymentStatus);
+
 
 private:
     string m_customerName;
@@ -42,9 +50,9 @@ private:
     int m_bookingID;
     float m_amountPaid;
     float m_balanceAmount;
-    RentalVehicleDetails* m_vehicle;
-    string m_isAmountPaid;
+    string m_paymentMode;
     int m_rentalDuration;
+    RentalVehicleDetails* m_vehicle;
     PaymentMode* m_payMode;
 
 };

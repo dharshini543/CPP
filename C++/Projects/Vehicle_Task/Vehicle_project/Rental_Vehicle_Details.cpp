@@ -9,7 +9,6 @@ RentalVehicleDetails::RentalVehicleDetails()
 RentalVehicleDetails::~RentalVehicleDetails()
 {
     cout<<"Vehicle Destructor"<<endl;
-
 }
 
 string RentalVehicleDetails::getVehicleName()

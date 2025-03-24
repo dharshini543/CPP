@@ -2,7 +2,6 @@
 #define LOGINMANAGEMENT_H
 #include<list>
 #include "User.h"
-#include "User_FileOperation.h"
 using namespace std;
 
 class LoginManagement
@@ -10,13 +9,16 @@ class LoginManagement
 public:
     LoginManagement();
     ~LoginManagement();
+
     int getUserCount();
     void setUserCount(int userCount);
+
+    list<User*> getUserList();
+    void setUserList(list<User*> userList);
+
     User *addAdmin();
     User* signUp();
     User *login();
-    list<User*> getUserList();
-    void setUserList(list<User*> userList);
 
 private:
     list<User*> m_userList;

@@ -5,13 +5,15 @@
 class Cash:public PaymentMode
 {
 public:
-    Cash(string cashID,int transactionID,string paymentStatus);
+    Cash(string cashID, int transactionID, string paymentStatus);
     ~Cash();
 
-    void setID(string ID);
-    void setTransactionID(int transactionID);
     string getID();
+    void setID(string ID);
+
     int getTransactionID();
+    void setTransactionID(int transactionID);
+
     string getPaymentStatus();
     void setPaymentStatus(string paymentStatus);
 };

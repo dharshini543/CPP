@@ -4,12 +4,18 @@
 
 LoginManagement::LoginManagement()
 {
+    cout<<"Login Management Constructor"<<endl;
     m_userCount = 0;
 }
 
 LoginManagement::~LoginManagement()
 {
+    cout<<"Login Management Destructor"<<endl;
 
+    for(auto* user : m_userList)
+    {
+        delete user;
+    }
 }
 
 int LoginManagement::getUserCount()
@@ -24,28 +30,92 @@ void LoginManagement::setUserCount(int userCount)
 
 User* LoginManagement::addAdmin()
 {
+    string adminName,adminPassword;
 
-    m_userList.push_back(new User("Dharshini","1234","ADMIN"));
-    m_userCount++;
-    for(auto* i:m_userList)
+    if(m_userCount == 0)
     {
-        if(i->getUserName() == "Dharshini" && i->getPassWord() == "1234")
+        m_userList.push_back(new User("Dharshini","1234","ADMIN"));
+        m_userCount++;
+        for(auto* user:m_userList)
         {
-            return i;
+            if(user->getUserName() == "Dharshini" && user->getPassWord() == "1234")
+            {
+                return user;
+            }
         }
+        return NULL;
     }
-    return NULL;
+    else
+    {
+        while(true)
+        {
+            cout<<"Enter AdminName"<<endl;
+            cin>>adminName;
+            if(adminName.length() > 15)
+            {
+                cout<<"Please enter maximum 15 Characters"<<endl;
+            }
+            else
+            {
+                break;
+            }
+        }
+        while(true)
+        {
+            cout<<"Enter AdminPassword"<<endl;
+            cin>>adminPassword;
+            if(adminPassword.length() > 15)
+            {
+                cout<<"Please enter maximum 15 Characters"<<endl;
+            }
+            else
+            {
+                break;
+            }
+        }
+        m_userList.push_back(new User(adminName, adminPassword, "ADMIN"));
+        m_userCount++;
+        for(auto* admin:m_userList)
+        {
+            if(admin->getUserName() == adminName && admin->getPassWord() == adminPassword)
+            {
+                return admin;
+            }
+        }
+        return NULL;
+    }
 }
 
 User* LoginManagement::signUp()
 {
     string userName,passWord;
-    int usercount = 0,Success = 1;
-    cout<<"Enter Username"<<endl;
-    cin>>userName;
-    cout<<"Enter Password"<<endl;
-    cin>>passWord;
-    m_userList.push_back(new User(userName,passWord,"CUSTOMER"));
+    while(true)
+    {
+        cout<<"Enter UserName"<<endl;
+        cin>>userName;
+        if(userName.length() > 15)
+        {
+            cout<<"Please enter maximum 15 Characters"<<endl;
+        }
+        else
+        {
+            break;
+        }
+    }
+    while(true)
+    {
+        cout<<"Enter Password"<<endl;
+        cin>>passWord;
+        if(passWord.length() > 15)
+        {
+            cout<<"Please enter maximum 15 Characters"<<endl;
+        }
+        else
+        {
+            break;
+        }
+    }
+    m_userList.push_back(new User(userName, passWord, "CUSTOMER"));
     m_userCount++;
     for(auto* user:m_userList)
     {
@@ -60,21 +130,46 @@ User* LoginManagement::signUp()
 User* LoginManagement::login()
 {
     string userName,passWord;
-    int userFound = 0,Success = 0;
-    cout<<"Enter Username"<<endl;
-    cin>>userName;
-    cout<<"Enter Password"<<endl;
-    cin>>passWord;
-    for(auto* i:m_userList)
+    int userFound = 0;
+    while(true)
     {
-        if(i->getUserName() == userName)
+        cout<<"Enter UserName"<<endl;
+        cin>>userName;
+        if(userName.length() > 15)
         {
-            if(i->getPassWord() == passWord)
+            cout<<"Please enter maximum 15 Characters"<<endl;
+        }
+        else
+        {
+            break;
+        }
+    }
+    while(true)
+    {
+        cout<<"Enter Password"<<endl;
+        cin>>passWord;
+        if(passWord.length() > 15)
+        {
+            cout<<"Please enter maximum 15 Characters"<<endl;
+        }
+        else
+        {
+            break;
+        }
+    }
+    for(auto* user:m_userList)
+    {
+        if(user->getUserName() == userName)
+        {
+            if(user->getPassWord() == passWord)
             {
-                i->setUserLogin(1);
-                userFound = 1;
-                cout<<"Login SuccessFull Welcome "<<i->getUserName()<<endl;
-                return i;
+                if(user->getUserRole() == "ADMIN" || user->getUserRole() == "CUSTOMER")
+                {
+                    user->setUserLogin(1);
+                    userFound++;
+                    cout<<"Login SuccessFull Welcome "<<user->getUserName()<<endl;
+                    return user;
+                }
             }
         }
     }
@@ -87,7 +182,7 @@ User* LoginManagement::login()
 
 }
 
-list<User *> LoginManagement::getUserList()
+list<User*> LoginManagement::getUserList()
 {
     return m_userList;
 }
