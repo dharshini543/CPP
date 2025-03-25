@@ -1,9 +1,10 @@
 Name          Model       Number           Cost          Status
 KTM,RC390,KA100,3000,Available
-KTM,RC200,KA101,1001,Booked
-KTM,Duke200,KA102,1002,Available
-KTM,Duke390,KA103,1003,Available
-KTM,Duke250,KA104,1004,Available
-KTM,Adventure390,KA105,1005,Available
-KTM,Adventure250,KA106,1006,Available
-KTM,RC200,KA107,1007,Available
+KTM,RC200,KA101,4000,Booked
+KTM,Duke200,KA102,5000,Available
+KTM,Duke390,KA103,6000,Available
+KTM,Duke250,KA104,7000,Available
+KTM,Adventure390,KA105,8000,Available
+KTM,Adventure250,KA106,9000,Available
+KTM,RC200,KA107,10000,Available
+KTM,RC200,KA108,5000,Available

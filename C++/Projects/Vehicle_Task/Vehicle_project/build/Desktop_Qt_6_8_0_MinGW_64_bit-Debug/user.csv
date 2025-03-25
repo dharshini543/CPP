@@ -1,5 +1,6 @@
 UserName    Password    UserRole    
 Dharshini,1234,ADMIN
-Likitha,1234,Deleted
-Pallavi,1234,CUSTOMER
-Darshan,1234,ADMIN
+Likitha,1234,CUSTOMER
+Pallavi,1234,ADMIN
+Darshan,1234,CUSTOMER
+Varshini,1234,Deleted

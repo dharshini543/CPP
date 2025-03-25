@@ -1,2 +1,10 @@
-Name          Model      Number           Cost          Status,,,,
-Fortuner,Fortuner,KA123,1500,Available
+Name          Model      Number           Cost          Status
+Toyota,Fortuner,KA100,10000,Available
+Toyota,Corolla,KA101,10000,Available
+Toyota,Fortuner,KA103,10000,Available
+Toyota,Corolla,KA104,10000,Available
+Toyota,Fortuner,KA105,10000,Available
+Toyota,Corolla,KA106,10000,Available
+Toyota,Fortuner,KA107,10000,Available
+Toyota,Corolla,KA108,10000,Available
+Toyota,Fortuner,KA109,10000,Available

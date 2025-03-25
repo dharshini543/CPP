@@ -28,7 +28,7 @@ Vehicle_Manager::Vehicle_Manager()
     m_carList = m_carFO->readData();
     m_bikeList = m_bikeFO->readData();
     m_userList = m_userFO->readData();
-    for(auto* user:m_userList)
+    for(auto user:m_userList)
     {
         ++userCount;
     }
@@ -70,6 +70,7 @@ int Vehicle_Manager::main_menu()
     if(m_loginManager->getUserCount() == 0 )
     {
         currentUser = m_loginManager->addAdmin();
+        cout<<"Admin "<<currentUser->getUserName()<<" added successfully"<<endl;
     }
 
     while(true)
@@ -81,6 +82,7 @@ int Vehicle_Manager::main_menu()
             if(m_loginManager->getUserCount() > 0)
             {
                 currentUser = m_loginManager->signUp();
+                cout<<"Welcome to Rental vehicle management system"<<endl;
             }
         }
         else if(choice == 2)
@@ -88,6 +90,7 @@ int Vehicle_Manager::main_menu()
             if(m_loginManager->getUserCount() > 0)
             {
                 currentUser = m_loginManager->login();
+                cout<<"Welcome to Rental vehicle management system"<<endl;
             }
         }
         else
@@ -109,6 +112,7 @@ int Vehicle_Manager::main_menu()
                     case ADD_ADMIN:
                     {
                         currentUser = m_loginManager->addAdmin();
+                        cout<<"Admin "<<currentUser->getUserName()<<" added successfully"<<endl;
                     }
                     break;
                     case DELETE_ADMIN:
@@ -121,6 +125,7 @@ int Vehicle_Manager::main_menu()
                             if(admin->getUserName() == userName)
                             {
                                 admin->setUserRole("Deleted");
+                                cout<<"Admin "<<admin->getUserName()<<" deleted successfully"<<endl;
                             }
                         }
                     }
@@ -1280,13 +1285,13 @@ void Vehicle_Manager::displayBikeList()
 void Vehicle_Manager::displayCarList()
 {
     cout<<"carName";
-    cout.width(20);
+    cout.width(30);
     cout<<"carModel";
-    cout.width(20);
+    cout.width(30);
     cout<<"carNumber";
-    cout.width(20);
+    cout.width(30);
     cout<<"CarCost";
-    cout.width(20);
+    cout.width(30);
     cout<<"CarStatus"<<endl;
 
     for(auto* car:m_carList)
@@ -1294,13 +1299,13 @@ void Vehicle_Manager::displayCarList()
         if("Available" == car->getVehicleStatus() || "Booked" == car->getVehicleStatus())
         {
             cout<<car->getVehicleName();
-            cout.width(20);
+            cout.width(30);
             cout<<car->getVehicleModel();
-            cout.width(21);
+            cout.width(30);
             cout<<car->getVehicleNumber();
-            cout.width(21);
+            cout.width(30);
             cout<<car->getVehicleCost();
-            cout.width(24);
+            cout.width(30);
             cout<<car->getVehicleStatus()<<endl;
         }
     }
@@ -1348,8 +1353,8 @@ void Vehicle_Manager::displayCustomerList()
         cout.width(12);
         cout<<i->getRentalDuration();
         cout.width(12);
-        cout<<i->getPaymentMode();
-        cout.width(12);
+        cout<<i->getPaymentType();
+        cout.width(16);
         cout<<i->getID();
         cout.width(12);
         cout<<i->getTransactionID();
