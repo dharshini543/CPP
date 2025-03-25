@@ -37,8 +37,8 @@ enum Customer
 
 enum ADD_VEHICLE
 {
-   Add_Bike = 1,
-   Add_Car
+    Add_Bike = 1,
+    Add_Car
 };
 enum DELETE_VEHICLE
 {

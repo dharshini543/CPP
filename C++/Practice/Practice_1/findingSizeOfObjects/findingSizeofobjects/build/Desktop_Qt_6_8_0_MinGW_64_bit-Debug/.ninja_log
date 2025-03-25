@@ -1,0 +1,9 @@
+# ninja log v6
+2	243	7645996039056478	CMakeFiles/findingSizeofobjects.dir/main.cpp.obj	6399f92ce1e20550
+245	321	7645996041579836	findingSizeofobjects.exe	b98f30df342bcfb8
+27	230	7645996627160053	CMakeFiles/findingSizeofobjects.dir/main.cpp.obj	6399f92ce1e20550
+230	285	7645996629240490	findingSizeofobjects.exe	b98f30df342bcfb8
+4	214	7645997435768327	CMakeFiles/findingSizeofobjects.dir/main.cpp.obj	6399f92ce1e20550
+214	267	7645997437930729	findingSizeofobjects.exe	b98f30df342bcfb8
+24	232	7645997677145911	CMakeFiles/findingSizeofobjects.dir/main.cpp.obj	6399f92ce1e20550
+232	284	7645997679230107	findingSizeofobjects.exe	b98f30df342bcfb8

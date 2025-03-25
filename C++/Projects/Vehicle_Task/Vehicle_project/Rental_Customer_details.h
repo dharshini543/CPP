@@ -8,7 +8,7 @@ class Rental_Customer_details
 {
 public:
     Rental_Customer_details();
-    Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails* vehicle, PaymentMode* payMode, string vehicleStatus, string m_vehicleType, int rentalDuration, string paymentMode, float amountPaid, float balanceAmount);
+    Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails* vehicle, PaymentMode* payMode, string vehicleStatus, string m_vehicleType, int rentalDuration, string paymentType, float amountPaid, float balanceAmount);
     ~Rental_Customer_details();
 
     string getCusName();
@@ -17,7 +17,7 @@ public:
     string getVehicleNumber();
     string getVehicleType();
     float getVehicleCost();
-    string getPaymentMode();
+    string getPaymentType();
     int getRentalDuration();
 
 
@@ -50,7 +50,7 @@ private:
     int m_bookingID;
     float m_amountPaid;
     float m_balanceAmount;
-    string m_paymentMode;
+    string m_paymentType;
     int m_rentalDuration;
     RentalVehicleDetails* m_vehicle;
     PaymentMode* m_payMode;

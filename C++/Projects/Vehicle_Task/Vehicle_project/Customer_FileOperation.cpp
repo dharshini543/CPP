@@ -27,7 +27,7 @@ void Customer_FileOperation::writeData(list<Rental_Customer_details *> customerL
     file<<"CustomerName"<<"BookingID"<<"VehicleName"<<"VehicleModel"<<"VehicleNumber"<<"RentalDuration"<<"vehicleType"<<"VehicleCost"<<"PaymentMode"<<"PaymentID"<<"TransactionID"<<"VehicleStatus"<<"AmountPaid"<<"DueAmount"<<"PaymentStatus"<<endl;
     for(auto i:customerList)
     {
-        file<<i->getCusName()<<","<<i->getBookingID()<<","<<i->getVehicleName()<<","<<i->getVehicleModel()<<","<<i->getVehicleNumber()<<","<<i->getRentalDuration()<<","<<i->getVehicleType()<<","<<i->getVehicleCost()<<","<<i->getPaymentMode()<<","<<i->getID()<<","<<i->getTransactionID()<<","<<i->getVehicleStatus()<<","<<i->getAmountPaid()<<","<<i->getBalanceAmount()<<","<<i->getpaymentStatus()<<endl;
+        file<<i->getCusName()<<","<<i->getBookingID()<<","<<i->getVehicleName()<<","<<i->getVehicleModel()<<","<<i->getVehicleNumber()<<","<<i->getRentalDuration()<<","<<i->getVehicleType()<<","<<i->getVehicleCost()<<","<<i->getPaymentType()<<","<<i->getID()<<","<<i->getTransactionID()<<","<<i->getVehicleStatus()<<","<<i->getAmountPaid()<<","<<i->getBalanceAmount()<<","<<i->getpaymentStatus()<<endl;
     }
     cout<<"Data written to Customer file"<<endl;
     file.close();
@@ -67,16 +67,16 @@ list<Rental_Customer_details *> Customer_FileOperation::readData()
         else if(vehicleType == "Car")
         {
             RentalCarDetails* car = new RentalCarDetails(vehicleName, vehicleModel, vehicleNum, vehicleCost, vehicleStatus);
-                if("UPI" == paymentMode)
-                {
-                    UPI* upi = new UPI(paymentID, transactionID, paymentStatus);
-                    customerList.push_back(new Rental_Customer_details(cusName, bookingID, car, upi, cusVehicleStatus, vehicleType, rentalDuration, paymentMode, amountPaid, balanceAmount));
-                }
-                else if("Cash" == paymentMode)
-                {
-                    Cash* cash = new Cash(paymentID, transactionID, paymentStatus);
-                    customerList.push_back(new Rental_Customer_details(cusName, bookingID, car, cash, cusVehicleStatus, vehicleType, rentalDuration, paymentMode, amountPaid, balanceAmount));
-                }
+            if("UPI" == paymentMode)
+            {
+                UPI* upi = new UPI(paymentID, transactionID, paymentStatus);
+                customerList.push_back(new Rental_Customer_details(cusName, bookingID, car, upi, cusVehicleStatus, vehicleType, rentalDuration, paymentMode, amountPaid, balanceAmount));
+            }
+            else if("Cash" == paymentMode)
+            {
+                Cash* cash = new Cash(paymentID, transactionID, paymentStatus);
+                customerList.push_back(new Rental_Customer_details(cusName, bookingID, car, cash, cusVehicleStatus, vehicleType, rentalDuration, paymentMode, amountPaid, balanceAmount));
+            }
         }
         else
         {

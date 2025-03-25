@@ -6,7 +6,7 @@ Rental_Customer_details::Rental_Customer_details()
     cout<<"Customer Constructor"<<endl;
 }
 
-Rental_Customer_details::Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails *vehicle, PaymentMode *payMode, string vehicleStatus, string vehicleType, int rentalDuration, string paymentMode, float amountPaid, float balanceAmount)
+Rental_Customer_details::Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails *vehicle, PaymentMode *payMode, string vehicleStatus, string vehicleType, int rentalDuration, string paymentType, float amountPaid, float balanceAmount)
 {
     cout<<"Customer Constructor"<<endl;
     m_customerName = customerName;
@@ -16,7 +16,7 @@ Rental_Customer_details::Rental_Customer_details(string customerName, int bookin
     m_vehicleStatus = vehicleStatus;
     m_vehicleType = vehicleType;
     m_rentalDuration = rentalDuration;
-    m_paymentMode = paymentMode;
+    m_paymentType = paymentType;
     m_amountPaid = amountPaid;
     m_balanceAmount = balanceAmount;
 }
@@ -24,6 +24,8 @@ Rental_Customer_details::Rental_Customer_details(string customerName, int bookin
 Rental_Customer_details::~Rental_Customer_details()
 {
     cout<<"Customer Destructor"<<endl;
+    delete m_vehicle;
+    delete m_payMode;
 }
 
 string Rental_Customer_details::getCusName()
@@ -96,9 +98,9 @@ float Rental_Customer_details::getVehicleCost()
     return m_vehicle->getVehicleCost();
 }
 
-string Rental_Customer_details::getPaymentMode()
+string Rental_Customer_details::getPaymentType()
 {
-    return m_paymentMode;
+    return m_paymentType;
 }
 
 int Rental_Customer_details::getRentalDuration()
