@@ -21,6 +21,7 @@ RentalCarDetails::~RentalCarDetails()
 {
     cout<<"RentalCarDetails Destructor"<<endl;
 }
+
 string RentalCarDetails::getVehicleName()
 {
     return m_vehicleName;

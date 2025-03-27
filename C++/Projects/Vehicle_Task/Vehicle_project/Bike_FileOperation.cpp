@@ -21,9 +21,9 @@ void Bike_FO::writeData(list<RentalBikeDetails*> bikeList)
         return ;
     }
     file<<"Name          "<<"Model       "<<"Number           "<<"Cost          "<<"Status"<<endl;
-    for(auto* i:bikeList)
+    for(auto bike:bikeList)
     {
-        file<<i->getVehicleName()<<","<<i->getVehicleModel()<<","<<i->getVehicleNumber()<<","<<i->getVehicleCost()<<","<<i->getVehicleStatus()<<endl;
+        file<<bike->getVehicleName()<<","<<bike->getVehicleModel()<<","<<bike->getVehicleNumber()<<","<<bike->getVehicleCost()<<","<<bike->getVehicleStatus()<<endl;
     }
     cout<<"Data written to Bike file"<<endl;
     file.close();
