@@ -14,9 +14,8 @@ using namespace std;
 
 void someFunction()
 {
-    // Example function that you want to measure the execution time of
-    for (int i = 0; i < 1000000; ++i) {
-        // Just a dummy loop
+    for (int i = 0; i < 1000000; ++i)
+    {
         int x = i * i;
     }
 }
@@ -85,6 +84,7 @@ int Vehicle_Manager::main_menu()
 
     while(true)
     {
+        cout<<endl;
         cout<<"Enter"<<endl<<"1. SignUp to create account"<<endl<<"2. Login"<<endl<<"3. Exit"<<endl;
         cin>>choice;
         if(choice == 1)
@@ -256,7 +256,7 @@ int Vehicle_Manager::main_menu()
                                     someFunction();
 
                                     this->sortByBikePrice();
-                                    this->displayBikeList();
+                                    //this->displayBikeList();
 
                                     auto end = std::chrono::high_resolution_clock::now();
                                     std::chrono::duration<double> elapsed = end - start;
@@ -269,7 +269,7 @@ int Vehicle_Manager::main_menu()
                                     someFunction();
 
                                     this->sortByBikeName();
-                                    this->displayBikeList();
+                                    //this->displayBikeList();
 
                                     auto end = std::chrono::high_resolution_clock::now();
                                     std::chrono::duration<double> elapsed = end - start;
@@ -283,7 +283,7 @@ int Vehicle_Manager::main_menu()
                                     someFunction();
 
                                     this->sortByBikeStatus();
-                                    this->displayBikeList();
+                                    //this->displayBikeList();
 
                                     auto end = std::chrono::high_resolution_clock::now();
                                     std::chrono::duration<double> elapsed = end - start;
@@ -317,7 +317,7 @@ int Vehicle_Manager::main_menu()
                                     someFunction();
 
                                     this->sortByCarPrice();
-                                    this->displayCarList();
+                                    //this->displayCarList();
 
                                     auto end = std::chrono::high_resolution_clock::now();
                                     std::chrono::duration<double> elapsed = end - start;
@@ -330,7 +330,7 @@ int Vehicle_Manager::main_menu()
                                     someFunction();
 
                                     this->sortByCarName();
-                                    this->displayCarList();
+                                    //this->displayCarList();
 
                                     auto end = std::chrono::high_resolution_clock::now();
                                     std::chrono::duration<double> elapsed = end - start;
@@ -342,7 +342,7 @@ int Vehicle_Manager::main_menu()
                                     someFunction();
 
                                     this->sortByCarStatus();
-                                    this->displayCarList();
+                                    //this->displayCarList();
 
                                     auto end = std::chrono::high_resolution_clock::now();
                                     std::chrono::duration<double> elapsed = end - start;
@@ -735,8 +735,7 @@ void Vehicle_Manager::addCar()
 void Vehicle_Manager::addCustomer(string vehicleName,string vehicleModel,string vehicleStatus,float vehicleCost,string vehicleNumber)
 {
     string cusName, paymentMode, vehicleType, cusVehicleStatus, upiID, cashID = "NULL", paymentStatus;
-    int bookingID, choice;
-    int rentalDuration, cashTransactionID = 0;
+    int bookingID, choice, rentalDuration, cashTransactionID = 0;
     static int UPItransactionID = 1000;
     float amountPaid, balanceAmount = 0;
 
