@@ -107,6 +107,7 @@ int Rental_Customer_details::getRentalDuration()
 {
     return m_rentalDuration;
 }
+
 void Rental_Customer_details::setID(string ID)
 {
     m_payMode->setID(ID);

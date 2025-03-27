@@ -12,7 +12,7 @@ LoginManagement::~LoginManagement()
 {
     cout<<"Login Management Destructor"<<endl;
 
-    for(auto* user : m_userList)
+    for(auto user : m_userList)
     {
         delete user;
     }
@@ -36,11 +36,11 @@ User* LoginManagement::addAdmin()
     {
         m_userList.push_back(new User("Dharshini","1234","ADMIN"));
         m_userCount++;
-        for(auto* user:m_userList)
+        for(auto admin:m_userList)
         {
-            if(user->getUserName() == "Dharshini" && user->getPassWord() == "1234")
+            if(admin->getUserName() == "Dharshini" && admin->getPassWord() == "1234")
             {
-                return user;
+                return admin;
             }
         }
         return NULL;
@@ -75,7 +75,7 @@ User* LoginManagement::addAdmin()
         }
         m_userList.push_back(new User(adminName, adminPassword, "ADMIN"));
         m_userCount++;
-        for(auto* admin:m_userList)
+        for(auto admin:m_userList)
         {
             if(admin->getUserName() == adminName && admin->getPassWord() == adminPassword)
             {
@@ -117,7 +117,7 @@ User* LoginManagement::signUp()
     }
     m_userList.push_back(new User(userName, passWord, "CUSTOMER"));
     m_userCount++;
-    for(auto* user:m_userList)
+    for(auto user:m_userList)
     {
         if(user->getUserName() == userName && user->getPassWord() == passWord)
         {
@@ -157,7 +157,7 @@ User* LoginManagement::login()
             break;
         }
     }
-    for(auto* user:m_userList)
+    for(auto user:m_userList)
     {
         if(user->getUserName() == userName)
         {
@@ -179,7 +179,6 @@ User* LoginManagement::login()
         cout<<"Please try again..."<<endl;
     }
     return NULL;
-
 }
 
 list<User*> LoginManagement::getUserList()

@@ -21,9 +21,9 @@ void Car_FileOperation::writeData(list<RentalCarDetails*> carList)
         return ;
     }
     file<<"Name          "<<"Model      "<<"Number           "<<"Cost          "<<"Status"<<endl;
-    for(auto* i:carList)
+    for(auto car:carList)
     {
-        file<<i->getVehicleName()<<","<<i->getVehicleModel()<<","<<i->getVehicleNumber()<<","<<i->getVehicleCost()<<","<<i->getVehicleStatus()<<endl;
+        file<<car->getVehicleName()<<","<<car->getVehicleModel()<<","<<car->getVehicleNumber()<<","<<car->getVehicleCost()<<","<<car->getVehicleStatus()<<endl;
     }
     cout<<"Data written to Car CSV file"<<endl;
     file.close();

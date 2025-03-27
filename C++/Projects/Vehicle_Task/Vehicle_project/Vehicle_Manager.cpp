@@ -8,7 +8,18 @@
 #include <cstring>
 #include <string>
 #include<iostream>
+#include <chrono>
+
 using namespace std;
+
+void someFunction()
+{
+    // Example function that you want to measure the execution time of
+    for (int i = 0; i < 1000000; ++i) {
+        // Just a dummy loop
+        int x = i * i;
+    }
+}
 
 Vehicle_Manager::Vehicle_Manager()
 {
@@ -34,7 +45,6 @@ Vehicle_Manager::Vehicle_Manager()
     }
     m_loginManager->setUserCount(userCount);
     m_loginManager->setUserList(m_userList);
-
 }
 
 Vehicle_Manager::~Vehicle_Manager()
@@ -46,17 +56,17 @@ Vehicle_Manager::~Vehicle_Manager()
     delete m_userFO;
     delete m_loginManager;
 
-    for(auto* bike : m_bikeList)
+    for(auto bike : m_bikeList)
     {
         delete bike;
     }
 
-    for(auto* car : m_carList)
+    for(auto car : m_carList)
     {
         delete car;
     }
 
-    for(auto* customer : m_customerList)
+    for(auto customer : m_customerList)
     {
         delete customer;
     }
@@ -152,18 +162,33 @@ int Vehicle_Manager::main_menu()
                     }
                     break;
                     case ADMIN_DELETE_VEHICLE:{
+
                         cout<<"Enter"<<endl<<"1. Delete Bike"<<endl<<"2. Delete Car"<<endl<<"Any Other number to exit"<<endl;
                         cin>>option;
                         switch(option)
                         {
                         case Delete_Bike:
                         {
+                            auto start = std::chrono::high_resolution_clock::now();
+                            someFunction();
+
                             this->deleteBike();
+
+                            auto end = std::chrono::high_resolution_clock::now();
+                            std::chrono::duration<double> elapsed = end - start;
+                            std::cout << "Execution Time: " << elapsed.count() << " seconds" << std::endl;
                         }
                         break;
                         case Delete_Car:
                         {
+                            auto start = std::chrono::high_resolution_clock::now();
+                            someFunction();
+
                             this->deleteCar();
+
+                            auto end = std::chrono::high_resolution_clock::now();
+                            std::chrono::duration<double> elapsed = end - start;
+                            std::cout << "Execution Time: " << elapsed.count() << " seconds" << std::endl;
                         }
                         break;
                         default:
@@ -178,12 +203,26 @@ int Vehicle_Manager::main_menu()
                         {
                         case Search_Bike:
                         {
+                            auto start = std::chrono::high_resolution_clock::now();
+                            someFunction();
+
                             this->searchBike();
+
+                            auto end = std::chrono::high_resolution_clock::now();
+                            std::chrono::duration<double> elapsed = end - start;
+                            std::cout << "Execution Time: " << elapsed.count() << " seconds" << std::endl;
                         }
                         break;
                         case Search_Car:
                         {
+                            auto start = std::chrono::high_resolution_clock::now();
+                            someFunction();
+
                             this->searchCar();
+
+                            auto end = std::chrono::high_resolution_clock::now();
+                            std::chrono::duration<double> elapsed = end - start;
+                            std::cout << "Execution Time: " << elapsed.count() << " seconds" << std::endl;
                         }
                         break;
                         default:
@@ -213,21 +252,42 @@ int Vehicle_Manager::main_menu()
                                 break;
                                 case Sort_By_Price:
                                 {
+                                    auto start = std::chrono::high_resolution_clock::now();
+                                    someFunction();
+
                                     this->sortByBikePrice();
                                     this->displayBikeList();
+
+                                    auto end = std::chrono::high_resolution_clock::now();
+                                    std::chrono::duration<double> elapsed = end - start;
+                                    std::cout << "Execution Time: " << elapsed.count() << " seconds" << std::endl;
                                 }
                                 break;
                                 case Sort_By_Name:
                                 {
+                                    auto start = std::chrono::high_resolution_clock::now();
+                                    someFunction();
+
                                     this->sortByBikeName();
                                     this->displayBikeList();
+
+                                    auto end = std::chrono::high_resolution_clock::now();
+                                    std::chrono::duration<double> elapsed = end - start;
+                                    std::cout << "Execution Time: " << elapsed.count() << " seconds" << std::endl;
 
                                 }
                                 break;
                                 case Sort_By_Status:
                                 {
+                                    auto start = std::chrono::high_resolution_clock::now();
+                                    someFunction();
+
                                     this->sortByBikeStatus();
                                     this->displayBikeList();
+
+                                    auto end = std::chrono::high_resolution_clock::now();
+                                    std::chrono::duration<double> elapsed = end - start;
+                                    std::cout << "Execution Time: " << elapsed.count() << " seconds" << std::endl;
 
                                 }
                                 break;
@@ -253,20 +313,40 @@ int Vehicle_Manager::main_menu()
                                 break;
                                 case SortByPrice:
                                 {
+                                    auto start = std::chrono::high_resolution_clock::now();
+                                    someFunction();
+
                                     this->sortByCarPrice();
                                     this->displayCarList();
+
+                                    auto end = std::chrono::high_resolution_clock::now();
+                                    std::chrono::duration<double> elapsed = end - start;
+                                    std::cout << "Execution Time: " << elapsed.count() << " seconds" << std::endl;
                                 }
                                 break;
                                 case SortByName:
-                                {
+                                { 
+                                    auto start = std::chrono::high_resolution_clock::now();
+                                    someFunction();
+
                                     this->sortByCarName();
                                     this->displayCarList();
+
+                                    auto end = std::chrono::high_resolution_clock::now();
+                                    std::chrono::duration<double> elapsed = end - start;
+                                    std::cout << "Execution Time: " << elapsed.count() << " seconds" << std::endl;
                                 }
                                 break;
                                 case SortByStatus:
-                                {
+                                {    auto start = std::chrono::high_resolution_clock::now();
+                                    someFunction();
+
                                     this->sortByCarStatus();
                                     this->displayCarList();
+
+                                    auto end = std::chrono::high_resolution_clock::now();
+                                    std::chrono::duration<double> elapsed = end - start;
+                                    std::cout << "Execution Time: " << elapsed.count() << " seconds" << std::endl;
                                 }
                                 break;
                                 default:
@@ -444,7 +524,6 @@ int Vehicle_Manager::main_menu()
                                 {
                                     this->sortByBikeName();
                                     this->displayBikeList();
-
                                 }
                                 break;
                                 case Sort_By_Status:
@@ -492,7 +571,6 @@ int Vehicle_Manager::main_menu()
                                 {
                                     this->sortByCarStatus();
                                     this->displayCarList();
-
                                 }
                                 break;
                                 default:
@@ -653,6 +731,7 @@ void Vehicle_Manager::addCar()
     cin>>carCost;
     m_carList.push_back(new RentalCarDetails(carName,carModel,carNumber, carCost, carStatus));
 }
+
 void Vehicle_Manager::addCustomer(string vehicleName,string vehicleModel,string vehicleStatus,float vehicleCost,string vehicleNumber)
 {
     string cusName, paymentMode, vehicleType, cusVehicleStatus, upiID, cashID = "NULL", paymentStatus;
@@ -779,6 +858,7 @@ void Vehicle_Manager::addCustomer(string vehicleName,string vehicleModel,string 
         }
     }
 }
+
 void Vehicle_Manager::deleteBike()
 {
     string bikeName,bikeNumber;
@@ -809,12 +889,10 @@ void Vehicle_Manager::deleteBike()
             break;
         }
     }
-    for(auto* bike:m_bikeList)
+    for(auto bike:m_bikeList)
     {
-        cout<<bike->getVehicleNumber()<<" "<<bikeNumber<<" "<<bike->getVehicleName()<<" "<<bikeName<<" "<<bike->getVehicleStatus()<<endl;
         if((bikeNumber == bike->getVehicleNumber()) && (bikeName == bike->getVehicleName()) )
         {
-            cout<<bike->getVehicleNumber()<<" "<<bikeNumber<<" "<<bike->getVehicleName()<<" "<<bikeName<<" "<<bike->getVehicleStatus()<<endl;
             if("Available" == bike->getVehicleStatus() || "Booked" == bike->getVehicleStatus())
             {
                 bike->setVehicleStatus("Deleted");
@@ -859,7 +937,7 @@ void Vehicle_Manager::deleteCar()
             break;
         }
     }
-    for(auto* car:m_carList)
+    for(auto car:m_carList)
     {
         if((carNumber == car->getVehicleNumber()) && (carName == car->getVehicleName()) )
         {
@@ -908,7 +986,7 @@ void Vehicle_Manager::searchBike()
         }
     }
 
-    for(auto* bike:m_bikeList)
+    for(auto bike:m_bikeList)
     {
         if(bikeName == bike->getVehicleName() && bikeNumber == bike->getVehicleNumber())
         {
@@ -970,7 +1048,7 @@ void Vehicle_Manager::searchCar()
         }
     }
 
-    for(auto* car:m_carList)
+    for(auto car:m_carList)
     {
         if(carName == car->getVehicleName() && carNumber == car->getVehicleNumber())
         {
@@ -1003,89 +1081,45 @@ void Vehicle_Manager::searchCar()
 
 void Vehicle_Manager::sortByCarPrice()
 {
-    for(auto* i:m_carList)
-    {
-        for(auto* j:m_carList)
-        {
-            if(j->getVehicleCost() > i->getVehicleCost())
-            {
-                iter_swap(i,j);
-            }
-        }
-    }
+    m_carList.sort([](RentalCarDetails* a, RentalCarDetails* b){
+        return a->getVehicleCost() > b->getVehicleCost();
+    });
 }
 
 void Vehicle_Manager::sortByCarName()
 {
-    for(auto* i:m_carList)
-    {
-        for(auto* j:m_carList)
-        {
-            if(j->getVehicleName() > i->getVehicleName())
-            {
-                iter_swap(i,j);
-            }
-        }
-    }
+    m_carList.sort([](RentalCarDetails* a, RentalCarDetails* b) {
+        return a->getVehicleName() > b->getVehicleName();
+    });
 }
 
 void Vehicle_Manager::sortByCarStatus()
 {
-    for(auto* i:m_carList)
-    {
-        for(auto* j:m_carList)
-        {
-            if(j->getVehicleStatus() > i->getVehicleStatus())
-            {
-                iter_swap(i,j);
-            }
-        }
-    }
+    m_carList.sort([](RentalCarDetails* a, RentalCarDetails* b) {
+        return a->getVehicleStatus() > b->getVehicleStatus();
+    });
 }
 
 void Vehicle_Manager::sortByBikePrice()
 {
-    for(auto* i:m_bikeList)
-    {
-        for(auto* j:m_bikeList)
-        {
-            if(j->getVehicleCost() > i->getVehicleCost())
-            {
-                iter_swap(i,j);
-            }
-        }
-    }
+    m_bikeList.sort([](RentalBikeDetails* a, RentalBikeDetails* b) {
+        return a->getVehicleCost() > b->getVehicleCost();
+    });
 }
 
 void Vehicle_Manager::sortByBikeName()
 {
-    for(auto* i:m_bikeList)
-    {
-        for(auto* j:m_bikeList)
-        {
-            if(j->getVehicleName() > i->getVehicleName())
-            {
-                iter_swap(i,j);
-            }
-        }
-    }
+    m_bikeList.sort([](RentalBikeDetails* a, RentalBikeDetails* b) {
+        return a->getVehicleName() > b->getVehicleName();
+    });
 }
 
 void Vehicle_Manager::sortByBikeStatus()
 {
-    for(auto* i:m_bikeList)
-    {
-        for(auto* j:m_bikeList)
-        {
-            if(j->getVehicleStatus() > i->getVehicleStatus())
-            {
-                iter_swap(i,j);
-            }
-        }
-    }
+    m_bikeList.sort([](RentalBikeDetails* a, RentalBikeDetails* b) {
+        return a->getVehicleStatus() > b->getVehicleStatus();
+    });
 }
-
-
 
 void Vehicle_Manager::writeDataToFile()
 {
@@ -1106,7 +1140,7 @@ void Vehicle_Manager::bookBike()
     cout<<"Enter Bike number"<<endl;
     cin>>bikeNumber;
 
-    for(auto* bike:m_bikeList)
+    for(auto bike:m_bikeList)
     {
         if((bikeNumber == bike->getVehicleNumber()) && (bikeName == bike->getVehicleName()) )
         {
@@ -1137,7 +1171,7 @@ void Vehicle_Manager::bookCar()
     cin>>carName;
     cout<<"Enter Car number"<<endl;
     cin>>carNumber;
-    for(auto* car:m_carList)
+    for(auto car:m_carList)
     {
         if(car->getVehicleName() == carName && car->getVehicleNumber() == carNumber)
         {
@@ -1168,7 +1202,7 @@ void Vehicle_Manager::returnBike()
     cin>>bikeName;
     cout<<"Enter Bike number"<<endl;
     cin>>bikeNumber;
-    for(auto* bike:m_bikeList)
+    for(auto bike:m_bikeList)
     {
         if(bike->getVehicleName() == bikeName && bike->getVehicleNumber() == bikeNumber)
         {
@@ -1220,7 +1254,7 @@ void Vehicle_Manager::returnCar()
         {
             if(car->getVehicleStatus() == "Booked")
             {
-                for(auto* customer:m_customerList)
+                for(auto customer:m_customerList)
                 {
                     if(carNumber == customer->getVehicleNumber() &&  "Booked" == customer->getVehicleStatus())
                     {
@@ -1265,7 +1299,7 @@ void Vehicle_Manager::displayBikeList()
     cout.width(20);
     cout<<"BikeStatus"<<endl;
 
-    for(auto* bike:m_bikeList)
+    for(auto bike:m_bikeList)
     {
         if("Available" == bike->getVehicleStatus() || "Booked" == bike->getVehicleStatus())
         {
@@ -1294,7 +1328,7 @@ void Vehicle_Manager::displayCarList()
     cout.width(30);
     cout<<"CarStatus"<<endl;
 
-    for(auto* car:m_carList)
+    for(auto car:m_carList)
     {
         if("Available" == car->getVehicleStatus() || "Booked" == car->getVehicleStatus())
         {
@@ -1339,33 +1373,33 @@ void Vehicle_Manager::displayCustomerList()
     cout.width(10);
     cout<<"PaymentStatus"<<endl;
 
-    for(auto* i:m_customerList)
+    for(auto customer:m_customerList)
     {
-        cout<<i->getCusName();
+        cout<<customer->getCusName();
         cout.width(12);
-        cout<<i->getBookingID();
+        cout<<customer->getBookingID();
         cout.width(12);
-        cout<<i->getVehicleName();
+        cout<<customer->getVehicleName();
         cout.width(12);
-        cout<<i->getVehicleModel();
+        cout<<customer->getVehicleModel();
         cout.width(12);
-        cout<<i->getVehicleNumber();
+        cout<<customer->getVehicleNumber();
         cout.width(12);
-        cout<<i->getRentalDuration();
+        cout<<customer->getRentalDuration();
         cout.width(12);
-        cout<<i->getPaymentType();
+        cout<<customer->getPaymentType();
         cout.width(16);
-        cout<<i->getID();
+        cout<<customer->getID();
         cout.width(12);
-        cout<<i->getTransactionID();
+        cout<<customer->getTransactionID();
         cout.width(12);
-        cout<<i->getVehicleStatus();
+        cout<<customer->getVehicleStatus();
         cout.width(12);
-        cout<<i->getAmountPaid();
+        cout<<customer->getAmountPaid();
         cout.width(12);
-        cout<<i->getBalanceAmount();
+        cout<<customer->getBalanceAmount();
         cout.width(12);
-        cout<<i->getpaymentStatus()<<endl;
+        cout<<customer->getpaymentStatus()<<endl;
     }
 }
 
@@ -1379,7 +1413,7 @@ void Vehicle_Manager::updateBikeCost()
     cin>>bikeNumber;
     cout<<"Enter updated bike cost"<<endl;
     cin>>bikeNewAmount;
-    for(auto* bike:m_bikeList)
+    for(auto bike:m_bikeList)
     {
         if(bike->getVehicleNumber() == bikeNumber)
         {
@@ -1399,7 +1433,7 @@ void Vehicle_Manager::updateCarCost()
     cin>>carNumber;
     cout<<"Enter updated bike cost"<<endl;
     cin>>CarnewAmount;
-    for(auto* car:m_carList)
+    for(auto car:m_carList)
     {
         if(car->getVehicleName() == carName && car->getVehicleNumber() == carNumber)
         {

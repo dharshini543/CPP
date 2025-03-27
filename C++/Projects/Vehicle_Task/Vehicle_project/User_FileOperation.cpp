@@ -21,9 +21,9 @@ void User_FileOperation::writeData(list<User *> userList)
         return ;
     }
     file<<"UserName    "<<"Password    "<<"UserRole    "<<endl;
-    for(auto* i:userList)
+    for(auto* user:userList)
     {
-        file<<i->getUserName()<<","<<i->getPassWord()<<","<<i->getUserRole()<<endl;
+        file<<user->getUserName()<<","<<user->getPassWord()<<","<<user->getUserRole()<<endl;
     }
     cout<<"Data written to User file"<<endl;
     file.close();

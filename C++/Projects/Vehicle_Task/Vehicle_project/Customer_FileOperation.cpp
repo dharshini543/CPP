@@ -25,9 +25,9 @@ void Customer_FileOperation::writeData(list<Rental_Customer_details *> customerL
         return ;
     }
     file<<"CustomerName"<<"BookingID"<<"VehicleName"<<"VehicleModel"<<"VehicleNumber"<<"RentalDuration"<<"vehicleType"<<"VehicleCost"<<"PaymentMode"<<"PaymentID"<<"TransactionID"<<"VehicleStatus"<<"AmountPaid"<<"DueAmount"<<"PaymentStatus"<<endl;
-    for(auto i:customerList)
+    for(auto customer:customerList)
     {
-        file<<i->getCusName()<<","<<i->getBookingID()<<","<<i->getVehicleName()<<","<<i->getVehicleModel()<<","<<i->getVehicleNumber()<<","<<i->getRentalDuration()<<","<<i->getVehicleType()<<","<<i->getVehicleCost()<<","<<i->getPaymentType()<<","<<i->getID()<<","<<i->getTransactionID()<<","<<i->getVehicleStatus()<<","<<i->getAmountPaid()<<","<<i->getBalanceAmount()<<","<<i->getpaymentStatus()<<endl;
+        file<<customer->getCusName()<<","<<customer->getBookingID()<<","<<customer->getVehicleName()<<","<<customer->getVehicleModel()<<","<<customer->getVehicleNumber()<<","<<customer->getRentalDuration()<<","<<customer->getVehicleType()<<","<<customer->getVehicleCost()<<","<<customer->getPaymentType()<<","<<customer->getID()<<","<<customer->getTransactionID()<<","<<customer->getVehicleStatus()<<","<<customer->getAmountPaid()<<","<<customer->getBalanceAmount()<<","<<customer->getpaymentStatus()<<endl;
     }
     cout<<"Data written to Customer file"<<endl;
     file.close();

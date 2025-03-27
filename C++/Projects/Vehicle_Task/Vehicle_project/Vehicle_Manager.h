@@ -133,7 +133,9 @@ private:
     Bike_FO* m_bikeFO;
     Customer_FileOperation* m_cusFO;
     User_FileOperation* m_userFO;
+
     LoginManagement* m_loginManager;
+
     list<RentalBikeDetails*> m_bikeList;
     list<RentalCarDetails*> m_carList;
     list<User*> m_userList;
