@@ -14,9 +14,24 @@ PaymentMode::PaymentMode(string ID, int transactionID, string paymentStatus)
     m_paymentStatus = paymentStatus;
 }
 
+PaymentMode::PaymentMode(const PaymentMode &payment)
+{
+    cout<< "PaymentMode Copy constructor called"<<endl;
+    m_paymentID = payment.m_paymentID;
+    m_transactionID = payment.m_transactionID;
+    m_paymentStatus = payment.m_paymentStatus;
+
+}
+
 PaymentMode::~PaymentMode()
 {
     cout<<"Paymentmode Destructor"<<endl;
+}
+
+PaymentMode PaymentMode::operator =(PaymentMode &payment)
+{
+    cout<< "PaymentMode assignment operator"<<endl;
+    return payment;
 }
 
 void PaymentMode::setID(string paymentID)

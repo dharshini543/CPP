@@ -17,9 +17,26 @@ RentalBikeDetails::RentalBikeDetails(string bikeName, string bikeModel, string b
     m_vehicleCost = bikeCost;
 }
 
+RentalBikeDetails::RentalBikeDetails(const RentalBikeDetails &bike)
+{
+    cout<< "RentalBikeDetails Copy constructor called"<<endl;
+    m_vehicleName = bike.m_vehicleName;
+    m_vehicleNumber = bike.m_vehicleNumber;
+    m_vehicleModel = bike.m_vehicleModel;
+    m_vehicleStatus = bike.m_vehicleStatus;
+    m_vehicleCost = bike.m_vehicleCost;
+
+}
+
 RentalBikeDetails::~RentalBikeDetails()
 {
     cout<<"RentalBikeDetails Destructor"<<endl;
+}
+
+RentalBikeDetails RentalBikeDetails::operator =(RentalBikeDetails &bike)
+{
+    cout<< "RentalBikeDetails assignment operator"<<endl;
+    return bike;
 }
 
 string RentalBikeDetails::getVehicleName()

@@ -9,10 +9,25 @@ UPI::UPI(string upiID, int transactionID, string paymentStatus)
     m_paymentStatus = paymentStatus;
 }
 
+UPI::UPI(const UPI &upi)
+{
+    cout<< "UPI Copy constructor called"<<endl;
+    m_paymentID = upi.m_paymentID;
+    m_transactionID = upi.m_transactionID;
+    m_paymentStatus = upi.m_paymentStatus;
+
+}
+
 UPI::~UPI()
 {
     cout<<"UPI Destructor"<<endl;
 
+}
+
+UPI UPI::operator =(UPI &upi)
+{
+    cout<< "UPI assignment operator"<<endl;
+    return upi;
 }
 void UPI::setID(string ID)
 {

@@ -9,7 +9,7 @@ add_executable(Vehicle_project main.cpp
     Rental_Vehicle_Details.h Rental_Vehicle_Details.cpp
     Rental_Bike_Details.h Rental_Bike_Details.cpp
     Rental_Car_Details.h Rental_Car_Details.cpp
-    Vehicle_Manager.h Vehicle_Manager.cpp
+    Rental_Vehicle_Manager.h Rental_Vehicle_Manager.cpp
     Rental_Customer_details.h Rental_Customer_details.cpp
 
     Bike_FileOperation.h Bike_FileOperation.cpp

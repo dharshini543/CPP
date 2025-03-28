@@ -17,9 +17,26 @@ RentalCarDetails::RentalCarDetails(string carName, string carModel, string carNu
     m_vehicleCost = carCost;
 }
 
+RentalCarDetails::RentalCarDetails(const RentalCarDetails &car)
+{
+    cout<< "RentalCarDetails Copy constructor called"<<endl;
+    m_vehicleName = car.m_vehicleName;
+    m_vehicleNumber = car.m_vehicleNumber;
+    m_vehicleModel = car.m_vehicleModel;
+    m_vehicleStatus = car.m_vehicleStatus;
+    m_vehicleCost = car.m_vehicleCost;
+
+}
+
 RentalCarDetails::~RentalCarDetails()
 {
     cout<<"RentalCarDetails Destructor"<<endl;
+}
+
+RentalCarDetails RentalCarDetails::operator =(RentalCarDetails &car)
+{
+    cout<< "RentalCarDetails assignment operator"<<endl;
+    return car;
 }
 
 string RentalCarDetails::getVehicleName()

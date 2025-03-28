@@ -9,9 +9,24 @@ User::User(string userName, string passWord, string userRole)
     m_userRole = userRole;
 }
 
+User::User(const User &user)
+{
+    cout<< "User Copy constructor called"<<endl;
+    m_userName = user.m_userName;
+    m_passWord = user.m_passWord;
+    m_userRole = user.m_userRole;
+
+}
+
 User::~User()
 {
     cout<<"User Destructor"<<endl;
+}
+
+User User::operator =(User &user)
+{
+    cout<< "User assignment operator"<<endl;
+    return user;
 }
 
 string User::getUserName()

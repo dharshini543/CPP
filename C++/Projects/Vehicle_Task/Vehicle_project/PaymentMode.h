@@ -9,7 +9,11 @@ class PaymentMode
 public:
     PaymentMode();
     PaymentMode(string ID, int transactionID, string paymentStatus);
+    PaymentMode(const PaymentMode &payment);
     virtual ~PaymentMode();
+
+    PaymentMode operator = (PaymentMode& payment);
+
 
     virtual string getID();
     virtual void setID(string paymentID);

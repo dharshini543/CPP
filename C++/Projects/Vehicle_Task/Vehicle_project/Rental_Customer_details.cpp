@@ -3,12 +3,12 @@
 
 Rental_Customer_details::Rental_Customer_details()
 {
-    cout<<"Customer Constructor"<<endl;
+    cout<<"Rental_Customer_details Constructor"<<endl;
 }
 
 Rental_Customer_details::Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails *vehicle, PaymentMode *payMode, string vehicleStatus, string vehicleType, int rentalDuration, string paymentType, float amountPaid, float balanceAmount)
 {
-    cout<<"Customer Constructor"<<endl;
+    cout<<"Rental_Customer_details Constructor"<<endl;
     m_customerName = customerName;
     m_bookingID = bookingID;
     m_vehicle = vehicle;
@@ -21,11 +21,33 @@ Rental_Customer_details::Rental_Customer_details(string customerName, int bookin
     m_balanceAmount = balanceAmount;
 }
 
+Rental_Customer_details::Rental_Customer_details(const Rental_Customer_details &customer)
+{
+    cout<< "Rental_Customer_details Copy constructor called"<<endl;
+    m_customerName = customer.m_customerName;
+    m_bookingID = customer.m_bookingID;
+    m_vehicle = customer.m_vehicle;
+    m_payMode = customer.m_payMode;
+    m_vehicleStatus = customer.m_vehicleStatus;
+    m_vehicleType = customer.m_vehicleType;
+    m_rentalDuration = customer.m_rentalDuration;
+    m_paymentType = customer.m_paymentType;
+    m_amountPaid = customer.m_amountPaid;
+    m_balanceAmount = customer.m_balanceAmount;
+
+}
+
 Rental_Customer_details::~Rental_Customer_details()
 {
-    cout<<"Customer Destructor"<<endl;
+    cout<<"Rental_Customer_details Destructor"<<endl;
     delete m_vehicle;
     delete m_payMode;
+}
+
+Rental_Customer_details Rental_Customer_details::operator =(Rental_Customer_details &customer)
+{
+    cout<< "Rental_Customer_details assignment operator"<<endl;
+    return customer;
 }
 
 string Rental_Customer_details::getCusName()

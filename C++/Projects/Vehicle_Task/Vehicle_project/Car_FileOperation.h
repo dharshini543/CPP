@@ -8,7 +8,10 @@ class Car_FileOperation
 {
 public:
     Car_FileOperation();
+    Car_FileOperation(const Car_FileOperation& car);
     ~Car_FileOperation();
+
+    Car_FileOperation operator = (Car_FileOperation& car);
 
     void writeData(list<RentalCarDetails*> carList);
     list<RentalCarDetails*> readData();

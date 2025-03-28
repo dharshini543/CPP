@@ -8,7 +8,10 @@ class LoginManagement
 {
 public:
     LoginManagement();
+    LoginManagement(const LoginManagement &user);
     ~LoginManagement();
+
+    LoginManagement operator = (LoginManagement& user);
 
     int getUserCount();
     void setUserCount(int userCount);

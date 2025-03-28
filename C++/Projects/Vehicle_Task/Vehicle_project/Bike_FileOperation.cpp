@@ -7,9 +7,21 @@ Bike_FO::Bike_FO()
     cout<<"Bike File operations Constructor"<<endl;
 }
 
+Bike_FO::Bike_FO(const Bike_FO &bike)
+{
+    cout<< "Bike File operations Copy constructor called"<<endl;
+}
+
 Bike_FO::~Bike_FO()
 {
     cout<<"Bike File operations Destructor"<<endl;
+}
+
+Bike_FO Bike_FO::operator =(Bike_FO &bike)
+{
+    cout<< "Bike File operations assignment operator"<<endl;
+    return bike;
+
 }
 
 void Bike_FO::writeData(list<RentalBikeDetails*> bikeList)
