@@ -7,7 +7,11 @@ class RentalVehicleDetails
 {    
 public:
     RentalVehicleDetails();
+    RentalVehicleDetails(const RentalVehicleDetails &vehicle);
     virtual ~RentalVehicleDetails();
+
+    RentalVehicleDetails operator = (RentalVehicleDetails& vehicle);
+
 
     virtual string getVehicleName();
     virtual void setVehicleName(string vehicleName);

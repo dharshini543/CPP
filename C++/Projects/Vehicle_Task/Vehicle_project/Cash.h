@@ -6,7 +6,10 @@ class Cash:public PaymentMode
 {
 public:
     Cash(string cashID, int transactionID, string paymentStatus);
+    Cash(const Cash &cash);
     ~Cash();
+
+    Cash operator = (Cash& cash);
 
     string getID();
     void setID(string ID);

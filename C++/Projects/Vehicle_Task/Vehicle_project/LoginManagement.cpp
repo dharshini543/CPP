@@ -4,18 +4,31 @@
 
 LoginManagement::LoginManagement()
 {
-    cout<<"Login Management Constructor"<<endl;
+    cout<<"LoginManagement Constructor"<<endl;
     m_userCount = 0;
+}
+
+LoginManagement::LoginManagement(const LoginManagement &user)
+{
+    cout<< "LoginManagement constructor called"<<endl;
+    m_userCount = user.m_userCount;
+
 }
 
 LoginManagement::~LoginManagement()
 {
-    cout<<"Login Management Destructor"<<endl;
+    cout<<"LoginManagement Destructor"<<endl;
 
     for(auto user : m_userList)
     {
         delete user;
     }
+}
+
+LoginManagement LoginManagement::operator =(LoginManagement &user)
+{
+    cout<< "LoginManagement assignment operator"<<endl;
+    return user;
 }
 
 int LoginManagement::getUserCount()
@@ -73,6 +86,14 @@ User* LoginManagement::addAdmin()
                 break;
             }
         }
+        for(auto user:m_userList)
+        {
+            if(user->getUserName() == adminName && user->getPassWord() == adminPassword && user->getUserRole() == "ADMIN")
+            {
+                cout<<"Admin already exists"<<endl;
+                return NULL;
+            }
+        }
         m_userList.push_back(new User(adminName, adminPassword, "ADMIN"));
         m_userCount++;
         for(auto admin:m_userList)
@@ -113,6 +134,14 @@ User* LoginManagement::signUp()
         else
         {
             break;
+        }
+    }
+    for(auto user:m_userList)
+    {
+        if(user->getUserName() == userName && user->getPassWord() == passWord && user->getUserRole() == "CUSTOMER")
+        {
+            cout<<"User already exists"<<endl;
+            return NULL;
         }
     }
     m_userList.push_back(new User(userName, passWord, "CUSTOMER"));

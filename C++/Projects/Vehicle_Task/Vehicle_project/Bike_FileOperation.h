@@ -8,7 +8,10 @@ class Bike_FO
 {
 public:
     Bike_FO();
+    Bike_FO(const Bike_FO &bike);
     ~Bike_FO();
+
+    Bike_FO operator = (Bike_FO& bike);
 
     void writeData(list<RentalBikeDetails*> bikeList);
     list<RentalBikeDetails *> readData();

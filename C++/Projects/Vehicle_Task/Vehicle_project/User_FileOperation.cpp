@@ -4,12 +4,24 @@
 
 User_FileOperation::User_FileOperation()
 {
-    cout<<"User File operations Constructor"<<endl;
+    cout<<"User_FileOperation Constructor"<<endl;
+}
+
+User_FileOperation::User_FileOperation(const User_FileOperation &user)
+{
+    cout<< "User_FileOperation Copy constructor called"<<endl;
+
 }
 
 User_FileOperation::~User_FileOperation()
 {
     cout<<"User File operations Destructor"<<endl;
+}
+
+User_FileOperation User_FileOperation::operator =(User_FileOperation &user)
+{
+    cout<< "User_FileOperation assignment operator"<<endl;
+    return user;
 }
 
 void User_FileOperation::writeData(list<User *> userList)
@@ -21,7 +33,7 @@ void User_FileOperation::writeData(list<User *> userList)
         return ;
     }
     file<<"UserName    "<<"Password    "<<"UserRole    "<<endl;
-    for(auto* user:userList)
+    for(auto user:userList)
     {
         file<<user->getUserName()<<","<<user->getPassWord()<<","<<user->getUserRole()<<endl;
     }

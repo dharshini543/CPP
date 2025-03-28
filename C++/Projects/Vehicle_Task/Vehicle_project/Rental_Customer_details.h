@@ -9,7 +9,11 @@ class Rental_Customer_details
 public:
     Rental_Customer_details();
     Rental_Customer_details(string customerName, int bookingID, RentalVehicleDetails* vehicle, PaymentMode* payMode, string vehicleStatus, string m_vehicleType, int rentalDuration, string paymentType, float amountPaid, float balanceAmount);
+    Rental_Customer_details(const Rental_Customer_details &customer);
     ~Rental_Customer_details();
+
+    Rental_Customer_details operator = (Rental_Customer_details& customer);
+
 
     string getCusName();
     int getBookingID();

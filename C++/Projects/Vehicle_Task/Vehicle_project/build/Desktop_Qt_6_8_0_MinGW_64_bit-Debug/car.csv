@@ -1,10 +1,11 @@
 Name          Model      Number           Cost          Status
-Toyota,Fortuner,KA100,10000,Deleted
-Toyota,Corolla,KA101,20000,Available
-Toyota,Fortuner,KA103,30000,Available
-Toyota,Corolla,KA104,40000,Available
-Toyota,Fortuner,KA105,50000,Available
-Toyota,Corolla,KA106,60000,Available
-Toyota,Fortuner,KA107,70000,Available
 Toyota,Corolla,KA108,80000,Available
-Toyota,Fortuner,KA109,90000,Available
+Toyota,Fortuner,KA107,70000,Available
+Toyota,Corolla,KA106,60000,Available
+Toyota,Fortuner,KA105,50000,Available
+Toyota,Corolla,KA104,40000,Available
+Toyota,Fortuner,KA103,30000,Available
+Toyota,Corolla,KA101,20000,Available
+Toyota,Fortuner,KA109,10000,Available
+Toyota,Fortuner,KA100,10000,Deleted
+Mahindra,XUV300,KA200,5000,Available

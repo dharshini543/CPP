@@ -7,7 +7,10 @@ class User
 {
 public:
     User(string userName, string passWord, string userRole);
+    User(const User &user);
     ~User();
+
+    User operator = (User& user);
 
     string getUserName();
     void setUserName(string UserName);

@@ -4,12 +4,24 @@
 
 Car_FileOperation::Car_FileOperation()
 {
-    cout<<"Car File Operation Constructor"<<endl;
+    cout<<"Car_FileOperation Constructor"<<endl;
+}
+
+Car_FileOperation::Car_FileOperation(const Car_FileOperation &car)
+{
+    cout<< "Car_FileOperation Copy constructor called"<<endl;
+
 }
 
 Car_FileOperation::~Car_FileOperation()
 {
-    cout<<"Car File Operation Destructor"<<endl;
+    cout<<"Car_FileOperation Destructor"<<endl;
+}
+
+Car_FileOperation Car_FileOperation::operator =(Car_FileOperation &car)
+{
+    cout<< "Car_FileOperation assignment operator"<<endl;
+    return car;
 }
 
 void Car_FileOperation::writeData(list<RentalCarDetails*> carList)

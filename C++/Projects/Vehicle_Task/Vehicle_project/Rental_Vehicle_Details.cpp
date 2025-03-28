@@ -3,12 +3,24 @@
 
 RentalVehicleDetails::RentalVehicleDetails()
 {
-    cout<<"Vehicle Constructor"<<endl;
+    cout<<"RentalVehicleDetails Constructor"<<endl;
+}
+
+RentalVehicleDetails::RentalVehicleDetails(const RentalVehicleDetails &vehicle)
+{
+    cout<< "RentalVehicleDetails Copy constructor called"<<endl;
+
 }
 
 RentalVehicleDetails::~RentalVehicleDetails()
 {
-    cout<<"Vehicle Destructor"<<endl;
+    cout<<"RentalVehicleDetails Destructor"<<endl;
+}
+
+RentalVehicleDetails RentalVehicleDetails::operator =(RentalVehicleDetails &vehicle)
+{
+    cout<< "RentalVehicleDetails assignment operator"<<endl;
+    return vehicle;
 }
 
 string RentalVehicleDetails::getVehicleName()

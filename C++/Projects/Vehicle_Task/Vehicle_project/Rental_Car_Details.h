@@ -9,7 +9,10 @@ class RentalCarDetails:public RentalVehicleDetails
 public:
     RentalCarDetails();
     RentalCarDetails(string carName, string carModel, string carNumber, float carCost, string carStatus);
+    RentalCarDetails(const RentalCarDetails &car);
     ~RentalCarDetails();
+
+    RentalCarDetails operator = (RentalCarDetails& car);
 
     string getVehicleName();
     void setVehicleName(string vehicleName);

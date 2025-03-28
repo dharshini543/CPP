@@ -7,7 +7,11 @@ class UPI:public PaymentMode
 {
 public:
     UPI(string upiID, int transactionID, string paymentStatus);
+    UPI(const UPI &upi);
     ~UPI();
+
+    UPI operator = (UPI& upi);
+
 
     string getID();
     void setID(string ID);

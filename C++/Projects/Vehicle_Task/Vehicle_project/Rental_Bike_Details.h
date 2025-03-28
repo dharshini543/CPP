@@ -8,7 +8,11 @@ class RentalBikeDetails:public RentalVehicleDetails
 public:
     RentalBikeDetails();
     RentalBikeDetails(string bikeName, string bikeModel, string bikeNumber, float bikeCost, string bikeStatus);
+    RentalBikeDetails(const RentalBikeDetails &bike);
     ~RentalBikeDetails();
+
+    RentalBikeDetails operator = (RentalBikeDetails& bike);
+
 
     string getVehicleName();
     void setVehicleName(string vehicleName);

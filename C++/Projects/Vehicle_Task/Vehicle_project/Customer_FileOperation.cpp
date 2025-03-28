@@ -11,9 +11,21 @@ Customer_FileOperation::Customer_FileOperation()
     cout << "Customer_Fileoperation Constructor" << endl;
 }
 
+Customer_FileOperation::Customer_FileOperation(const Customer_FileOperation &customer)
+{
+    cout<< "Customer_FileOperation Copy constructor called"<<endl;
+
+}
+
 Customer_FileOperation::~Customer_FileOperation()
 {
     cout << "Customer_Fileoperation Destructor" << endl;
+}
+
+Customer_FileOperation Customer_FileOperation::operator =(Customer_FileOperation &customer)
+{
+    cout<< "Customer_FileOperation assignment operator"<<endl;
+    return customer;
 }
 
 void Customer_FileOperation::writeData(list<Rental_Customer_details *> customerList)
