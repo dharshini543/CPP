@@ -1,0 +1,9 @@
+#include"C.h"
+using namespace std;
+
+int main()
+{
+    A* ptr = new C;
+    delete ptr;
+    return 0;
+}
