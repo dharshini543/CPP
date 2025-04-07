@@ -12,20 +12,8 @@ B::~B()
     cout<<"B Destructor"<<endl;
 
 }
+
 void B::fun()
 {
     cout<<"B Function"<<endl;
-
-}
-
-void B::display()
-{
-    cout<<"B display"<<endl;
-
-}
-
-void B::show()
-{
-    cout<<"B show"<<endl;
-
 }

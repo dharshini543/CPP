@@ -7,11 +7,7 @@ class B:public A
 public:
     B();
    virtual ~B();
-protected:
-    void fun();
-    void display();
-private:
-    void show();
+   virtual void fun();
 };
 
 #endif // B_H

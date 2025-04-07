@@ -5,12 +5,8 @@ class A
 {
 public:
     A();
-    ~A();
-    void fun();
-protected:
-    void display();
-private:
-    void show();
+    virtual~A();
+     void fun();
 };
 
 #endif // A_H

@@ -17,14 +17,4 @@ void A::fun()
 
 }
 
-void A::display()
-{
-    cout<<"A display"<<endl;
 
-}
-
-void A::show()
-{
-    cout<<"A show"<<endl;
-
-}

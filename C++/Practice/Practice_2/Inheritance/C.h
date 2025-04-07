@@ -4,14 +4,11 @@
 #include "B.h"
 class C:public B
 {
-private:
-    void fun();
-protected:
-    void display();
 public:
     C();
  ~C();
     void show();
+ void fun();
 };
 
 #endif // C_H
