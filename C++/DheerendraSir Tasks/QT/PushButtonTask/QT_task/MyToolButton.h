@@ -8,9 +8,10 @@ class MyToolButton : public QToolButton
 public:
     MyToolButton();
     ~MyToolButton();
-    bool event(QEvent *event) override;
+    //bool event(QEvent *event) override;
+
 protected:
-    void paintEvent(QPaintEvent *event) override;
+    //void paintEvent(QPaintEvent *event) override;
 };
 
 #endif // MYTOOLBUTTON_H

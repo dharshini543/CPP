@@ -12,14 +12,14 @@ MyRadioButton::~MyRadioButton()
     cout<<"MyRadioButton destructor"<<endl;
 }
 
-bool MyRadioButton::event(QEvent *event)
-{
-    cout<<"MyRadioButton event function called"<<endl;
-    return QWidget::event(event);
-}
+// bool MyRadioButton::event(QEvent *event)
+// {
+//     cout<<"MyRadioButton event function called"<<endl;
+//     return QRadioButton::event(event);
+// }
 
-void MyRadioButton::paintEvent(QPaintEvent *event)
-{
-    cout<<"MyRadioButton Paint Event function called"<<endl;
-    QWidget::paintEvent(event);
-}
+// void MyRadioButton::paintEvent(QPaintEvent *event)
+// {
+//     cout<<"MyRadioButton Paint Event function called"<<endl;
+//     QRadioButton::paintEvent(event);
+// }

@@ -12,15 +12,15 @@ MyDoubleSpinBox::~MyDoubleSpinBox()
     cout<<"MyDoubleSpinBox destructor"<<endl;
 }
 
-bool MyDoubleSpinBox::event(QEvent *event)
-{
-    cout<<"MyDoubleSpinBox event function called"<<endl;
-    return QWidget::event(event);
-}
+// bool MyDoubleSpinBox::event(QEvent *event)
+// {
+//     cout<<"MyDoubleSpinBox event function called"<<endl;
+//     return QDoubleSpinBox::event(event);
+// }
 
-void MyDoubleSpinBox::paintEvent(QPaintEvent *event)
-{
-    cout<<"MyDoubleSpinBox Paint Event function called"<<endl;
-    QWidget::paintEvent(event);
-}
+// void MyDoubleSpinBox::paintEvent(QPaintEvent *event)
+// {
+//     cout<<"MyDoubleSpinBox Paint Event function called"<<endl;
+//     QDoubleSpinBox::paintEvent(event);
+// }
 

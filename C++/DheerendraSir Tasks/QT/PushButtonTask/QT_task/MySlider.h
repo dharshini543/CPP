@@ -8,9 +8,10 @@ class MySlider : public QSlider
 public:
     MySlider();
     ~MySlider();
-    bool event(QEvent *event) override;
+    //bool event(QEvent *event) override;
+
 protected:
-    void paintEvent(QPaintEvent *event) override;
+    //void paintEvent(QPaintEvent *event) override;
 };
 
 #endif // MYSLIDER_H
