@@ -6,19 +6,20 @@ MyCheckBox::MyCheckBox()
 {
     cout<<"MyCheckBox Constructor"<<endl;
 }
+
 MyCheckBox::~MyCheckBox()
 {
     cout<<"MyCheckBox destructor"<<endl;
 }
 
-bool MyCheckBox::event(QEvent *event)
-{
-    cout<<"MyCheckBox event function called"<<endl;
-    return QWidget::event(event);
-}
+// bool MyCheckBox::event(QEvent *event)
+// {
+//     cout<<"MyCheckBox event function called"<<endl;
+//     return QCheckBox::event(event);
+// }
 
-void MyCheckBox::paintEvent(QPaintEvent *event)
-{
-    cout<<"My Button Paint Event function called"<<endl;
-    QWidget::paintEvent(event);
-}
+// void MyCheckBox::paintEvent(QPaintEvent *event)
+// {
+//     cout<<"My CheckBox Paint Event function called"<<endl;
+//     QCheckBox::paintEvent(event);
+// }

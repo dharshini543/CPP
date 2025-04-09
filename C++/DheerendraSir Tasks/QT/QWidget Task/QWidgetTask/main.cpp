@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     /*DBC dbc;
     dbc.show();*/
     DBC dbc;
-    QWidget* ptr = static_cast<QWidget*>(&dbc);
+    DBC* ptr = static_cast<DBC*>(&dbc);
     ptr->show();
 
     return a.exec();

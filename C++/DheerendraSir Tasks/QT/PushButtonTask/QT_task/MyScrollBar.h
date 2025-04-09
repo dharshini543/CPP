@@ -8,9 +8,10 @@ class MyScrollBar : public QScrollBar
 public:
     MyScrollBar();
     ~MyScrollBar();
-    bool event(QEvent *event) override;
+    //bool event(QEvent *event) override;
+
 protected:
-    void paintEvent(QPaintEvent *event) override;
+    //void paintEvent(QPaintEvent *event) override;
 };
 
 #endif // MYSCROLLBAR_H

@@ -13,26 +13,30 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
     MyButton button;
     button.show();
-    MyRadioButton radioButton;
-    radioButton.show();
-    MyCheckBox checkBox;
-    checkBox.show();
-    MyToolButton toolButton;
-    toolButton.show();
-    MySlider slider;
-    slider.show();
-    MyScrollBar scrollBar;
-    scrollBar.show();
-    MyDoubleSpinBox doubleSpinBox;
-    doubleSpinBox.show();
-    MySpinBox spinBox;
-    spinBox.show();
 
-    /*MyButton button;
-    QPushButton* ptr = static_cast<QPushButton*>(&button);
-    ptr->show();*/
+    // MyRadioButton radioButton;
+    // radioButton.show();
+
+    // MyCheckBox checkBox;
+    // checkBox.show();
+
+    // MyToolButton toolButton;
+    // toolButton.show();
+
+    // MySlider slider;
+    // slider.show();
+
+    // MyScrollBar scrollBar;
+    // scrollBar.show();
+
+    // MyDoubleSpinBox doubleSpinBox;
+    // doubleSpinBox.show();
+
+    // MySpinBox spinBox;
+    // spinBox.show();
 
     return a.exec();
 }
