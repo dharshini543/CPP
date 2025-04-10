@@ -8,9 +8,9 @@ class MyRadioButton : public QRadioButton
 public:
     MyRadioButton();
     ~MyRadioButton();
-    //bool event(QEvent *event) override;
 
 protected:
+    //bool event(QEvent *event) override;
     //void paintEvent(QPaintEvent *event) override;
 };
 

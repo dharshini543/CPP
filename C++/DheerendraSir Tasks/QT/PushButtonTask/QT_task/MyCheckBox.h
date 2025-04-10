@@ -8,9 +8,9 @@ class MyCheckBox : public QCheckBox
 public:
     MyCheckBox();
     ~MyCheckBox();
-    //bool event(QEvent *event) override;
 
 protected:
+    //bool event(QEvent *event) override;
     //void paintEvent(QPaintEvent *event) override;
 };
 
