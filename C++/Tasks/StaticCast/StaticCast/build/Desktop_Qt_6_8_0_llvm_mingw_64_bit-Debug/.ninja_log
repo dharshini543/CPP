@@ -1,0 +1,13 @@
+# ninja log v6
+2	846	7658845738623466	CMakeFiles/StaticCast.dir/main.cpp.obj	1527f2e4182fb8e9
+853	982	7658845747205649	StaticCast.exe	c7b3149c5abea143
+28	460	7658847990219825	CMakeFiles/StaticCast.dir/main.cpp.obj	1527f2e4182fb8e9
+460	518	7658847994552234	StaticCast.exe	c7b3149c5abea143
+33	483	7658849215370249	CMakeFiles/StaticCast.dir/main.cpp.obj	1527f2e4182fb8e9
+483	545	7658849219870362	StaticCast.exe	c7b3149c5abea143
+25	442	7658849671421771	CMakeFiles/StaticCast.dir/main.cpp.obj	1527f2e4182fb8e9
+442	511	7658849675603220	StaticCast.exe	c7b3149c5abea143
+29	455	7658849952204973	CMakeFiles/StaticCast.dir/main.cpp.obj	1527f2e4182fb8e9
+456	516	7658849956467553	StaticCast.exe	c7b3149c5abea143
+25	436	7658850268037148	CMakeFiles/StaticCast.dir/main.cpp.obj	1527f2e4182fb8e9
+436	512	7658850272171432	StaticCast.exe	c7b3149c5abea143

@@ -8,9 +8,9 @@ class MyDoubleSpinBox : public QDoubleSpinBox
 public:
     MyDoubleSpinBox();
     ~MyDoubleSpinBox();
-    //bool event(QEvent *event) override;
 
 protected:
+    //bool event(QEvent *event) override;
     //void paintEvent(QPaintEvent *event) override;
 };
 

@@ -8,9 +8,9 @@ class MyButton : public QPushButton
 public:
     MyButton();
     ~MyButton();
-    //bool event(QEvent *event) override;
 
 protected:
+    //bool event(QEvent *event) override;
     //void paintEvent(QPaintEvent *event) override;
 };
 
