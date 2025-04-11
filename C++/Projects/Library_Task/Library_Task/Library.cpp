@@ -11,6 +11,11 @@ Library::~Library()
     cout<<"Library Destructor"<<endl;
 }
 
+void Library::addBook()
+{
+
+}
+
 void Library::select()
 {
     int input;
