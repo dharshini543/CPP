@@ -21,11 +21,15 @@ public:
 
 int main()
 {
-    base* bptr;
-    derived d1,*dptr;
-    bptr = &d1;
-    bptr->fun();
-    dptr= dynamic_cast<derived*> (bptr);
+    // base* bptr;
+    // derived d1,*dptr;
+    // bptr = &d1;
+    // bptr->fun();
+    // dptr= dynamic_cast<derived*> (bptr);
+    // dptr->fun();
+
+    base* bptr = new base;
+    derived* dptr = static_cast<derived*>(bptr);
     dptr->fun();
 
     cout << "Hello World!" << endl;

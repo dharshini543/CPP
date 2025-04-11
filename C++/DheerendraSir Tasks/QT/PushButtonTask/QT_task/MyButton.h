@@ -10,8 +10,8 @@ public:
     ~MyButton();
 
 protected:
-    //bool event(QEvent *event) override;
-    //void paintEvent(QPaintEvent *event) override;
+    bool event(QEvent *event) override;
+    void paintEvent(QPaintEvent *event) override;
 };
 
 #endif // MYBUTTON_H
