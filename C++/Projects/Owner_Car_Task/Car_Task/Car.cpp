@@ -14,7 +14,7 @@ Car::~Car()
 
 void Car::assignDriver(Driver* driver)
 {
-    cout<<"Driver is driving car"<<endl;
+    cout<<driver->getName()<<" is driving car"<<endl;
     m_driver = driver;
 }
 

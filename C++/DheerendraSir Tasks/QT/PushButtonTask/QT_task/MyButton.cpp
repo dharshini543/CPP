@@ -12,14 +12,14 @@ MyButton::~MyButton()
     cout<<"My Button destructor"<<endl;
 }
 
-// bool MyButton::event(QEvent* event)
-// {
-//     cout<<"My Button event function called"<<endl;
-//     return QPushButton::event(event);
-// }
+bool MyButton::event(QEvent* event)
+{
+    cout<<"My Button event function called"<<endl;
+    return QPushButton::event(event);
+}
 
-// void MyButton::paintEvent(QPaintEvent* event)
-// {
-//     cout<<"My Button Paint Event function called"<<endl;
-//     QPushButton::paintEvent(event);
-// }
+void MyButton::paintEvent(QPaintEvent* event)
+{
+    cout<<"My Button Paint Event function called"<<endl;
+    QPushButton::paintEvent(event);
+}

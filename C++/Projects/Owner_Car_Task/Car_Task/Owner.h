@@ -3,15 +3,18 @@
 
 #include "Car.h"
 #include "Driver.h"
+#include <string>
 
 class Owner
 {
 public:
-    Owner();
+    Owner(string name);
     ~Owner();
     void assignDriver(Driver* driver);
+    string getName();
 private:
     Car* m_car = new Car;
+    string m_ownerName;
 };
 
 #endif // OWNER_H

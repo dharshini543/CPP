@@ -1,0 +1,7 @@
+# ninja log v6
+26	484	7659854554234476	CMakeFiles/Library_Task.dir/Librarian.cpp.obj	9a40f8bbac828b28
+35	415	7659819585491927	CMakeFiles/Library_Task.dir/Book.cpp.obj	32ad6eae89dd6175
+31	395	7659853389506339	CMakeFiles/Library_Task.dir/Library.cpp.obj	ec8af73886801efb
+27	267	7659853389464593	CMakeFiles/Library_Task.dir/main.cpp.obj	db030a0255396e87
+62	656	7659849333732674	CMakeFiles/Library_Task.dir/Student.cpp.obj	eab9dda56726a94
+485	601	7659854558818925	Library_Task.exe	1813d80aa9cfa3d2

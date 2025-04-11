@@ -3,9 +3,10 @@
 #include<iostream>
 using namespace  std;
 
-Owner::Owner()
+Owner::Owner(string name)
 {
     cout<<"Owner Constructor"<<endl;
+    m_ownerName = name;
 }
 
 Owner::~Owner()
@@ -18,7 +19,12 @@ void Owner::assignDriver(Driver *driver)
 {
     if(driver != NULL)
     {
-        cout<<"Driver is assigned to Owner"<<endl;
+        cout<<driver->getName()<<" is assigned to Owner"<<endl;
         m_car->assignDriver(driver);
     }
+}
+
+string Owner::getName()
+{
+    return m_ownerName;
 }
