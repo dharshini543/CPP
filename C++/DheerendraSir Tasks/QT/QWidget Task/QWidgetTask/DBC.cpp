@@ -12,11 +12,6 @@ DBC::~DBC()
     cout<<"DBC Destructor"<<endl;
 }
 
-void DBC::on()
-{
-    cout<<"DBC Destructor"<<endl;
-}
-
 void DBC::paintEvent(QPaintEvent *event)
 {
     cout<<"DBC paintEvent function called"<<endl;

@@ -1,10 +1,10 @@
 #ifndef STUDENT_H
 #define STUDENT_H
+
 #include "Book.h"
 #include <list>
-#include <string>
-using namespace std;
 
+class Library;
 class Student
 {
 public:
@@ -15,7 +15,7 @@ public:
     string getName();
     string getdepartment();
     int getID();
-    void requestBook(string bookName);
+    string getRequestedBook();
 
 private:
     string m_studentName;

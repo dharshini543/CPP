@@ -8,8 +8,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(Library_Task1 main.cpp
     Library.h Library.cpp
     Librarian.h Librarian.cpp
-    Student.h Student.cpp
-    Book.h Book.cpp)
+    StudentRecord.h StudentRecord.cpp
+    Book.h Book.cpp
+    Student.h Student.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS Library_Task1

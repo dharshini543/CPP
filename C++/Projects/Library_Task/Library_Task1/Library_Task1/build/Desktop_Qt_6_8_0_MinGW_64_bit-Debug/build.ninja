@@ -67,14 +67,20 @@ build CMakeFiles/Library_Task1.dir/Librarian.cpp.obj: CXX_COMPILER__Library_Task
   OBJECT_DIR = CMakeFiles\Library_Task1.dir
   OBJECT_FILE_DIR = CMakeFiles\Library_Task1.dir
 
-build CMakeFiles/Library_Task1.dir/Student.cpp.obj: CXX_COMPILER__Library_Task1_unscanned_Debug C$:/C++/C++/Projects/Library_Task/Library_Task1/Library_Task1/Student.cpp || cmake_object_order_depends_target_Library_Task1
-  DEP_FILE = CMakeFiles\Library_Task1.dir\Student.cpp.obj.d
+build CMakeFiles/Library_Task1.dir/StudentRecord.cpp.obj: CXX_COMPILER__Library_Task1_unscanned_Debug C$:/C++/C++/Projects/Library_Task/Library_Task1/Library_Task1/StudentRecord.cpp || cmake_object_order_depends_target_Library_Task1
+  DEP_FILE = CMakeFiles\Library_Task1.dir\StudentRecord.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Library_Task1.dir
   OBJECT_FILE_DIR = CMakeFiles\Library_Task1.dir
 
 build CMakeFiles/Library_Task1.dir/Book.cpp.obj: CXX_COMPILER__Library_Task1_unscanned_Debug C$:/C++/C++/Projects/Library_Task/Library_Task1/Library_Task1/Book.cpp || cmake_object_order_depends_target_Library_Task1
   DEP_FILE = CMakeFiles\Library_Task1.dir\Book.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Library_Task1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Library_Task1.dir
+
+build CMakeFiles/Library_Task1.dir/Student.cpp.obj: CXX_COMPILER__Library_Task1_unscanned_Debug C$:/C++/C++/Projects/Library_Task/Library_Task1/Library_Task1/Student.cpp || cmake_object_order_depends_target_Library_Task1
+  DEP_FILE = CMakeFiles\Library_Task1.dir\Student.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Library_Task1.dir
   OBJECT_FILE_DIR = CMakeFiles\Library_Task1.dir
@@ -87,7 +93,7 @@ build CMakeFiles/Library_Task1.dir/Book.cpp.obj: CXX_COMPILER__Library_Task1_uns
 #############################################
 # Link the executable Library_Task1.exe
 
-build Library_Task1.exe: CXX_EXECUTABLE_LINKER__Library_Task1_Debug CMakeFiles/Library_Task1.dir/main.cpp.obj CMakeFiles/Library_Task1.dir/Library.cpp.obj CMakeFiles/Library_Task1.dir/Librarian.cpp.obj CMakeFiles/Library_Task1.dir/Student.cpp.obj CMakeFiles/Library_Task1.dir/Book.cpp.obj
+build Library_Task1.exe: CXX_EXECUTABLE_LINKER__Library_Task1_Debug CMakeFiles/Library_Task1.dir/main.cpp.obj CMakeFiles/Library_Task1.dir/Library.cpp.obj CMakeFiles/Library_Task1.dir/Librarian.cpp.obj CMakeFiles/Library_Task1.dir/StudentRecord.cpp.obj CMakeFiles/Library_Task1.dir/Book.cpp.obj CMakeFiles/Library_Task1.dir/Student.cpp.obj
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Library_Task1.dir

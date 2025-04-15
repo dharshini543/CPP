@@ -5,12 +5,36 @@ Library::Library(Librarian* librarian)
 {
     cout<<"Library Constructor"<<endl;
 }
+
 Library::~Library()
 {
     cout<<"Library Destructor"<<endl;
     for(auto book:m_bookList)
     {
         delete book;
+    }
+    for(auto student:m_studentRecord)
+    {
+        delete student;
+    }
+}
+
+void Library:: studentEntryToBorrowBook(Student& student)
+{
+    string bookName =  student.getRequestedBook();
+
+    Book* book = m_librarian->searchBookByName(m_bookList, bookName);
+    if(book != NULL)
+    {
+        if(book->getStatus() == "Available")
+        {
+            m_librarian->issueBook(student, book, m_studentRecord);
+            book->setStatus("Issued");
+        }
+    }
+    else
+    {
+        cout<<"book with "<<bookName<<" is not available"<<endl;
     }
 }
 
@@ -27,24 +51,17 @@ void Library::displayBooks()
     }
 }
 
-void Library::displayStudentList(list<Student *> &studentList)
+void Library::displayStudentRecord()
 {
-    for(auto student:studentList)
+    for(auto StudentRecord: m_studentRecord)
     {
-        cout<<student->getName()<<" "<<student->getID()<<" "<<student->getdepartment()<<endl;
+        StudentRecord->display();
     }
 }
 
-Book* Library::searchBookByID(int bookID)
-{
-    for(auto Book:m_bookList)
-    {
-        if(Book->getID() == bookID)
-        {
-            return Book;
-        }
-    }
-    return NULL;
-}
+
+
+
+
 
 
