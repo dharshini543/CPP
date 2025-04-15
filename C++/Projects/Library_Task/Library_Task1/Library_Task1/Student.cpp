@@ -43,7 +43,10 @@ int Student::getID()
     return m_studentID;
 }
 
-void Student::requestBook(string bookName)
+string Student::getRequestedBook()
 {
-    cout<<"Student requested "<<bookName<<endl;
+    string bookName;
+    cout<<"Enter book name"<<endl;
+    cin>>bookName;
+    return bookName;
 }
