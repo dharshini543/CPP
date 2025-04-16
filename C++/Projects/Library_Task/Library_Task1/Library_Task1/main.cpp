@@ -11,6 +11,6 @@ int main()
     library.addBook("C", "DennisRitchie", 101, "Available");
 
     Student student("Dharshini", "Civil", 1);
-    library.studentEntryToBorrowBook(student);
+    library.studentBookBorrowingProcess(student);
     return 0;
 }

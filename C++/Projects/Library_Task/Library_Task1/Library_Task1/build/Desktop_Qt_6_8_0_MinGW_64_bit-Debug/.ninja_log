@@ -73,3 +73,14 @@
 337	486	7663239612821350	Library_Task1.exe	9448bbcac0099ee1
 29	454	7663239792878891	CMakeFiles/Library_Task1.dir/Librarian.cpp.obj	4fb28c0ad5496b0a
 454	579	7663239797170725	Library_Task1.exe	9448bbcac0099ee1
+58	737	7663966411008884	CMakeFiles/Library_Task1.dir/main.cpp.obj	17dc879645c951c8
+65	746	7663966411075335	CMakeFiles/Library_Task1.dir/Librarian.cpp.obj	4fb28c0ad5496b0a
+62	749	7663966411043544	CMakeFiles/Library_Task1.dir/Library.cpp.obj	9731beea96c96bff
+749	1124	7663966417921432	Library_Task1.exe	9448bbcac0099ee1
+35	557	7663967547487739	CMakeFiles/Library_Task1.dir/Student.cpp.obj	3a27f6fd6707dc2b
+32	574	7663967547457344	CMakeFiles/Library_Task1.dir/Librarian.cpp.obj	4fb28c0ad5496b0a
+28	627	7663967547403913	CMakeFiles/Library_Task1.dir/Library.cpp.obj	9731beea96c96bff
+627	739	7663967553411796	Library_Task1.exe	9448bbcac0099ee1
+28	426	7663969527723537	CMakeFiles/Library_Task1.dir/main.cpp.obj	17dc879645c951c8
+32	545	7663969527763626	CMakeFiles/Library_Task1.dir/Library.cpp.obj	9731beea96c96bff
+545	640	7663969532897599	Library_Task1.exe	9448bbcac0099ee1

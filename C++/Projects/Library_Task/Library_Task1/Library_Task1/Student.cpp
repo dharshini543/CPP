@@ -16,7 +16,7 @@ Student::~Student()
 
 void Student::borrowBook(Book* book)
 {
-    cout<<book->getName()<<" book borrowed"<<endl;
+    cout<<book->getName()<<" book is borrowed by "<<this->getName()<<endl;
     m_borrowedBooks.push_back(book);
 }
 
