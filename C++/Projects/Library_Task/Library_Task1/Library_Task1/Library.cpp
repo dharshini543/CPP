@@ -19,7 +19,7 @@ Library::~Library()
     }
 }
 
-void Library:: studentEntryToBorrowBook(Student& student)
+void Library:: studentBookBorrowingProcess(Student& student)
 {
     string bookName =  student.getRequestedBook();
 
@@ -28,13 +28,14 @@ void Library:: studentEntryToBorrowBook(Student& student)
     {
         if(book->getStatus() == "Available")
         {
-            m_librarian->issueBook(student, book, m_studentRecord);
+            m_librarian->issueBook(student, book);
+            m_librarian->addStudentDetails(student, m_studentRecord);
             book->setStatus("Issued");
         }
     }
     else
     {
-        cout<<"book with "<<bookName<<" is not available"<<endl;
+        cout<<"Book with "<<bookName<<" is not available"<<endl;
     }
 }
 

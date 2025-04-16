@@ -11,7 +11,7 @@ class Library
 public:
     Library(Librarian* librarian);
     ~Library();
-    void studentEntryToBorrowBook(Student& student);
+    void studentBookBorrowingProcess(Student& student);
     void addBook(string bookName, string authourName, int bookID, string bookStatus);
     void displayBooks();
     void displayStudentRecord();

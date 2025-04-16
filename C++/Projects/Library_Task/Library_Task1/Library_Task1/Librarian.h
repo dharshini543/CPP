@@ -11,7 +11,7 @@ public:
     Librarian(string name, int ID);
     ~Librarian();
     Book* searchBookByName(list<Book*>& bookList, string bookName);
-    void issueBook(Student& student, Book* book, list<StudentRecord *>& studentRecord);
+    void issueBook(Student& student, Book* book);
     void addStudentDetails(Student &student, list<StudentRecord *>& studentRecord);
 
 private:

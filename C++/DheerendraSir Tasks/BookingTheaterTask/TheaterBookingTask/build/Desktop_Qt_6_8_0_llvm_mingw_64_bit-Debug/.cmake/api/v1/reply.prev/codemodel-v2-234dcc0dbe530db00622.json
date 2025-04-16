@@ -1,0 +1,61 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-6b38f3f6e05c42d01cc5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TheaterBookingTask",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "TheaterBookingTask::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TheaterBookingTask-Debug-9b5a7e61226b6553e33c.json",
+					"name" : "TheaterBookingTask",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/C++/C++/DheerendraSir Tasks/BookingTheaterTask/TheaterBookingTask/build/Desktop_Qt_6_8_0_llvm_mingw_64_bit-Debug",
+		"source" : "C:/C++/C++/DheerendraSir Tasks/BookingTheaterTask/TheaterBookingTask"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

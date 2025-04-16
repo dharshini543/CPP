@@ -13,10 +13,9 @@ Librarian::~Librarian()
     cout<<"Librarian Destructor"<<endl;
 }
 
-void Librarian::issueBook(Student& student, Book* book, list<StudentRecord*>& studentRecord)
+void Librarian::issueBook(Student& student, Book* book)
 {
     cout<<book->getName()<<" book is issued to "<<student.getName()<<endl;
-    this->addStudentDetails(student,studentRecord);
     student.borrowBook(book);
 }
 
