@@ -6,14 +6,14 @@ using namespace std;
 class Auditorium
 {
 public:
-    Auditorium(string name,string status);
+    Auditorium(int ID, string name);
     ~Auditorium();
     string getName();
-    string getStatus();
+    int getID();
 
 private:
+    int m_auditoriumID;
     string m_auditoriumName;
-    string m_auditoriumStatus;
 };
 
 #endif // AUDITORIUM_H
