@@ -61,8 +61,8 @@ build CMakeFiles/TheaterBookingTask.dir/Calendar.cpp.obj: CXX_COMPILER__TheaterB
   OBJECT_DIR = CMakeFiles\TheaterBookingTask.dir
   OBJECT_FILE_DIR = CMakeFiles\TheaterBookingTask.dir
 
-build CMakeFiles/TheaterBookingTask.dir/BookingSystem.cpp.obj: CXX_COMPILER__TheaterBookingTask_unscanned_Debug C$:/C++/C++/DheerendraSir$ Tasks/BookingTheaterTask/TheaterBookingTask/BookingSystem.cpp || cmake_object_order_depends_target_TheaterBookingTask
-  DEP_FILE = CMakeFiles\TheaterBookingTask.dir\BookingSystem.cpp.obj.d
+build CMakeFiles/TheaterBookingTask.dir/AuditoriumBookingManager.cpp.obj: CXX_COMPILER__TheaterBookingTask_unscanned_Debug C$:/C++/C++/DheerendraSir$ Tasks/BookingTheaterTask/TheaterBookingTask/AuditoriumBookingManager.cpp || cmake_object_order_depends_target_TheaterBookingTask
+  DEP_FILE = CMakeFiles\TheaterBookingTask.dir\AuditoriumBookingManager.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles\TheaterBookingTask.dir
   OBJECT_FILE_DIR = CMakeFiles\TheaterBookingTask.dir
@@ -73,8 +73,8 @@ build CMakeFiles/TheaterBookingTask.dir/Auditorium.cpp.obj: CXX_COMPILER__Theate
   OBJECT_DIR = CMakeFiles\TheaterBookingTask.dir
   OBJECT_FILE_DIR = CMakeFiles\TheaterBookingTask.dir
 
-build CMakeFiles/TheaterBookingTask.dir/BookingDetails.cpp.obj: CXX_COMPILER__TheaterBookingTask_unscanned_Debug C$:/C++/C++/DheerendraSir$ Tasks/BookingTheaterTask/TheaterBookingTask/BookingDetails.cpp || cmake_object_order_depends_target_TheaterBookingTask
-  DEP_FILE = CMakeFiles\TheaterBookingTask.dir\BookingDetails.cpp.obj.d
+build CMakeFiles/TheaterBookingTask.dir/Date.cpp.obj: CXX_COMPILER__TheaterBookingTask_unscanned_Debug C$:/C++/C++/DheerendraSir$ Tasks/BookingTheaterTask/TheaterBookingTask/Date.cpp || cmake_object_order_depends_target_TheaterBookingTask
+  DEP_FILE = CMakeFiles\TheaterBookingTask.dir\Date.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fansi-escape-codes -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles\TheaterBookingTask.dir
   OBJECT_FILE_DIR = CMakeFiles\TheaterBookingTask.dir
@@ -87,7 +87,7 @@ build CMakeFiles/TheaterBookingTask.dir/BookingDetails.cpp.obj: CXX_COMPILER__Th
 #############################################
 # Link the executable TheaterBookingTask.exe
 
-build TheaterBookingTask.exe: CXX_EXECUTABLE_LINKER__TheaterBookingTask_Debug CMakeFiles/TheaterBookingTask.dir/main.cpp.obj CMakeFiles/TheaterBookingTask.dir/Calendar.cpp.obj CMakeFiles/TheaterBookingTask.dir/BookingSystem.cpp.obj CMakeFiles/TheaterBookingTask.dir/Auditorium.cpp.obj CMakeFiles/TheaterBookingTask.dir/BookingDetails.cpp.obj
+build TheaterBookingTask.exe: CXX_EXECUTABLE_LINKER__TheaterBookingTask_Debug CMakeFiles/TheaterBookingTask.dir/main.cpp.obj CMakeFiles/TheaterBookingTask.dir/Calendar.cpp.obj CMakeFiles/TheaterBookingTask.dir/AuditoriumBookingManager.cpp.obj CMakeFiles/TheaterBookingTask.dir/Auditorium.cpp.obj CMakeFiles/TheaterBookingTask.dir/Date.cpp.obj
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\TheaterBookingTask.dir

@@ -7,9 +7,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(TheaterBookingTask main.cpp
     Calendar.h Calendar.cpp
-    BookingSystem.h BookingSystem.cpp
+    AuditoriumBookingManager.h AuditoriumBookingManager.cpp
     Auditorium.h Auditorium.cpp
-    BookingDetails.h BookingDetails.cpp)
+    Date.h Date.cpp
+)
 
 include(GNUInstallDirs)
 install(TARGETS TheaterBookingTask

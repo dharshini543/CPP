@@ -1,8 +1,8 @@
-#include "BookingSystem.h"
+#include "AuditoriumBookingManager.h"
 #include "Calendar.h"
 #include <iostream>
-
 using namespace std;
+
 enum
 {
     Book = 1,
@@ -12,14 +12,15 @@ enum
 
 int main()
 {
-    Calendar calender;
-    calender.display();
-    cout<<endl;
-    calender.displayCurrentDate();
-    cout<<endl;
-    BookingSystem bookingManager;
-    int date,input;
-    string AuditoriumName;
+    // Calendar calender;
+    // calender.displayCalender();
+    // cout<<endl;
+    // calender.displayCurrentDate();
+    // cout<<endl;
+
+    AuditoriumBookingManager auditoriumManager;
+    int input,  auditoriumNumber;
+    Date date;
     while(true)
     {
         cout<<"Enter"<<endl<<"1. Book Auditorium"<<endl;
@@ -28,42 +29,31 @@ int main()
         cin>>input;
         switch(input)
         {
+
         case Book:
             cout<<"Enter Date to book Auditorium"<<endl;
             cin >>date;
-            if(date > 30 || date < 1)
-            {
-                cout<<"Invalid Date"<<endl;
-            }
-            else
-            {
-                bookingManager.displayAvailableAuditoriums(date);
-                cout<<"Enter Auditorium name to Book"<<endl;
-                cin >>AuditoriumName;
-                bookingManager.bookAuditorium(date, AuditoriumName);
-            }
+            auditoriumManager.displayAvailableAuditoriums(date);
+            cout<<"Enter Auditorium number to Book"<<endl;
+            cin >>auditoriumNumber;
+            auditoriumManager.bookAuditorium(date, auditoriumNumber);
             break;
+
         case Display:
             cout<<"Enter Date to display Auditoriums"<<endl;
             cin >>date;
-            if(date > 30 || date < 1)
-            {
-                cout<<"Invalid Date"<<endl;
-            }
-            else
-            {
-                bookingManager.displayAvailableAuditoriums(date);
-            }
+            auditoriumManager.displayAvailableAuditoriums(date);
             break;
+
         case Exit:
             cout<<"Exiting............."<<endl;
-            exit(0);
+            return 0;
             break;
+
         default:
             cout<<"Invalid Input"<<endl;
         }
     }
-
 
     return 0;
 }

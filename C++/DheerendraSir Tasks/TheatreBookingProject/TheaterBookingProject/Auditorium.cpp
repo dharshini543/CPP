@@ -9,6 +9,7 @@ Auditorium::Auditorium(string name, string status)
 
 Auditorium::~Auditorium()
 {
+
 }
 
 string Auditorium::getName()

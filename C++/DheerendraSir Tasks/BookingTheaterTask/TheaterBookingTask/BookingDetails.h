@@ -6,7 +6,7 @@ using namespace std;
 class BookingDetails
 {
 public:
-    BookingDetails(string name,int date);
+    BookingDetails(string name, int date);
     ~BookingDetails();
     string getName();
     int getDate();

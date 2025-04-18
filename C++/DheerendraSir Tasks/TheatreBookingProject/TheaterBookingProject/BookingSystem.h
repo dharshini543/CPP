@@ -12,7 +12,6 @@ public:
     ~BookingSystem();
     void displayAvailableAuditoriums(int date);
     void bookAuditorium(int date, string& auditoriumName);
-    void displayAuditoriums();
 private:
     vector<Auditorium> m_auditoriums;
     map<int,vector<string>> m_bookings;
