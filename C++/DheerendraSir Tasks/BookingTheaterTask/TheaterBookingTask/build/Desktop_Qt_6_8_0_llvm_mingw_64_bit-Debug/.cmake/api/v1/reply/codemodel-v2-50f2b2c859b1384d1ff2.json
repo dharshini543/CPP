@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-6b38f3f6e05c42d01cc5.json",
+					"jsonFile" : "directory-.-Debug-3db67a423e725d507adf.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -40,7 +40,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "TheaterBookingTask::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-TheaterBookingTask-Debug-9b5a7e61226b6553e33c.json",
+					"jsonFile" : "target-TheaterBookingTask-Debug-23ea6a5462ff4e5cfc74.json",
 					"name" : "TheaterBookingTask",
 					"projectIndex" : 0
 				}

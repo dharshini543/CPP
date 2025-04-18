@@ -55,7 +55,8 @@ void BookingSystem::bookAuditorium(int date, string &auditoriumName)
 {
     vector<string>& booked = m_bookings[date];
 
-    for (auto t : booked) {
+    for (auto t : booked)
+    {
         if (t == auditoriumName)
         {
             cout << "\nTheater " << auditoriumName << " is already booked on April " << date << "!\n";
@@ -65,13 +66,5 @@ void BookingSystem::bookAuditorium(int date, string &auditoriumName)
 
     booked.push_back(auditoriumName);
     cout << "\nBooked " << auditoriumName << " on April " << date << " successfully!\n";
-}
-
-void BookingSystem::displayAuditoriums()
-{
-    for(auto auditorium: m_auditoriums)
-    {
-        cout<<auditorium.getName()<<"     "<<auditorium.getStatus()<<endl;
-    }
 }
 

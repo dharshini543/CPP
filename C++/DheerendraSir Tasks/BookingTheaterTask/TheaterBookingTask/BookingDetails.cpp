@@ -10,7 +10,7 @@ BookingDetails::BookingDetails(string name, int date)
 
 BookingDetails::~BookingDetails()
 {
-    //cout<<"BookingDetails Destructor"<<endl;
+    cout<<"BookingDetails Destructor"<<endl;
 }
 
 string BookingDetails::getName()
