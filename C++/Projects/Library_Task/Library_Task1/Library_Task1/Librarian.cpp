@@ -19,7 +19,7 @@ void Librarian::issueBook(Student& student, Book* book)
     student.borrowBook(book);
 }
 
-void Librarian::addStudentDetails(Student &student, list<StudentRecord*>& studentRecord)
+void Librarian::addStudentDetails(Student& student, list<StudentRecord*>& studentRecord)
 {
     studentRecord.push_back(new StudentRecord(student));
 }
