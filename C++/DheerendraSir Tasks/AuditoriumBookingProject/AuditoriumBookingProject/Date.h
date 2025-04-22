@@ -7,10 +7,12 @@ class Date
 {
 public:
     Date();
+    Date(int day, int month, int year);
     ~Date();
     int getDay();
     int getMonth();
     int getYear();
+    static Date getCurrentDate();
     bool operator < (const Date& other) const;
     friend istream &operator >> (istream& in, Date& date);
 

@@ -1,17 +1,16 @@
 #include "Calender.h"
-#include <iomanip>
-#include"time.h"
 #include <iostream>
+#include <conio.h>
 
 Calender::Calender()
 {
-    cout<<"Calender Constructor"<<endl;
+    currentYear = 2025;
+    currentMonth = 4;
 }
 
 Calender::~Calender()
 {
-    cout<<"Calender Destructor"<<endl;
-    for(auto year: m_years)
+    for (auto year : m_years)
     {
         delete year;
     }
@@ -22,55 +21,49 @@ Year* Calender::getOrCreateYear(int year)
     for (auto y : m_years)
     {
         if (y->getYear() == year)
+        {
             return y;
+        }
     }
     Year* newYear = new Year(year);
     m_years.push_back(newYear);
     return newYear;
 }
 
-int getStartDayOfWeek(int year, int month)
+void Calender::printMonthCalender()
 {
-    tm time_in = {};
-    time_in.tm_year = year - 1900;
-    time_in.tm_mon = month - 1;
-    time_in.tm_mday = 1;
-    mktime(&time_in);
-    return time_in.tm_wday;
+    Year* y = getOrCreateYear(currentYear);
+    Month* m = y->getOrCreateMonth(currentMonth);
+    m->print(currentYear);
 }
 
-int getDaysInMonth(int year, int month)
+void Calender::navigate()
 {
-    int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    return daysInMonth[month - 1];
-}
+    char input;
+    do {
+        printMonthCalender();
 
-void Calender::printMonthCalender(int year, int month)
-{
-    Year* y = this->getOrCreateYear(year);
-    Month* m = y->getOrCreateMonth(month);
+        cout << "Enter < for previous month, > for next month, q to quit: ";
+        cin >> input;
 
-    string months[] = {"January", "February", "March", "April", "May", "June",
-                      "July", "August", "September", "October", "November", "December"};
+        if (input == '<')
+        {
+            if (--currentMonth < 1)
+            {
+                currentMonth = 12;
+                --currentYear;
+            }
+        }
+        else if (input == '>')
+        {
+            if (++currentMonth > 12)
+            {
+                currentMonth = 1;
+                ++currentYear;
+            }
+        }
 
-    cout << "\n     " << months[month - 1] << " " << year << "\n";
-    cout << "Su  Mo  Tu  We  Th  Fr  Sa\n";
-
-    int startDay = getStartDayOfWeek(year, month);
-    int daysInMonth = getDaysInMonth(year, month);
-
-    for (int i = 0; i < startDay; ++i)
-        cout << "    ";
-
-    for (int i = 1; i <= daysInMonth; ++i)
-    {
-        Day* day = m->getOrCreateDay(i);
-        cout << setw(2) << i << "  ";
-
-        if ((startDay + i) % 7 == 0)
-            cout << endl;
-    }
-    cout << "\n\n";
+    } while (input != 'q');
 }
 
 void Calender::printTodayDate()
