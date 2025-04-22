@@ -4,11 +4,11 @@
 #include <algorithm>
 #include"Date.h"
 using namespace  std;
+typedef int AuditoriumID;
 
 AuditoriumBookingManager::AuditoriumBookingManager()
 {
     cout<<"AuditoriumBookingManager Constructor"<<endl;
-    this->addAuditorium();
 }
 
 AuditoriumBookingManager::~AuditoriumBookingManager()
@@ -22,25 +22,17 @@ AuditoriumBookingManager::~AuditoriumBookingManager()
 
 void AuditoriumBookingManager::addAuditorium()
 {
-    m_auditoriums[10] = new Auditorium(10, "A1");
-    m_auditoriums[20] = new Auditorium(20, "A2");
-    m_auditoriums[30] = new Auditorium(30, "A3");
-    m_auditoriums[40] = new Auditorium(40, "A4");
-    m_auditoriums[50] = new Auditorium(50, "A5");
-    m_auditoriums[60] = new Auditorium(60, "A6");
-    m_auditoriums[70] = new Auditorium(70, "A7");
-    m_auditoriums[80] = new Auditorium(80, "A8");
-    m_auditoriums[90] = new Auditorium(90, "A9");
-    m_auditoriums[100] = new Auditorium(100, "A10");
+    for(int auditoriumID = 1; auditoriumID <= 10; auditoriumID++)
+    {
+        m_auditoriums[auditoriumID] = new Auditorium(auditoriumID);
+    }
 }
 
 void AuditoriumBookingManager::showAvailableAuditoriums(Date& date)
 {
-    cout << "\nAvailable auditoriums on " << date.getDay()<<date.getMonth()<<date.getYear()<<endl;
+    cout << "\nAvailable auditoriums on " << date.getDay()<<"-"<<date.getMonth()<<"-"<<date.getYear()<<endl;
 
-    //cout << "\nAvailable auditoriums on " << date.toString()<<endl;
-
-    vector<int> booked = m_bookings[date];
+    vector<AuditoriumID> booked = m_bookings[date];
     bool found = false;
 
     for (auto auditorium : m_auditoriums)
@@ -60,20 +52,29 @@ void AuditoriumBookingManager::showAvailableAuditoriums(Date& date)
 
 void AuditoriumBookingManager::bookAuditorium(int& id, Date&  date)
 {
+    Date currentDate = date.getCurrentDate();
+    if (date < currentDate)
+    {
+        cout << "Warning: Cannot book an auditorium for a past date ("
+             << date.getDay() << "-" << date.getMonth() << "-" << date.getYear() << ").\n";
+        return;
+    }
     if (m_auditoriums.find(id) == m_auditoriums.end())
     {
         cout << "Invalid auditorium ID.\n";
         return;
     }
-    vector<int>& bookedList = m_bookings[date];
+
+    vector<AuditoriumID>& bookedList = m_bookings[date];
+
     if (find(bookedList.begin(), bookedList.end(), id) != bookedList.end())
     {
-        cout << "Auditorium " << id << " is already booked on " << date.getDay()<<date.getMonth()<<date.getYear()<< ".\n";
+        cout << "Auditorium " << id << " is already booked on " << date.getDay()<<"-"<<date.getMonth()<<"-"<<date.getYear()<< ".\n";
     }
     else
     {
         bookedList.push_back(id);
-        cout << "Successfully booked auditorium " << id << " for " <<date.getDay()<<date.getMonth()<<date.getYear()<< ".\n";
+        cout << "Successfully booked auditorium " << id << " for " <<date.getDay()<<"-"<<date.getMonth()<<"-"<<date.getYear()<< ".\n";
     }
 }
 

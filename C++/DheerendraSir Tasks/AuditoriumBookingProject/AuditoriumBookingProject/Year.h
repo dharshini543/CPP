@@ -2,7 +2,7 @@
 #define YEAR_H
 
 #include "Month.h"
-#include<list>
+#include <vector>
 using namespace std;
 
 class Year
@@ -10,12 +10,12 @@ class Year
 public:
     Year(int year);
     ~Year();
-    int getYear() const;
+
+    int getYear();
     Month* getOrCreateMonth(int month);
 
 private:
     int m_year;
-    list<Month*> m_months;
+    vector<Month*> m_months;
 };
-
 #endif // YEAR_H

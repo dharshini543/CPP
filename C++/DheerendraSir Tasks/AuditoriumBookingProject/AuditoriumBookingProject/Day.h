@@ -11,5 +11,4 @@ public:
 private:
     int m_day;
 };
-
 #endif // DAY_H

@@ -14,12 +14,12 @@ enum
 int main()
 {
     Calender calender;
+    calender.navigate();
     int year = 2025;
     int month = 4;
-    calender.printMonthCalender(year, month);
-    calender.printTodayDate();
 
     AuditoriumBookingManager auditoriumManager;
+    auditoriumManager.addAuditorium();
     int input,  auditoriumID;
     Date date;
     while(true)
@@ -32,11 +32,26 @@ int main()
         {
 
         case Book:
-            cout<<"Enter Date to book Auditorium"<<endl;
-            cin >> date;
-            cout<<"Enter Auditorium ID to Book"<<endl;
-            cin >>auditoriumID;
-            auditoriumManager.bookAuditorium(auditoriumID, date);
+            calender.printTodayDate();
+            while(true)
+            {
+                cout<<"Enter Date to book Auditorium"<<endl;
+                cin >> date;
+                Date currentDate = date.getCurrentDate();
+                if (date < currentDate)
+                {
+                    cout << "Warning: Cannot book an auditorium for a past date ("
+                         << date.getDay() << "-" << date.getMonth() << "-" << date.getYear() << ").\n";
+                    continue;
+                }
+                else
+                {
+                    cout<<"Enter Auditorium ID to Book"<<endl;
+                    cin >>auditoriumID;
+                    auditoriumManager.bookAuditorium(auditoriumID, date);
+                    break;
+                }
+            }
             break;
 
         case Display:
@@ -48,7 +63,6 @@ int main()
         case Exit:
             cout<<"Exiting............."<<endl;
             return 0;
-            break;
 
         default:
             cout<<"Invalid Input"<<endl;

@@ -2,7 +2,7 @@
 #define MONTH_H
 
 #include "Day.h"
-#include<list>
+#include <vector>
 using namespace std;
 
 class Month
@@ -10,12 +10,15 @@ class Month
 public:
     Month(int month);
     ~Month();
-    int getMonth() const;
+
+    int getMonth();
     Day* getOrCreateDay(int day);
+    void print(int year);
 
 private:
     int m_month;
-    list<Day*> m_days;
+    vector<Day*> m_days;
 };
+
 
 #endif // MONTH_H

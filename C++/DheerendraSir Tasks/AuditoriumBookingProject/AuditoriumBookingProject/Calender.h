@@ -10,12 +10,18 @@ class Calender
 public:
     Calender();
     ~Calender();
-    void printMonthCalender(int year, int month);
-    void printTodayDate();
+
     Year* getOrCreateYear(int year);
+    void printMonthCalender();
+    void navigate();
+    void printTodayDate();
 
 private:
     list<Year*> m_years;
+    int currentYear;
+    int currentMonth;
+
 };
+
 
 #endif // CALENDER_H
