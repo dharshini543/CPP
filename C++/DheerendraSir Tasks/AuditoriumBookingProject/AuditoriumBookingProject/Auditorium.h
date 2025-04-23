@@ -6,6 +6,7 @@ class Auditorium
 public:
     Auditorium(int ID);
     ~Auditorium();
+
     int getID();
 
 private:

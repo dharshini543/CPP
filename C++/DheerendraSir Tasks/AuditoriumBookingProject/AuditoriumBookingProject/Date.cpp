@@ -6,18 +6,20 @@ using namespace std;
 
 Date::Date()
 {
-    //cout<<"Date Constructor"<<endl;
+    cout<<"Date Constructor"<<endl;
 }
+
 Date::Date(int day, int month, int year)
 {
-    //cout<<"Date Constructor"<<endl;
+    //cout<<"Date Parameterized Constructor"<<endl;
     m_day = day;
     m_month = month;
     m_year = year;
 }
+
 Date::~Date()
 {
-    //cout<<"Date Destructor"<<endl;
+    cout<<"Date Destructor"<<endl;
 }
 
 int Date::getDay()
@@ -87,7 +89,7 @@ istream & operator >> (istream& in, Date& date)
         }
         else
         {
-            cout << "Invalid format! Please enter date like: 12-05-2025\n";
+            cout << "Invalid format! Please enter date like DD-MM-YYYY\n";
         }
     }
 

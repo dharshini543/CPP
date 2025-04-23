@@ -1,9 +1,10 @@
 #include "AuditoriumBookingManager.h"
 #include"Auditorium.h"
 #include <iostream>
-#include <algorithm>
-#include"Date.h"
 using namespace  std;
+#include"Date.h"
+#include <algorithm>
+
 typedef int AuditoriumID;
 
 AuditoriumBookingManager::AuditoriumBookingManager()
@@ -52,13 +53,7 @@ void AuditoriumBookingManager::showAvailableAuditoriums(Date& date)
 
 void AuditoriumBookingManager::bookAuditorium(int& id, Date&  date)
 {
-    Date currentDate = date.getCurrentDate();
-    if (date < currentDate)
-    {
-        cout << "Warning: Cannot book an auditorium for a past date ("
-             << date.getDay() << "-" << date.getMonth() << "-" << date.getYear() << ").\n";
-        return;
-    }
+
     if (m_auditoriums.find(id) == m_auditoriums.end())
     {
         cout << "Invalid auditorium ID.\n";

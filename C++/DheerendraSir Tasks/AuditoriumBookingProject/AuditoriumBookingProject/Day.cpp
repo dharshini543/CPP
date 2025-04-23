@@ -1,5 +1,6 @@
 #include "Day.h"
 #include <iostream>
+using namespace std;
 
 Day::Day(int day)
 {
