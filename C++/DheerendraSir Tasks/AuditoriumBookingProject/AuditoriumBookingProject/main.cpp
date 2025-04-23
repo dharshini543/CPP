@@ -15,24 +15,22 @@ int main()
 {
     Calender calender;
     calender.navigate();
-    int year = 2025;
-    int month = 4;
 
     AuditoriumBookingManager auditoriumManager;
     auditoriumManager.addAuditorium();
     int input,  auditoriumID;
     Date date;
+
     while(true)
     {
-        cout<<"Enter"<<endl<<"1. Book Auditorium"<<endl;
+        cout<<endl<<"Enter"<<endl<<"1. Book Auditorium"<<endl;
         cout<<"2. Display Available Auditoriums"<<endl;
         cout<<"3. Exit"<<endl;
         cin>>input;
+
         switch(input)
         {
-
         case Book:
-            calender.printTodayDate();
             while(true)
             {
                 cout<<"Enter Date to book Auditorium"<<endl;
@@ -61,7 +59,7 @@ int main()
             break;
 
         case Exit:
-            cout<<"Exiting............."<<endl;
+            cout<<"Exiting............."<<endl<<endl;
             return 0;
 
         default:

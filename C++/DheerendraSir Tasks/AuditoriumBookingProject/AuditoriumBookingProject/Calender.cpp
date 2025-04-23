@@ -4,12 +4,16 @@
 
 Calender::Calender()
 {
-    currentYear = 2025;
-    currentMonth = 4;
+    cout<<"Calender Constructor"<<endl;
+    time_t now = time(0);
+    tm* localTime = localtime(&now);
+    currentYear = localTime->tm_year + 1900;
+    currentMonth = localTime->tm_mon + 1;
 }
 
 Calender::~Calender()
 {
+    cout<<"Calender Destructor"<<endl;
     for (auto year : m_years)
     {
         delete year;
@@ -41,7 +45,10 @@ void Calender::navigate()
 {
     char input;
     do {
+        system("cls");
         printMonthCalender();
+        cout<<endl;
+        this->printTodayDate();
 
         cout << "Enter < for previous month, > for next month, q to quit: ";
         cin >> input;

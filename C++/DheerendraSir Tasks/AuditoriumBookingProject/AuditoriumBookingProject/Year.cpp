@@ -1,12 +1,15 @@
 #include "Year.h"
+#include<iostream>
 
 Year::Year(int year)
 {
+    //cout<<"Year Constructor"<<endl;
     m_year = year;
 }
 
 Year::~Year()
 {
+    cout<<"Year Destructor"<<endl;
     for (auto month : m_months)
     {
         delete month;

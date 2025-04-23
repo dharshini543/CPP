@@ -13,6 +13,7 @@ class AuditoriumBookingManager
 public:
     AuditoriumBookingManager();
     ~AuditoriumBookingManager();
+
     void addAuditorium();
     void showAvailableAuditoriums(Date& date);
     void bookAuditorium(int& id, Date& date);
