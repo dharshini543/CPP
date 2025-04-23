@@ -11,7 +11,7 @@ Date::Date()
 
 Date::Date(int day, int month, int year)
 {
-    //cout<<"Date Parameterized Constructor"<<endl;
+    cout<<"Date Parameterized Constructor"<<endl;
     m_day = day;
     m_month = month;
     m_year = year;

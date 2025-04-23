@@ -18,8 +18,8 @@ public:
 
 private:
     list<Year*> m_years;
-    int currentYear;
-    int currentMonth;
+    int m_currentYear;
+    int m_currentMonth;
 
 };
 

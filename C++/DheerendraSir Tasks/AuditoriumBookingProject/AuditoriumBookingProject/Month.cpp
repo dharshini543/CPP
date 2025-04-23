@@ -61,15 +61,15 @@ void Month::print(int year)
     int numDays = getDaysInMonth(m_month, year);
     int startDay = getWeekDay(year, m_month);
 
-    cout << "\n     " << monthNames[m_month] << " " << year << "\n";
-    cout << "Su  Mo  Tu  We  Th  Fr  Sa\n";
+    cout << "\n          " << monthNames[m_month] << "  " << year << "\n";
+    cout << "Su   Mo   Tu   We   Th   Fr   Sa\n";
 
     for (int i = 0; i < startDay; ++i)
-        cout << "    ";
+        cout << "     ";
     for (int i = 1; i <= numDays; ++i)
     {
         this->getOrCreateDay(i);
-        cout << setw(2) << i << "  ";
+        cout << setw(2) << i << "   ";
         if ((i + startDay) % 7 == 0)
         {
             cout << "\n";
