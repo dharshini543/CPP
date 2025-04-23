@@ -53,10 +53,23 @@ int main()
             break;
 
         case Display:
+        {
             cout<<"Enter Date to display Auditoriums"<<endl;
             cin >> date;
-            auditoriumManager.showAvailableAuditoriums(date);
+            Date currentDate = date.getCurrentDate();
+            if (date < currentDate)
+            {
+                cout << "Warning: Cannot display available auditoriums for  past date ("
+                     << date.getDay() << "-" << date.getMonth() << "-" << date.getYear() << ").\n";
+                continue;
+            }
+            else
+            {
+                auditoriumManager.showAvailableAuditoriums(date);
+                break;
+            }
             break;
+        }
 
         case Exit:
             cout<<"Exiting............."<<endl<<endl;

@@ -9,7 +9,7 @@ typedef int AuditoriumID;
 
 AuditoriumBookingManager::AuditoriumBookingManager()
 {
-    cout<<"AuditoriumBookingManager Constructor"<<endl;
+    cout<<endl<<"AuditoriumBookingManager Constructor"<<endl;
 }
 
 AuditoriumBookingManager::~AuditoriumBookingManager()

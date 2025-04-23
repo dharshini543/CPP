@@ -2,13 +2,14 @@
 #include <iostream>
 #include <conio.h>
 
+//typedef "75" leftArrow
 Calender::Calender()
 {
     cout<<"Calender Constructor"<<endl;
     time_t now = time(0);
     tm* localTime = localtime(&now);
-    currentYear = localTime->tm_year + 1900;
-    currentMonth = localTime->tm_mon + 1;
+    m_currentYear = localTime->tm_year + 1900;
+    m_currentMonth = localTime->tm_mon + 1;
 }
 
 Calender::~Calender()
@@ -36,9 +37,9 @@ Year* Calender::getOrCreateYear(int year)
 
 void Calender::printMonthCalender()
 {
-    Year* y = getOrCreateYear(currentYear);
-    Month* m = y->getOrCreateMonth(currentMonth);
-    m->print(currentYear);
+    Year* y = getOrCreateYear(m_currentYear);
+    Month* m = y->getOrCreateMonth(m_currentMonth);
+    m->print(m_currentYear);
 }
 
 void Calender::navigate()
@@ -50,27 +51,27 @@ void Calender::navigate()
         cout<<endl;
         this->printTodayDate();
 
-        cout << "Enter < for previous month, > for next month, q to quit: ";
-        cin >> input;
+        cout << "Enter < for previous month, > for next month, Esc to exit: ";
+        input = _getch();
 
-        if (input == '<')
+        if (input == 75)
         {
-            if (--currentMonth < 1)
+            if (--m_currentMonth < 1)
             {
-                currentMonth = 12;
-                --currentYear;
+                m_currentMonth = 12;
+                --m_currentYear;
             }
         }
-        else if (input == '>')
+        else if (input == 77)
         {
-            if (++currentMonth > 12)
+            if (++m_currentMonth > 12)
             {
-                currentMonth = 1;
-                ++currentYear;
+                m_currentMonth = 1;
+                ++m_currentYear;
             }
         }
 
-    } while (input != 'q');
+    } while (input != 27);
 }
 
 void Calender::printTodayDate()
