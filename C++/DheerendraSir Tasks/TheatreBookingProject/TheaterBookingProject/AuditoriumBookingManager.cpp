@@ -57,7 +57,7 @@ void AuditoriumBookingManager::showAvailableAuditoriums(Date &date)
     }
 }
 
-void AuditoriumBookingManager::bookAuditorium(int& id,Date &date)
+bool AuditoriumBookingManager::bookAuditorium(int& id,Date &date)
 {
     if (m_auditoriums.find(id) == m_auditoriums.end())
     {

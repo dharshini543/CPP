@@ -1,15 +1,18 @@
 #include "Year.h"
 #include<iostream>
+#include"Debug.h"
 
 Year::Year(int year)
 {
-    //cout<<"Year Constructor"<<endl;
+    if(Debug::getEnabled())
+        cout<<"Year Constructor"<<endl;
     m_year = year;
 }
 
 Year::~Year()
 {
-    cout<<"Year Destructor"<<endl;
+    if(Debug::getEnabled())
+        cout<<"Year Destructor"<<endl;
     for (auto month : m_months)
     {
         delete month;
@@ -21,7 +24,7 @@ int Year::getYear()
     return m_year;
 }
 
-Month* Year::getOrCreateMonth(int month)
+Month* Year::getMonth(int month)
 {
     for (auto m : m_months)
     {
@@ -30,8 +33,12 @@ Month* Year::getOrCreateMonth(int month)
             return m;
         }
     }
+    return nullptr;
+}
+
+void Year::addMonth(int month)
+{
     Month* newMonth = new Month(month);
     m_months.push_back(newMonth);
-    return newMonth;
 }
 

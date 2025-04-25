@@ -1,6 +1,6 @@
 #ifndef MONTH_H
 #define MONTH_H
-
+#include"AuditoriumBookingManager.h"
 #include "Day.h"
 #include <vector>
 using namespace std;
@@ -12,8 +12,9 @@ public:
     ~Month();
 
     int getMonth();
-    Day* getOrCreateDay(int day);
-    void print(int year);
+    Day* getDay(int day);
+    void addDay(int day);
+    void print(int year, AuditoriumBookingManager *manager);
 
 private:
     int m_month;

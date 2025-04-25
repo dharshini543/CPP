@@ -13,7 +13,7 @@ public:
     int getDay();
     int getMonth();
     int getYear();
-    static Date getCurrentDate();
+    Date getCurrentDate();
     bool operator < (const Date& other) const;
     friend istream &operator >> (istream& in, Date& date);
 

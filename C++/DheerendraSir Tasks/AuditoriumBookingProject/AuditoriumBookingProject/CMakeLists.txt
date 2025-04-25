@@ -12,7 +12,8 @@ add_executable(AuditoriumBookingProject main.cpp
     Date.h Date.cpp
     Year.h Year.cpp
     Month.h Month.cpp
-    Day.h Day.cpp)
+    Day.h Day.cpp
+    Debug.h Debug.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS AuditoriumBookingProject

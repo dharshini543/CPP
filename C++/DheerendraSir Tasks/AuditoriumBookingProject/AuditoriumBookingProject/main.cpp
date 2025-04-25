@@ -2,7 +2,7 @@
 #include "Calender.h"
 #include"Date.h"
 #include <iostream>
-
+#include"Debug.h"
 using namespace std;
 enum
 {
@@ -13,11 +13,13 @@ enum
 
 int main()
 {
-    Calender calender;
-    calender.navigate();
-
+    Debug::setEnabled(false);
     AuditoriumBookingManager auditoriumManager;
     auditoriumManager.addAuditorium();
+    Calender calender;
+    calender.setBookingManager(&auditoriumManager);
+    calender.navigate();
+
     int input,  auditoriumID;
     Date date;
 
@@ -44,10 +46,25 @@ int main()
                 }
                 else
                 {
+                    int availableCount = auditoriumManager.getAvailableCount(date);
+                    if(availableCount != 0)
+                    {
                     cout<<"Enter Auditorium ID to Book"<<endl;
                     cin >>auditoriumID;
-                    auditoriumManager.bookAuditorium(auditoriumID, date);
+                    bool isTrue;
+                    isTrue = auditoriumManager.bookAuditorium(auditoriumID, date);
+                    if(isTrue)
+                    {
+                        calender.printSpecificMonth(date.getYear(), date.getMonth());
+                    }
+
                     break;
+                    }
+                    else
+                    {
+                        cout<<"No auditoriums are avaiable to book on "<<date.getDay()<<"-"<<date.getMonth()<<"-"<<date.getYear()<<endl;
+                        break;
+                    }
                 }
             }
             break;
@@ -65,7 +82,15 @@ int main()
             }
             else
             {
+                int availableCount = auditoriumManager.getAvailableCount(date);
+                if(availableCount != 0)
+                {
                 auditoriumManager.showAvailableAuditoriums(date);
+                }
+                else
+                {
+                    cout<<"No auditoriums are avaiable to display on "<<date.getDay()<<"-"<<date.getMonth()<<"-"<<date.getYear()<<endl;
+                }
                 break;
             }
             break;

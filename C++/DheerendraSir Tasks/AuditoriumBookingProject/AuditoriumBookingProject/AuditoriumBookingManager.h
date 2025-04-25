@@ -16,7 +16,9 @@ public:
 
     void addAuditorium();
     void showAvailableAuditoriums(Date& date);
-    void bookAuditorium(int& id, Date& date);
+    bool bookAuditorium(int& id, Date& date);
+    int getBookingCount(Date& date);
+    int getAvailableCount(Date &date);
 
 private:
     map<auditoriumID, Auditorium*> m_auditoriums;
