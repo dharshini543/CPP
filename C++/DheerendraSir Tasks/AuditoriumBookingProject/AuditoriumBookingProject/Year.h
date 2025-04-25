@@ -12,7 +12,9 @@ public:
     ~Year();
 
     int getYear();
-    Month* getOrCreateMonth(int month);
+    Month* getMonth(int month);
+    void addMonth(int month);
+
 
 private:
     int m_year;

@@ -1,11 +1,17 @@
 #include "Calender.h"
 #include <iostream>
 #include <conio.h>
+#include"Debug.h"
 
-//typedef "75" leftArrow
+#define LEFT_ARROW 75
+#define RIGHT_ARROW 77
+#define ENTER_KEY 13
+
 Calender::Calender()
 {
-    cout<<"Calender Constructor"<<endl;
+    if(Debug::getEnabled())
+        cout<<"Calender Constructor"<<endl;
+
     time_t now = time(0);
     tm* localTime = localtime(&now);
     m_currentYear = localTime->tm_year + 1900;
@@ -14,14 +20,16 @@ Calender::Calender()
 
 Calender::~Calender()
 {
-    cout<<"Calender Destructor"<<endl;
+    if(Debug::getEnabled())
+        cout<<"Calender Destructor"<<endl;
+
     for (auto year : m_years)
     {
         delete year;
     }
 }
 
-Year* Calender::getOrCreateYear(int year)
+Year* Calender::getYear(int year)
 {
     for (auto y : m_years)
     {
@@ -30,16 +38,53 @@ Year* Calender::getOrCreateYear(int year)
             return y;
         }
     }
+    return nullptr;
+}
+
+void Calender::setBookingManager(AuditoriumBookingManager* bookingManager)
+{
+    m_bookingManager = bookingManager;
+}
+
+void Calender::addYear(int year)
+{
     Year* newYear = new Year(year);
     m_years.push_back(newYear);
-    return newYear;
 }
+
 
 void Calender::printMonthCalender()
 {
-    Year* y = getOrCreateYear(m_currentYear);
-    Month* m = y->getOrCreateMonth(m_currentMonth);
-    m->print(m_currentYear);
+    Year* year = getYear(m_currentYear);
+    if (!year)
+    {
+        addYear(m_currentYear);
+        year = getYear(m_currentYear);
+    }
+    Month* month = year->getMonth(m_currentMonth);
+    if (!month)
+    {
+        year->addMonth(m_currentMonth);
+        month = year->getMonth(m_currentMonth);
+    }
+    month->print(m_currentYear, m_bookingManager);
+
+}
+void Calender::printSpecificMonth(int year, int month)
+{
+    Year* y = getYear(year);
+    if (!y)
+    {
+        addYear(year);
+        y = getYear(year);
+    }
+    Month* m = y->getMonth(month);
+    if (!m)
+    {
+        y->addMonth(month);
+        m = y->getMonth(month);
+    }
+    m->print(year, m_bookingManager);
 }
 
 void Calender::navigate()
@@ -51,10 +96,10 @@ void Calender::navigate()
         cout<<endl;
         this->printTodayDate();
 
-        cout << "Enter < for previous month, > for next month, Esc to exit: ";
+        cout << "Enter < for previous month, > for next month, Enter to Continue Booking";
         input = _getch();
 
-        if (input == 75)
+        if (input == LEFT_ARROW)
         {
             if (--m_currentMonth < 1)
             {
@@ -62,7 +107,7 @@ void Calender::navigate()
                 --m_currentYear;
             }
         }
-        else if (input == 77)
+        else if (input == RIGHT_ARROW)
         {
             if (++m_currentMonth > 12)
             {
@@ -71,7 +116,7 @@ void Calender::navigate()
             }
         }
 
-    } while (input != 27);
+    } while (input != ENTER_KEY);
 }
 
 void Calender::printTodayDate()

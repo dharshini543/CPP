@@ -1,16 +1,19 @@
 #include "Auditorium.h"
 #include <iostream>
+#include"Debug.h"
 using namespace std;
 
 Auditorium::Auditorium(int ID)
 {
-    cout<<"Auditorium Constructor"<<endl;
+    if(Debug::getEnabled())
+        cout<<"Auditorium Constructor"<<endl;
     m_auditoriumID = ID;
 }
 
 Auditorium::~Auditorium()
 {
-    cout<<"Auditorium Destructor"<<endl;
+    if(Debug::getEnabled())
+        cout<<"Auditorium Destructor"<<endl;
 }
 
 int Auditorium::getID()

@@ -1,6 +1,7 @@
 #include "Month.h"
 #include <iostream>
 #include <iomanip>
+#include"Debug.h"
 
 int getDaysInMonth(int month, int year)
 {
@@ -20,13 +21,15 @@ int getWeekDay(int year, int month)
 
 Month::Month(int month)
 {
-    //cout<<"Month Constructor"<<endl;
+    if(Debug::getEnabled())
+        cout<<"Month Constructor"<<endl;
     m_month = month;
 }
 
 Month::~Month()
 {
-    cout<<"Month Destructor"<<endl;
+    if(Debug::getEnabled())
+        cout<<"Month Destructor"<<endl;
     for (auto day : m_days)
     {
         delete day;
@@ -38,7 +41,7 @@ int Month::getMonth()
     return m_month;
 }
 
-Day* Month::getOrCreateDay(int day)
+Day* Month::getDay(int day)
 {
     for (auto d : m_days)
     {
@@ -47,13 +50,16 @@ Day* Month::getOrCreateDay(int day)
             return d;
         }
     }
-
-    Day* newDay = new Day(day);
-    m_days.push_back(newDay);
-    return newDay;
+    return nullptr;
 }
 
-void Month::print(int year)
+void Month::addDay(int day)
+{
+    Day* newDay = new Day(day);
+    m_days.push_back(newDay);
+}
+
+void Month::print(int year, AuditoriumBookingManager* manager)
 {
     string monthNames[] = {  "", "January", "February", "March", "April", "May", "June",
                            "July", "August", "September", "October", "November", "December"};
@@ -61,19 +67,39 @@ void Month::print(int year)
     int numDays = getDaysInMonth(m_month, year);
     int startDay = getWeekDay(year, m_month);
 
-    cout << "\n          " << monthNames[m_month] << "  " << year << "\n";
-    cout << "Su   Mo   Tu   We   Th   Fr   Sa\n";
+    cout << "\n                      " << monthNames[m_month] << "    " << year << "\n";
+    cout << "Su       Mo       Tu       We       Th       Fr       Sa\n";
 
     for (int i = 0; i < startDay; ++i)
-        cout << "     ";
+        cout << "         ";
     for (int i = 1; i <= numDays; ++i)
     {
-        this->getOrCreateDay(i);
-        cout << setw(2) << i << "   ";
-        if ((i + startDay) % 7 == 0)
+        Day* day =this->getDay(i);
+        if (!day)
         {
-            cout << "\n";
+            this->addDay(i);
         }
+
+        Date d(i, m_month, year);
+        int bookcount = manager->getBookingCount(d);
+        int availableCount = manager->getAvailableCount(d);
+
+        if(availableCount == 0)
+        {
+            cout<<setw(2)<<"         ";
+            continue;
+        }
+        if(bookcount > 0)
+        {
+            cout << setw(2) << i << "/"<<bookcount<< "      ";
+        }
+        else
+        {
+            cout<<setw(2)<<i<<"       ";
+        }
+        if ((i + startDay) % 7 == 0)
+            cout << "\n";
+
     }
     cout << "\n";
 

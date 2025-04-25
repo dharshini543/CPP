@@ -57,7 +57,7 @@ void Calender::printMonthCalender()
     m->print(currentYear);
 }
 
-void Calender::navigate()
+void Calender::navigate(AuditoriumBookingManager &bookingManager)
 {
     char input;
     do {

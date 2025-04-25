@@ -3,15 +3,19 @@
 #include <string>
 #include <sstream>
 using namespace std;
+#include"Debug.h"
 
 Date::Date()
 {
-    cout<<"Date Constructor"<<endl;
+    if(Debug::getEnabled())
+        cout<<"Date Constructor"<<endl;
 }
 
 Date::Date(int day, int month, int year)
 {
-    cout<<"Date Parameterized Constructor"<<endl;
+    if(Debug::getEnabled())
+        cout<<"Date Parameterized Constructor"<<endl;
+
     m_day = day;
     m_month = month;
     m_year = year;
@@ -19,6 +23,7 @@ Date::Date(int day, int month, int year)
 
 Date::~Date()
 {
+    if(Debug::getEnabled())
     cout<<"Date Destructor"<<endl;
 }
 
@@ -89,7 +94,7 @@ istream & operator >> (istream& in, Date& date)
         }
         else
         {
-            cout << "Invalid format! Please enter date like DD-MM-YYYY\n";
+            cout << "Invalid format! Please enter date (DD-MM-YYYY)\n";
         }
     }
 
