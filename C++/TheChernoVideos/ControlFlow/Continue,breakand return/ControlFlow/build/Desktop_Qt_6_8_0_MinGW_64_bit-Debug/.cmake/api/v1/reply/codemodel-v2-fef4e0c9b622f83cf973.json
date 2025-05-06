@@ -1,0 +1,61 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-067075cabb646271d0e7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ControlFlow",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ControlFlow::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ControlFlow-Debug-8a37266ab22ea1f89c79.json",
+					"name" : "ControlFlow",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/C++/C++/TheChernoVideos/ControlFlow/Continue,breakand return/ControlFlow/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug",
+		"source" : "C:/C++/C++/TheChernoVideos/ControlFlow/Continue,breakand return/ControlFlow"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

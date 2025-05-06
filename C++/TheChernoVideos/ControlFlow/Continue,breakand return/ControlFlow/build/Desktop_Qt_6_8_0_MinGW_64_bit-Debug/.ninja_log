@@ -1,0 +1,18 @@
+# ninja log v6
+2	431	7681391798134306	CMakeFiles/ControlFlow.dir/main.cpp.obj	d9e8d2488c2aef8b
+6	441	7681391798178870	CMakeFiles/ControlFlow.dir/Log.cpp.obj	59a8e1aafb2368c7
+441	539	7681391802531352	ControlFlow.exe	47b54b8913e4d563
+4	323	7681392266988457	CMakeFiles/ControlFlow.dir/main.cpp.obj	d9e8d2488c2aef8b
+324	469	7681392270200651	ControlFlow.exe	47b54b8913e4d563
+29	355	7681394116520216	CMakeFiles/ControlFlow.dir/main.cpp.obj	d9e8d2488c2aef8b
+356	472	7681394119787956	ControlFlow.exe	47b54b8913e4d563
+30	353	7681394273807428	CMakeFiles/ControlFlow.dir/main.cpp.obj	d9e8d2488c2aef8b
+354	492	7681394277056546	ControlFlow.exe	47b54b8913e4d563
+24	344	7681394425750095	CMakeFiles/ControlFlow.dir/main.cpp.obj	d9e8d2488c2aef8b
+344	467	7681394428972970	ControlFlow.exe	47b54b8913e4d563
+44	394	7681395640756297	CMakeFiles/ControlFlow.dir/main.cpp.obj	d9e8d2488c2aef8b
+395	538	7681395644277303	ControlFlow.exe	47b54b8913e4d563
+29	350	7681396052153513	CMakeFiles/ControlFlow.dir/main.cpp.obj	d9e8d2488c2aef8b
+350	488	7681396055372404	ControlFlow.exe	47b54b8913e4d563
+31	362	7681396173182239	CMakeFiles/ControlFlow.dir/main.cpp.obj	d9e8d2488c2aef8b
+362	512	7681396176501369	ControlFlow.exe	47b54b8913e4d563
