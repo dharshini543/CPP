@@ -87,6 +87,8 @@ void Month::print(int year, AuditoriumBookingManager* manager)
         if(availableCount == 0)
         {
             cout<<setw(2)<<"         ";
+            if ((i + startDay) % 7 == 0)
+                cout << "\n";
             continue;
         }
         if(bookcount > 0)

@@ -1,0 +1,9 @@
+# ninja log v6
+10	97	7681434345214748	CMakeFiles/Classes.dir/Player.cpp.obj	8676c7cb0c68b380
+2	359	7681434345134743	CMakeFiles/Classes.dir/main.cpp.obj	4a72fe80b3c38dab
+362	484	7681434348741772	Classes.exe	5477d727dba15fb6
+3	330	7681434978153972	CMakeFiles/Classes.dir/main.cpp.obj	4a72fe80b3c38dab
+330	434	7681434981424163	Classes.exe	5477d727dba15fb6
+49	114	7681436209979936	CMakeFiles/Classes.dir/Player.cpp.obj	8676c7cb0c68b380
+45	419	7681436209945333	CMakeFiles/Classes.dir/main.cpp.obj	4a72fe80b3c38dab
+419	515	7681436213665699	Classes.exe	5477d727dba15fb6

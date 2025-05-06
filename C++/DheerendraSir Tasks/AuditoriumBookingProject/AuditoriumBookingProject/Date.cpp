@@ -24,7 +24,7 @@ Date::Date(int day, int month, int year)
 Date::~Date()
 {
     if(Debug::getEnabled())
-    cout<<"Date Destructor"<<endl;
+        cout<<"Date Destructor"<<endl;
 }
 
 int Date::getDay()

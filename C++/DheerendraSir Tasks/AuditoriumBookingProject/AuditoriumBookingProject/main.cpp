@@ -49,16 +49,16 @@ int main()
                     int availableCount = auditoriumManager.getAvailableCount(date);
                     if(availableCount != 0)
                     {
-                    cout<<"Enter Auditorium ID to Book"<<endl;
-                    cin >>auditoriumID;
-                    bool isTrue;
-                    isTrue = auditoriumManager.bookAuditorium(auditoriumID, date);
-                    if(isTrue)
-                    {
-                        calender.printSpecificMonth(date.getYear(), date.getMonth());
-                    }
+                        cout<<"Enter Auditorium ID to Book"<<endl;
+                        cin >>auditoriumID;
+                        bool isTrue;
+                        isTrue = auditoriumManager.bookAuditorium(auditoriumID, date);
+                        if(isTrue)
+                        {
+                            calender.printSpecificMonth(date.getYear(), date.getMonth());
+                        }
 
-                    break;
+                        break;
                     }
                     else
                     {
@@ -85,7 +85,7 @@ int main()
                 int availableCount = auditoriumManager.getAvailableCount(date);
                 if(availableCount != 0)
                 {
-                auditoriumManager.showAvailableAuditoriums(date);
+                    auditoriumManager.showAvailableAuditoriums(date);
                 }
                 else
                 {

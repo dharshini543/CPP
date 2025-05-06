@@ -10,13 +10,13 @@ typedef int AuditoriumID;
 AuditoriumBookingManager::AuditoriumBookingManager()
 {
     if(Debug::getEnabled())
-    cout<<endl<<"AuditoriumBookingManager Constructor"<<endl;
+        cout<<endl<<"AuditoriumBookingManager Constructor"<<endl;
 }
 
 AuditoriumBookingManager::~AuditoriumBookingManager()
 {
     if(Debug::getEnabled())
-    cout<<"AuditoriumBookingManager Destructor"<<endl;
+        cout<<"AuditoriumBookingManager Destructor"<<endl;
     for(auto auditorium : m_auditoriums)
     {
         delete auditorium.second;

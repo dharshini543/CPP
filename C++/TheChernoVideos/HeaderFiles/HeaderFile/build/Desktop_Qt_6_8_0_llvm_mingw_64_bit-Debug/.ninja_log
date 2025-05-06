@@ -1,0 +1,24 @@
+# ninja log v6
+4	545	7681291651788432	CMakeFiles/HeaderFile.dir/Log.cpp.obj	b9f7771cc8cd896d
+1	549	7681291651788432	CMakeFiles/HeaderFile.dir/main.cpp.obj	962961f7a348783
+549	652	7681291657262057	HeaderFile.exe	b253e03acc4c68c7
+26	477	7681293186812005	CMakeFiles/HeaderFile.dir/main.cpp.obj	962961f7a348783
+29	500	7681293186844867	CMakeFiles/HeaderFile.dir/Log.cpp.obj	b9f7771cc8cd896d
+500	565	7681293191548344	HeaderFile.exe	b253e03acc4c68c7
+5	45	7681294168897789	CMakeFiles/HeaderFile.dir/main.cpp.obj	962961f7a348783
+8	448	7681294168939307	CMakeFiles/HeaderFile.dir/Log.cpp.obj	b9f7771cc8cd896d
+448	507	7681294173330251	HeaderFile.exe	b253e03acc4c68c7
+29	64	7681294581040794	CMakeFiles/HeaderFile.dir/main.cpp.obj	962961f7a348783
+32	469	7681294581073919	CMakeFiles/HeaderFile.dir/Log.cpp.obj	b9f7771cc8cd896d
+469	531	7681294585435251	HeaderFile.exe	b253e03acc4c68c7
+28	69	7681300815212218	CMakeFiles/HeaderFile.dir/main.cpp.obj	962961f7a348783
+31	466	7681300815212218	CMakeFiles/HeaderFile.dir/Log.cpp.obj	b9f7771cc8cd896d
+466	526	7681300819593394	HeaderFile.exe	b253e03acc4c68c7
+29	447	7681301023871237	CMakeFiles/HeaderFile.dir/Log.cpp.obj	b9f7771cc8cd896d
+447	504	7681301028104984	HeaderFile.exe	b253e03acc4c68c7
+31	76	7681302183407446	CMakeFiles/HeaderFile.dir/main.cpp.obj	962961f7a348783
+35	489	7681302183447448	CMakeFiles/HeaderFile.dir/Log.cpp.obj	b9f7771cc8cd896d
+489	551	7681302187987900	HeaderFile.exe	b253e03acc4c68c7
+36	77	7681307596810389	CMakeFiles/HeaderFile.dir/main.cpp.obj	962961f7a348783
+39	501	7681307596835433	CMakeFiles/HeaderFile.dir/Log.cpp.obj	b9f7771cc8cd896d
+501	560	7681307601452575	HeaderFile.exe	b253e03acc4c68c7
