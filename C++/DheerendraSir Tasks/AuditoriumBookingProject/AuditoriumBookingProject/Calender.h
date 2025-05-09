@@ -20,6 +20,8 @@ public:
     void navigate();
     void printTodayDate();
 
+    AuditoriumBookingManager *bookingManager() const;
+
 private:
     list<Year*> m_years;
     AuditoriumBookingManager* m_bookingManager;
