@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-8509ef0da2ab7b9e0068.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "AuditoriumBookingProject",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "AuditoriumBookingProject::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AuditoriumBookingProject-Debug-8807e246ae37b4bd45f8.json",
+					"name" : "AuditoriumBookingProject",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "AuditoriumBookingProject_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AuditoriumBookingProject_autogen-Debug-76d0da94e16d5847fd7b.json",
+					"name" : "AuditoriumBookingProject_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "AuditoriumBookingProject_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AuditoriumBookingProject_autogen_timestamp_deps-Debug-c7e346d415a5ec075f94.json",
+					"name" : "AuditoriumBookingProject_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/ashwi/Documents/CPP/C++/DheerendraSir Tasks/AuditoriumBookingProject/AuditoriumBookingProject/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug",
+		"source" : "C:/Users/ashwi/Documents/CPP/C++/DheerendraSir Tasks/AuditoriumBookingProject/AuditoriumBookingProject"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

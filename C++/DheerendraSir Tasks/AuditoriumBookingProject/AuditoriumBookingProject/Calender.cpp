@@ -130,3 +130,8 @@ void Calender::printTodayDate()
     cout<<"Today's Date : "<<today->tm_mday<<"/0"<<today->tm_mon + 1<<"/"<<today->tm_year + 1900<<endl<<endl;
 }
 
+AuditoriumBookingManager *Calender::bookingManager() const
+{
+    return m_bookingManager;
+}
+

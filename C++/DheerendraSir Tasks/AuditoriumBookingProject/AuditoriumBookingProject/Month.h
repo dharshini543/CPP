@@ -16,6 +16,8 @@ public:
     void addDay(int day);
     void print(int year, AuditoriumBookingManager *manager);
 
+    vector<Day*> getDays();
+    int getWeekDay(int year, int month);
 private:
     int m_month;
     vector<Day*> m_days;

@@ -1,0 +1,23 @@
+# ninja log v6
+296	916	7684072931361227	CMakeFiles/AuditoriumBookingProject.dir/Auditorium.cpp.obj	fe8584694aac4216
+417	976	7684072932566250	CMakeFiles/AuditoriumBookingProject.dir/Debug.cpp.obj	b59254af19780359
+410	985	7684072932476142	CMakeFiles/AuditoriumBookingProject.dir/Day.cpp.obj	391cdfa1a471149c
+309	1186	7684072931504718	CMakeFiles/AuditoriumBookingProject.dir/AuditoriumBookingManager.cpp.obj	a2dc1f72cd02e6a2
+342	958	7684072931830594	CMakeFiles/AuditoriumBookingProject.dir/Date.cpp.obj	9bd3e0db83c8578f
+907	1623	7684122824826588	CMakeFiles/AuditoriumBookingProject.dir/Calender.cpp.obj	336c610478e737af
+64	303	7684167547907977	AuditoriumBookingProject_autogen/mocs_compilation.cpp	a69bbb28d790f46b
+953	1731	7684113943850315	CMakeFiles/AuditoriumBookingProject.dir/Year.cpp.obj	1dcf3156bb16c5ab
+305	2751	7684167550390498	CMakeFiles/AuditoriumBookingProject.dir/main.cpp.obj	495d93dd66641810
+961	1924	7684113943901579	CMakeFiles/AuditoriumBookingProject.dir/Month.cpp.obj	db4ce92998cc289a
+2751	3188	7684167574862204	AuditoriumBookingProject.exe	b8791761c131d9c1
+64	303	7684167547907977	AuditoriumBookingProject_autogen/timestamp	a69bbb28d790f46b
+64	303	7684167547907977	C:/Users/ashwi/Documents/CPP/C++/DheerendraSir Tasks/AuditoriumBookingProject/AuditoriumBookingProject/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/AuditoriumBookingProject_autogen/timestamp	a69bbb28d790f46b
+64	303	7684167547907977	C:/Users/ashwi/Documents/CPP/C++/DheerendraSir Tasks/AuditoriumBookingProject/AuditoriumBookingProject/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/AuditoriumBookingProject_autogen/mocs_compilation.cpp	a69bbb28d790f46b
+892	3347	7684122824676558	CMakeFiles/AuditoriumBookingProject.dir/AuditoriumBookingProject_autogen/mocs_compilation.cpp.obj	cfd458422ca12826
+255	2716	7684164440642059	CMakeFiles/AuditoriumBookingProject.dir/CalendarWidget.cpp.obj	1b02dd64b8d68654
+89	317	7684728754727360	AuditoriumBookingProject_autogen/timestamp	a69bbb28d790f46b
+89	317	7684728754727360	AuditoriumBookingProject_autogen/mocs_compilation.cpp	a69bbb28d790f46b
+89	317	7684728754727360	C:/Users/ashwi/Documents/CPP/C++/DheerendraSir Tasks/AuditoriumBookingProject/AuditoriumBookingProject/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/AuditoriumBookingProject_autogen/timestamp	a69bbb28d790f46b
+89	317	7684728754727360	C:/Users/ashwi/Documents/CPP/C++/DheerendraSir Tasks/AuditoriumBookingProject/AuditoriumBookingProject/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/AuditoriumBookingProject_autogen/mocs_compilation.cpp	a69bbb28d790f46b
+350	3096	7684728757337299	CMakeFiles/AuditoriumBookingProject.dir/main.cpp.obj	495d93dd66641810
+3096	4086	7684728784810035	AuditoriumBookingProject.exe	b8791761c131d9c1

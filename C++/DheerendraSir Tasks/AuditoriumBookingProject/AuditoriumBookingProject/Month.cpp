@@ -9,7 +9,7 @@ int getDaysInMonth(int month, int year)
     return daysInMonth[month - 1];
 }
 
-int getWeekDay(int year, int month)
+int Month::getWeekDay(int year, int month)
 {
     tm time_in = {};
     time_in.tm_year = year - 1900;
@@ -105,4 +105,9 @@ void Month::print(int year, AuditoriumBookingManager* manager)
     }
     cout << "\n";
 
+}
+
+vector<Day *> Month::getDays()
+{
+    return m_days;
 }
