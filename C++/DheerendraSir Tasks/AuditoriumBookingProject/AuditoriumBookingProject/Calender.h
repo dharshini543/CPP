@@ -17,6 +17,9 @@ public:
     void addYear(int year);
     void printSpecificMonth(int year, int month);
     void printMonthCalender();
+    void clearScreen();
+    char getch();
+    char getArrowKey();
     void navigate();
     void printTodayDate();
 
