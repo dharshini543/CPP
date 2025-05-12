@@ -1,16 +1,20 @@
 #include "Calender.h"
 #include <iostream>
-#include <conio.h>
-#include"Debug.h"
+#include <ctime>
+#include <unistd.h>
+#include <termios.h>
+#include "Debug.h"
 
-#define LEFT_ARROW 75
-#define RIGHT_ARROW 77
-#define ENTER_KEY 13
+#define LEFT_ARROW 68    // ASCII for left arrow in ANSI escape sequence
+#define RIGHT_ARROW 67   // ASCII for right arrow
+#define ENTER_KEY 10     // Line feed on Linux
+
+using namespace std;
 
 Calender::Calender()
 {
-    if(Debug::getEnabled())
-        cout<<"Calender Constructor"<<endl;
+    if (Debug::getEnabled())
+        cout << "Calender Constructor" << endl;
 
     time_t now = time(0);
     tm* localTime = localtime(&now);
@@ -20,8 +24,8 @@ Calender::Calender()
 
 Calender::~Calender()
 {
-    if(Debug::getEnabled())
-        cout<<"Calender Destructor"<<endl;
+    if (Debug::getEnabled())
+        cout << "Calender Destructor" << endl;
 
     for (auto year : m_years)
     {
@@ -52,7 +56,6 @@ void Calender::addYear(int year)
     m_years.push_back(newYear);
 }
 
-
 void Calender::printMonthCalender()
 {
     Year* year = getYear(m_currentYear);
@@ -68,8 +71,8 @@ void Calender::printMonthCalender()
         month = year->getMonth(m_currentMonth);
     }
     month->print(m_currentYear, m_bookingManager);
-
 }
+
 void Calender::printSpecificMonth(int year, int month)
 {
     Year* y = getYear(year);
@@ -87,17 +90,47 @@ void Calender::printSpecificMonth(int year, int month)
     m->print(year, m_bookingManager);
 }
 
+void Calender::clearScreen()
+{
+    cout << "\033[H\033[J" << flush;
+}
+
+
+char Calender::getch()
+{
+    struct termios oldt, newt;
+    char ch;
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    ch = getchar();
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    return ch;
+}
+
+char Calender::getArrowKey()
+{
+    char c = getch();
+    if (c == 27)
+    {
+        getch();
+        return getch();
+    }
+    return c;
+}
+
 void Calender::navigate()
 {
     char input;
     do {
-        system("cls");
+        clearScreen();
         printMonthCalender();
-        cout<<endl;
+        cout << endl;
         this->printTodayDate();
 
-        cout << "Enter < for previous month, > for next month, Enter to Continue Booking";
-        input = _getch();
+        cout << "Use arrow keys (← →) to navigate, Enter to continue booking: ";
+        input = getArrowKey();
 
         if (input == LEFT_ARROW)
         {
@@ -119,6 +152,7 @@ void Calender::navigate()
     } while (input != ENTER_KEY);
 }
 
+
 void Calender::printTodayDate()
 {
     time_t t;
@@ -127,6 +161,9 @@ void Calender::printTodayDate()
     time(&t);
     today = localtime(&t);
 
-    cout<<"Today's Date : "<<today->tm_mday<<"/0"<<today->tm_mon + 1<<"/"<<today->tm_year + 1900<<endl<<endl;
+    cout << "Today's Date : " << today->tm_mday << "/"
+         << (today->tm_mon + 1) << "/"
+         << (today->tm_year + 1900) << endl << endl;
 }
+
 

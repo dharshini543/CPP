@@ -1,0 +1,12 @@
+# ninja log v5
+1	7	0	clean	a31eedcededa8236
+4	364	1746936216585373679	CMakeFiles/AuditoriumBookingProject.dir/Day.cpp.o	4984000bbc22c839
+3	397	1746936216618382427	CMakeFiles/AuditoriumBookingProject.dir/Date.cpp.o	10f766fa44c1bceb
+2	473	1746936216694402574	CMakeFiles/AuditoriumBookingProject.dir/main.cpp.o	90524635c27327dd
+3	481	1746936216702404695	CMakeFiles/AuditoriumBookingProject.dir/Year.cpp.o	740ca0747d75b5b6
+4	485	1746936216706405755	CMakeFiles/AuditoriumBookingProject.dir/Debug.cpp.o	b1b92dbae7f4e671
+2	514	1746936216735413442	CMakeFiles/AuditoriumBookingProject.dir/Auditorium.cpp.o	1a4a2d04790c5efb
+4	554	1746936216775424046	CMakeFiles/AuditoriumBookingProject.dir/Month.cpp.o	34aa7ccb5320d19f
+2	688	1746936216909459567	CMakeFiles/AuditoriumBookingProject.dir/AuditoriumBookingManager.cpp.o	b707d4d4aaeb1927
+3	691	1746936216912460363	CMakeFiles/AuditoriumBookingProject.dir/Calender.cpp.o	3c5c6d5ffdd8939d
+691	783	1746936217003484478	AuditoriumBookingProject	2e4dfc4d6e041ea5
