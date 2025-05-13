@@ -8,6 +8,7 @@ using namespace std;
 class Month
 {
 public:
+    Month();
     Month(int month);
     ~Month();
 
@@ -15,6 +16,8 @@ public:
     Day* getDay(int day);
     void addDay(int day);
     void print(int year, AuditoriumBookingManager *manager);
+    int getWeekDay(int year, int month);
+
     vector<Day*> getDays();
 
 private:
