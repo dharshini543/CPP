@@ -35,12 +35,37 @@ Calender::~Calender()
 
 int Calender::getCurrentYear()
 {
-    return m_currentYear;
+    time_t now = time(0);
+    tm *ltm =localtime(&now);
+    int year = (1900+ltm->tm_year);
+    return year;
 }
-
 int Calender::getCurrentMonth()
 {
-    return m_currentMonth;
+    time_t now = time(0);
+    tm *ltm =localtime(&now);
+    int month = ltm->tm_mon + 1;
+    return month;
+}
+
+int Calender::getCurrentDay()
+{
+    time_t now = time(0);
+    tm *ltm =localtime(&now);
+    int day = ltm->tm_mday;
+    return day;
+}
+
+string Calender::getCurrentDate()
+{
+    string months[] = {"", "January", "February", "March", "April", "May", "June",
+                       "July", "August", "September", "October", "November", "December"};
+
+    string result = to_string(getCurrentDay()) + " " +
+                    months[getCurrentMonth()] + " " +
+                    to_string(getCurrentYear());
+
+    return result;
 }
 
 Year* Calender::getYear(int year)

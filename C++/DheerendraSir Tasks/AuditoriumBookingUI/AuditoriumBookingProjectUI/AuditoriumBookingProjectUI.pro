@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 
 SOURCES += \
         CalendarUI.cpp \
+        CalendarWidget.cpp \
         auditorium.cpp \
         auditoriumbookingmanager.cpp \
         calendar.cpp \
@@ -16,6 +17,7 @@ SOURCES += \
 
 HEADERS += \
     CalendarUI.h \
+    CalendarWidget.h \
     auditorium.h \
     auditoriumbookingmanager.h \
     calendar.h \
