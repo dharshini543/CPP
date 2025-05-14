@@ -8,10 +8,10 @@ using namespace std;
 class Month
 {
 public:
-    Month();
     Month(int month);
     ~Month();
 
+    int getDaysInMonth(int month, int year);
     int getMonth();
     Day* getDay(int day);
     void addDay(int day);

@@ -3,17 +3,12 @@
 #include <iomanip>
 #include"debug.h"
 
-int getDaysInMonth(int month, int year)
+int Month::getDaysInMonth(int month, int year)
 {
     if (month == 2 && (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)))
         return 29;
     int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
     return daysInMonth[month - 1];
-}
-
-Month::Month()
-{
-
 }
 
 Month::Month(int month)

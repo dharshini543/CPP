@@ -15,9 +15,11 @@ public:
     int getCurrentYear();
     int getCurrentMonth();
     int getCurrentDay();
-    string getCurrentDate();
+    Date getCurrentDate();
+
 
     Year* getYear(int year);
+    Month* getMonth(int year, int month);
     void setBookingManager(AuditoriumBookingManager* m_bookingManager);
     void addYear(int year);
     void setYearAndMonth(int year, int month) ;

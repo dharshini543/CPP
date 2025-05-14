@@ -36,6 +36,7 @@ Month* Year::getMonth(int month)
     return nullptr;
 }
 
+
 void Year::addMonth(int month)
 {
     Month* newMonth = new Month(month);
