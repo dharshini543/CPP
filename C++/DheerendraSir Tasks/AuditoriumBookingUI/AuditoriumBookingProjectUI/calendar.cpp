@@ -5,9 +5,9 @@
 #include <termios.h>
 #include "debug.h"
 
-#define LEFT_ARROW 68    // ASCII for left arrow in ANSI escape sequence
-#define RIGHT_ARROW 67   // ASCII for right arrow
-#define ENTER_KEY 10     // Line feed on Linux
+#define LEFT_ARROW 68
+#define RIGHT_ARROW 67
+#define ENTER_KEY 10
 
 using namespace std;
 
@@ -56,16 +56,11 @@ int Calender::getCurrentDay()
     return day;
 }
 
-string Calender::getCurrentDate()
+Date Calender::getCurrentDate()
 {
-    string months[] = {"", "January", "February", "March", "April", "May", "June",
-                       "July", "August", "September", "October", "November", "December"};
-
-    string result = to_string(getCurrentDay()) + " " +
-                    months[getCurrentMonth()] + " " +
-                    to_string(getCurrentYear());
-
-    return result;
+    time_t now = time(0);
+    tm* localTime = localtime(&now);
+    return Date(localTime->tm_mday, localTime->tm_mon + 1, localTime->tm_year + 1900);
 }
 
 Year* Calender::getYear(int year)
@@ -80,6 +75,24 @@ Year* Calender::getYear(int year)
     return nullptr;
 }
 
+Month* Calender::getMonth(int year, int month)
+{
+    Year* y = getYear(year);
+    if (!y) {
+        addYear(year);
+        y = getYear(year);
+    }
+
+    Month* m = y->getMonth(month);
+    if (!m) {
+        y->addMonth(month);
+        m = y->getMonth(month);
+    }
+
+    return m;
+}
+
+
 void Calender::setBookingManager(AuditoriumBookingManager* bookingManager)
 {
     m_bookingManager = bookingManager;
@@ -90,9 +103,10 @@ void Calender::addYear(int year)
     Year* newYear = new Year(year);
     m_years.push_back(newYear);
 }
-// Add this setter function to the Calender class
+
 void Calender::setYearAndMonth(int year, int month)
 {
+    std::cout << "Switching to " << month << "-" << year << "\n";
     m_currentYear = year;
     m_currentMonth = month;
 }
