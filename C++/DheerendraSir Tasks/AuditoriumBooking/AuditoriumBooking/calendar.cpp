@@ -106,7 +106,7 @@ void Calender::addYear(int year)
 
 void Calender::setYearAndMonth(int year, int month)
 {
-    cout << "Switching to " << month << "-" << year << "\n";
+    std::cout << "Switching to " << month << "-" << year << "\n";
     m_currentYear = year;
     m_currentMonth = month;
 }

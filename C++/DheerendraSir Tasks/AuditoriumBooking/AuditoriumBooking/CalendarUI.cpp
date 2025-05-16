@@ -75,7 +75,7 @@ void CalendarUI::updateCalendar()
     for (int day = 1; day <= totalDays; ++day)
     {
         int index = startDay + day - 1;
-        char dayText[4];
+        char dayText[3];
         sprintf(dayText, "%d", day);
         m_dayButtons[index]->setText(dayText);
         m_dayButtons[index]->show();
@@ -84,7 +84,7 @@ void CalendarUI::updateCalendar()
 
     Date today = m_calendar->getCurrentDate();
     char todayText[30];
-    sprintf(todayText, "Today's Date: %02d-%02d-%d", today.getDay(), today.getMonth(), today.getYear());
+    sprintf(todayText, "Today: %02d-%02d-%d", today.getDay(), today.getMonth(), today.getYear());
     m_todayLabel->setText(todayText);
 }
 
