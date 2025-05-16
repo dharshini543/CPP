@@ -4,6 +4,7 @@
 
 class CalendarUI : public QWidget
 {
+    //Q_OBJECT
 
 public:
     CalendarUI(Calender* calendar, QWidget* parent = nullptr);
