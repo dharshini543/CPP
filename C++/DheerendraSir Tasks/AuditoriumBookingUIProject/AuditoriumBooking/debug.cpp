@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std;
 
-bool Debug::m_isEnabled = true;
+bool Debug::m_isEnabled = false;
 
 Debug::Debug()
 {

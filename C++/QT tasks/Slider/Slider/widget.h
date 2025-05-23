@@ -9,6 +9,7 @@ class Widget : public QWidget
     Q_OBJECT
 public:
     explicit Widget(QWidget *parent = nullptr);
+    int getMember();
 
 private:
 
@@ -17,6 +18,7 @@ private:
     void setupUI();
     void updateSlider();
     void displaySliderValues(int value);
+    int m_member;
 };
 
 #endif // WIDGET_H

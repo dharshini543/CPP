@@ -72,6 +72,7 @@ void CalendarUI::updateCalendar()
     int startDay = m_month->getWeekDay(m_currentYear,m_currentMonth);
     int totalDays = m_month->getDaysInMonth(m_currentMonth,m_currentYear);
 
+
     for (int day = 1; day <= totalDays; ++day)
     {
         int index = startDay + day - 1;
@@ -109,5 +110,3 @@ void CalendarUI::goNextMonth()
     m_calendar->setYearAndMonth(m_currentYear, m_currentMonth);
     updateCalendar();
 }
-
-
