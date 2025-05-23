@@ -25,7 +25,7 @@ AuditoriumBookingManager::~AuditoriumBookingManager()
 
 void AuditoriumBookingManager::addAuditorium()
 {
-    for(int auditoriumID = 1; auditoriumID <= 16; auditoriumID++)
+    for(int auditoriumID = 1; auditoriumID <= 5; auditoriumID++)
     {
         m_auditoriums[auditoriumID] = new Auditorium(auditoriumID);
     }

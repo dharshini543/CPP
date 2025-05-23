@@ -110,5 +110,3 @@ void CalendarUI::goNextMonth()
     m_calendar->setYearAndMonth(m_currentYear, m_currentMonth);
     updateCalendar();
 }
-
-

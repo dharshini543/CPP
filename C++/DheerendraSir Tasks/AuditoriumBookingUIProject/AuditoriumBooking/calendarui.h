@@ -30,14 +30,12 @@ private:
 
     void setupUI();
     void updateCalendar();
+
     void goPreviousMonth();
     void goNextMonth();
     void handleDateClick(int day);
     void handleAuditoriumSelection(int auditoriumID);
-    // void handleDateClick(int index);
-    // void handleAuditoriumSelection(int auditoriumID);
-    void onSelectAuditoriumClicked();
-    void showAuditoriumButtonsForDate(int day /*QPushButton* dayButton*/);
+    void showAuditoriumButtonsForDate(int day);
 };
 
 
