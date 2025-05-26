@@ -38,6 +38,7 @@ void Employee::print()
     {
         cout << "  Employee Name: " << child->getName() << endl;
         child->print();
+
     }
 }
 
