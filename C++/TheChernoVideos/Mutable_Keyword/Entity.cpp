@@ -1,3 +1,7 @@
 #include "Entity.h"
 
-Entity::Entity() {}
+const string& Entity::getName() const
+{
+    m_DebugCount ++;//it is not possible untill we add keyword mutable to m_DebugCount
+    return m_name;
+}

@@ -9,10 +9,12 @@ void printEntity(const Entity& e)
 {
     cout<<e.getX()<<endl;
 }
+
 int main()
 {
     const int Max_Age =90;
     const int* a = new int;// we cannot modify the contents of the memoryAddress
+    a = (int*)&Max_Age;
     //int const* a = new int; similar to above we cannot change the value at the particular memory address -> *a =20 is not possible
 
 
