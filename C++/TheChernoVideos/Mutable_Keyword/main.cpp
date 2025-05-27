@@ -1,21 +1,9 @@
 #include <iostream>
+#include"Entity.h"
 
 using namespace std;
-    //mutable we can change value of variable even in const fun;
+    //we can change value of mutable variable even in const fun;
 //we use mutable in two cases 1.const functions 2. lambda expressions.
-class Entity
-{
-private:
-    string m_name;
-    mutable int m_DebugCount =0;
-public:
-    const string& getName() const
-    {
-        m_DebugCount ++;//it is not possible untill we add keyword mutable to m_DebugCount
-        return m_name;
-    }
-
-};
 
 int main()
 {
