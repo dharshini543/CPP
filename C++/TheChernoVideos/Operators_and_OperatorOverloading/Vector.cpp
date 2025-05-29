@@ -1,6 +1,9 @@
 #include "Vector.h"
 
-Vector::Vector(float x, float y):m_x(x),m_y(y){}
+Vector::Vector(float x, float y):m_x(x),m_y(y)
+{
+
+}
 
 Vector Vector::operator+ (const Vector& other)const
 {

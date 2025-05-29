@@ -16,7 +16,7 @@ int main()
     // cout<<e->getName()<<endl;
     // printName(e);
 
-     Player* p = new Player("Likhitha");
+     Player* p = new Player("Dharshini");
     // printName(p);
     // cout<<p->getName()<<endl;
 
