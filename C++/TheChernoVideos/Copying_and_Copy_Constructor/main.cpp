@@ -9,7 +9,7 @@ int main()
     cout<<string<<endl;
     cout<<second<<endl;
 
-    second[2]= 'h';
+    second[2]= 'H';
 
     cout<<string<<endl;
     cout<<second<<endl;

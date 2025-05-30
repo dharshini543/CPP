@@ -4,4 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        Entity.cpp \
         main.cpp
+
+HEADERS += \
+    Entity.h
