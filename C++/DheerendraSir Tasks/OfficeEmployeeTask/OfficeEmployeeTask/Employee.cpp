@@ -1,45 +1,56 @@
 #include "Employee.h"
-#include "Office.h"
 #include <iostream>
-using namespace  std;
 
-Employee::Employee(const string& name, Office* office)
-    : m_employeeName(name), officePtr(office)
+Employee::Employee(const string& name, Base* parent)
+    : Base(name), Ptr(parent)
 {
-    cout<<"employee constructor with office parameter"<<endl;
-        officePtr->addEmployee(this);
-}
-
-Employee::Employee(const string& name, Employee* emp)
-    : m_employeeName(name), empPtr(emp)
-{
-    cout<<"employee constructor with employee parameter"<<endl;
-        empPtr->addChild(this);
+    cout << "Employee constructor called for " << m_name << endl<<endl;
+    if (Ptr)
+        Ptr->addChild(this);
 }
 
 Employee::~Employee()
 {
-    cout<<"employee destructor called"<<endl;
+    cout << "Employee destructor for " << m_name << endl;
 }
 
-string Employee::getName()
-{
-    return m_employeeName;
-}
-
-void Employee::addChild(Employee* child)
+void Employee::addChild(Base* child)
 {
     children.push_back(child);
 }
 
-void Employee::print()
+void Employee::print() const
 {
+    cout << "Employee Name: " << m_name << endl;
     for (auto child : children)
     {
-        cout << "  Employee Name: " << child->getName() << endl;
         child->print();
 
     }
 }
+
+vector<string> Employee::findChild(const string& name)
+{
+    vector<string> result;
+    for (auto child : children)
+    {
+        if (child->getName() == name)
+        {
+            result.push_back(name);
+        }
+    }
+    return result;
+}
+
+void Employee::getMe() const
+{
+    cout << "Employee getMe(): " << m_name << endl;
+
+    for (auto child : children)
+    {
+        child->getMe();
+    }
+}
+
 
 

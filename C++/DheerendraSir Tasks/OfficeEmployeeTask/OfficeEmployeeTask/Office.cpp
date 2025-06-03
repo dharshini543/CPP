@@ -1,28 +1,53 @@
 #include "Office.h"
 #include <iostream>
 
-Office::Office(const string &name) : m_officeName(name)
+Office::Office(const string &name)
+    : Base(name)
 {
-    cout<<"office constructor called"<<endl;
+    cout << "Office constructor for " << m_name << endl;
 }
 
 Office::~Office()
 {
-    cout<<"office destructor called"<<endl;
+    cout << "Office destructor for " << m_name << endl;
 }
 
-void Office::addEmployee(Employee* emp)
+void Office::addChild(Base* child)
 {
-    cout<<"office constructor called"<<endl;
-    employees.push_back(emp);
+    children.push_back(child);
 }
 
-void Office::print()
+void Office::print() const
 {
-    cout << "Office Name: " << m_officeName << endl;
-    for (auto emp : employees)
+    cout << "Office Name: " << m_name << endl;
+    for (auto emp : children)
     {
         emp->print();
-        cout << "  Employee Name: " << emp->getName() << endl;
     }
 }
+
+vector<string> Office::findChild(const string& name)
+{
+    vector<string> result;
+    for (auto child : children)
+    {
+        if (child->getName() == name)
+        {
+            result.push_back(name);
+        }
+    }
+    return result;
+}
+
+void Office::getMe() const
+{
+    Base::getMe();
+    cout << "Office getMe(): " << m_name << endl;
+
+    for (auto emp : children)
+    {
+        emp->getMe();
+    }
+}
+
+
