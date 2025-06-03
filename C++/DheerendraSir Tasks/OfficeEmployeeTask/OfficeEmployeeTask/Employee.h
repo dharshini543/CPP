@@ -1,27 +1,25 @@
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 
-#include <string>
-#include <vector>
-using namespace std;
+#include "Base.h"
 
-class Office;
-class Employee
+class Employee : public Base
 {
 public:
-    Employee(const string& name, Office* office);
-    Employee(const string& name, Employee* emp);
+    Employee(const string &name, Base* parent);
     ~Employee();
 
-    string getName();
-    void print();
-    void addChild(Employee* child);
+    void addChild(Base* child) override;
+    void print() const override;
+    vector<string> findChild(const string& name) override;
+    void getMe() const override;
 
 private:
-    string m_employeeName;
-    Office* officePtr;
-    Employee* empPtr;
-    vector<Employee*> children;
+    Base* Ptr;
+
 };
 
-#endif // EMPLOYEE_H
+#endif
+
+
+
