@@ -9,18 +9,18 @@ class Base
 public:
     Base();
     Base(const string &name);
-    virtual ~Base();
+    ~Base();
 
     string getName() const;
+    void addChild(Base* child);
 
-    virtual void addChild(Base* child) = 0;
-    virtual void print() const = 0;
-    virtual vector<string> findChild(const string& name) = 0;
+    virtual void print() const;
+    virtual vector<Base*> findChild(const string& name);
     virtual void getMe() const;
 
 protected:
     string m_name;
-    vector<Base*> children;
+    vector<Base*> m_childrens;
 
 
 };

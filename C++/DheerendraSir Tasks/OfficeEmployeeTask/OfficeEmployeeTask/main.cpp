@@ -5,26 +5,29 @@ using namespace std;
 
 int main()
 {
-    Office office("pthinks");
+    Office office("PthinkS");
+    Employee dharshini("Dharshini", &office);
+    Employee likitha("Likitha", &office);
+    Employee pallavi("Pallavi", &likitha);
+    Employee varshini("Varshini", &likitha);
 
-    Employee Dharshini("Dharshini", &office);
-    Employee Likitha("Likitha", &office);
-    Employee Pallavi("Pallavi", &Likitha);
-    Employee Varshini("Varshini", &Likitha);
+    office.print();
+    office.getMe();
 
-    //office.print();
+    vector<Base*> matches = office.findChild("Dharshini");
 
-    Base& object = office;
-    object.getMe();
-
-    vector<string> matches = office.findChild("Likitha");
-    cout <<endl<< "Matched names: " << endl;
-    for (const auto& name : matches)
+    if (matches.empty())
     {
-        cout << "  " << name << endl;
+        cout <<endl<< "No matching names found."<<endl<<endl;
     }
-
-
+    else
+    {
+        cout <<endl<< "Matched names: " << endl;
+        for (auto& name : matches)
+        {
+            cout << "  " << name->getName() << endl<<endl;
+        }
+    }
 
     return 0;
 }
