@@ -4,7 +4,7 @@ using namespace std;
 
 Base::Base()
 {
-    cout << "Base default constructor calle" << endl;
+    cout << "Base default constructor called" << endl;
 }
 
 Base::Base(const string& name)
@@ -20,7 +20,30 @@ Base::~Base()
 
 void Base::addChild(Base* child)
 {
-    children.push_back(child);
+    m_childrens.push_back(child);
+}
+
+void Base::print() const
+{
+    cout << m_name <<" print function called"<< endl;
+    for (Base* child : m_childrens)
+    {
+        child->print();
+
+    }
+}
+
+vector<Base *> Base::findChild(const string& name)
+{
+    vector<Base*> result;
+    for (Base* child : m_childrens)
+    {
+        if (child->getName() == name)
+        {
+            result.push_back(child);
+        }
+    }
+    return result;
 }
 
 string Base::getName() const
@@ -30,7 +53,12 @@ string Base::getName() const
 
 void Base::getMe() const
 {
-    cout << "Base getMe(): " << m_name << endl;
+    cout <<endl<< m_name<< " getMe():  function called"<< endl;
+    for (Base* child : m_childrens)
+    {
+        child->getMe();
+
+    }
 }
 
 
