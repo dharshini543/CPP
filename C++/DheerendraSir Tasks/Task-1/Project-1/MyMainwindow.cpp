@@ -1,130 +1,114 @@
 #include "MyMainwindow.h"
-#include"ShapeStyle.h"
-#include <QColorDialog>
+#include <QPainter>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent) {
-    resize(1000, 700);
-    setWindowTitle("Shape Drawer");
+    : QMainWindow(parent),
+    currentShape(Rectangle),
+    currentOutlineColor(Qt::black),
+    currentFillColor(Qt::white),
+    currentPenWidth(2) {
 
-    int buttonSize = 60;
-    int spacing = 15;
-    int x = 20, y = 80;
+    setFixedSize(1000, 700);
 
-    // Shape buttons
-    circleBtn = new QPushButton("●", this);
-    circleBtn->setGeometry(x, y + 0 * (buttonSize + spacing), buttonSize, buttonSize);
-    connect(circleBtn, &QPushButton::clicked, this, &MainWindow::drawCircle);
+    QStringList shapeNames = {"Rectangle", "Circle", "Square", "Arc", "Pentagon", "Hexagon"};
+    for (int i = 0; i < 6; ++i) {
+        shapeButtons[i] = new QPushButton(shapeNames[i], this);
+        shapeButtons[i]->setGeometry(20, 50 + i * 60, 100, 50);
+        shapeButtons[i]->setProperty("shape", i);
+        connect(shapeButtons[i], &QPushButton::clicked, this, &MainWindow::selectShape);
+    }
 
-    squareBtn = new QPushButton("■", this);
-    squareBtn->setGeometry(x, y + 1 * (buttonSize + spacing), buttonSize, buttonSize);
-    connect(squareBtn, &QPushButton::clicked, this, &MainWindow::drawSquare);
+    QLabel *penWidthLabel = new QLabel("Pen Width", this);
+    penWidthLabel->setGeometry(150, 10, 80, 30);
+    penWidthSpin = new QSpinBox(this);
+    penWidthSpin->setRange(1, 20);
+    penWidthSpin->setValue(currentPenWidth);
+    penWidthSpin->setGeometry(230, 10, 60, 30);
+    connect(penWidthSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, &MainWindow::changePenWidth);
 
-    rectBtn = new QPushButton("▭", this);
-    rectBtn->setGeometry(x, y + 2 * (buttonSize + spacing), buttonSize, buttonSize);
-    connect(rectBtn, &QPushButton::clicked, this, &MainWindow::drawRectangle);
+    outlineColorBox = new QComboBox(this);
+    outlineColorBox->addItems({"Black", "Red", "Green", "Blue", "Yellow"});
+    outlineColorBox->setGeometry(310, 10, 100, 30);
+    connect(outlineColorBox, &QComboBox::currentTextChanged, this, &MainWindow::changeOutlineColor);
 
-    diamondBtn = new QPushButton("◆", this);
-    diamondBtn->setGeometry(x, y + 3 * (buttonSize + spacing), buttonSize, buttonSize);
-    connect(diamondBtn, &QPushButton::clicked, this, &MainWindow::drawDiamond);
+    fillColorBox = new QComboBox(this);
+    fillColorBox->addItems({"White", "Red", "Green", "Blue", "Yellow"});
+    fillColorBox->setGeometry(420, 10, 100, 30);
+    connect(fillColorBox, &QComboBox::currentTextChanged, this, &MainWindow::changeFillColor);
 
-    arcBtn = new QPushButton("⌒", this);
-    arcBtn->setGeometry(x, y + 4 * (buttonSize + spacing), buttonSize, buttonSize);
-    connect(arcBtn, &QPushButton::clicked, this, &MainWindow::drawArc);
-
-    // Top controls
-    penWidthBox = new QComboBox(this);
-    penWidthBox->setGeometry(100, 20, 120, 40);
-    for (int i = 1; i <= 10; ++i) penWidthBox->addItem(QString::number(i));
-    connect(penWidthBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &MainWindow::penWidthChanged);
-
-    outlineColorBtn = new QPushButton("Border Colour", this);
-    outlineColorBtn->setGeometry(240, 20, 150, 40);
-    connect(outlineColorBtn, &QPushButton::clicked, this, &MainWindow::selectOutlineColor);
-
-    fillColorBtn = new QPushButton("Fill", this);
-    fillColorBtn->setGeometry(410, 20, 100, 40);
-    connect(fillColorBtn, &QPushButton::clicked, this, &MainWindow::selectFillColor);
-
-    // Drawing area
-    drawingArea = new DrawingArea(this);
-    drawingArea->setGeometry(100, 80, 870, 590);
-    drawingArea->setStyleSheet("background-color: white;");
+    drawingArea = new QWidget(this);
+    drawingArea->setGeometry(150, 50, 820, 600);
+    drawingArea->setStyleSheet("background:white;");
 }
 
-void MainWindow::applyCurrentStyle() {
-    if (!currentShapeName.isEmpty()) {
-        ShapeStyle style = shapeStyles[currentShapeName];
-        drawingArea->drawShape(currentShapeName, style.penWidth, style.outlineColor, style.fillColor);
+MainWindow::~MainWindow() {}
+
+void MainWindow::selectShape() {
+    QPushButton *btn = qobject_cast<QPushButton *>(sender());
+    int type = btn->property("shape").toInt();
+    drawShape(static_cast<ShapeType>(type));
+}
+
+void MainWindow::drawShape(ShapeType type) {
+    QRect area(200 + shapes.size()*30, 100 + shapes.size()*30, 100, 100);
+    Shape s = {type, currentOutlineColor, currentFillColor, currentPenWidth, area};
+    shapes.append(s);
+    update();
+}
+
+void MainWindow::paintEvent(QPaintEvent *) {
+    QPainter painter(this);
+    for (const Shape &s : shapes) {
+        QPen pen(s.outlineColor);
+        pen.setWidth(s.penWidth);
+        painter.setPen(pen);
+        painter.setBrush(s.fillColor);
+
+        QRect r = s.rect;
+        switch (s.type) {
+        case Rectangle: painter.drawRect(r); break;
+        case Square: painter.drawRect(QRect(r.topLeft(), QSize(100, 100))); break;
+        case Circle: painter.drawEllipse(r); break;
+        case Arc: painter.drawArc(r, 30 * 16, 120 * 16); break;
+        case Pentagon: {
+            QPolygon poly;
+            for (int i = 0; i < 5; ++i) {
+                poly << QPoint(r.center().x() + 50 * cos(i * 2 * M_PI / 5),
+                               r.center().y() + 50 * sin(i * 2 * M_PI / 5));
+            }
+            painter.drawPolygon(poly);
+            break;
+        }
+        case Hexagon: {
+            QPolygon poly;
+            for (int i = 0; i < 6; ++i) {
+                poly << QPoint(r.center().x() + 50 * cos(i * 2 * M_PI / 6),
+                               r.center().y() + 50 * sin(i * 2 * M_PI / 6));
+            }
+            painter.drawPolygon(poly);
+            break;
+        }
+        }
     }
 }
 
-void MainWindow::updateControlsFromStyle() {
-    if (shapeStyles.contains(currentShapeName)) {
-        const ShapeStyle &style = shapeStyles[currentShapeName];
-        penWidthBox->setCurrentIndex(style.penWidth - 1);
-    }
+void MainWindow::changePenWidth(int w) {
+    currentPenWidth = w;
 }
 
-void MainWindow::penWidthChanged(int index) {
-    if (!currentShapeName.isEmpty()) {
-        shapeStyles[currentShapeName].penWidth = index + 1;
-        applyCurrentStyle();
-    }
+void MainWindow::changeOutlineColor() {
+    currentOutlineColor = colorFromName(outlineColorBox->currentText());
 }
 
-void MainWindow::selectOutlineColor() {
-    QColor color = QColorDialog::getColor(Qt::black, this);
-    if (color.isValid() && !currentShapeName.isEmpty()) {
-        shapeStyles[currentShapeName].outlineColor = color;
-        applyCurrentStyle();
-    }
+void MainWindow::changeFillColor() {
+    currentFillColor = colorFromName(fillColorBox->currentText());
 }
 
-void MainWindow::selectFillColor() {
-    QColor color = QColorDialog::getColor(Qt::white, this);
-    if (color.isValid() && !currentShapeName.isEmpty()) {
-        shapeStyles[currentShapeName].fillColor = color;
-        applyCurrentStyle();
-    }
-}
-
-void MainWindow::drawCircle() {
-    currentShapeName = "circle";
-    if (!shapeStyles.contains(currentShapeName))
-        shapeStyles[currentShapeName] = {1, Qt::black, Qt::white};
-    updateControlsFromStyle();
-    applyCurrentStyle();
-}
-
-void MainWindow::drawSquare() {
-    currentShapeName = "square";
-    if (!shapeStyles.contains(currentShapeName))
-        shapeStyles[currentShapeName] = {1, Qt::black, Qt::white};
-    updateControlsFromStyle();
-    applyCurrentStyle();
-}
-
-void MainWindow::drawRectangle() {
-    currentShapeName = "rectangle";
-    if (!shapeStyles.contains(currentShapeName))
-        shapeStyles[currentShapeName] = {1, Qt::black, Qt::white};
-    updateControlsFromStyle();
-    applyCurrentStyle();
-}
-
-void MainWindow::drawDiamond() {
-    currentShapeName = "diamond";
-    if (!shapeStyles.contains(currentShapeName))
-        shapeStyles[currentShapeName] = {1, Qt::black, Qt::white};
-    updateControlsFromStyle();
-    applyCurrentStyle();
-}
-
-void MainWindow::drawArc() {
-    currentShapeName = "arc";
-    if (!shapeStyles.contains(currentShapeName))
-        shapeStyles[currentShapeName] = {1, Qt::black, Qt::white};
-    updateControlsFromStyle();
-    applyCurrentStyle();
+QColor MainWindow::colorFromName(const QString &name) {
+    static QMap<QString, QColor> colorMap = {
+        {"Black", Qt::black}, {"Red", Qt::red}, {"Green", Qt::green},
+        {"Blue", Qt::blue}, {"Yellow", Qt::yellow}, {"White", Qt::white}
+    };
+    return colorMap.value(name, Qt::black);
 }

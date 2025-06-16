@@ -3,34 +3,53 @@
 
 #include <QMainWindow>
 #include <QPushButton>
-#include <QComboBox>
 #include <QColor>
-#include "drawingarea.h"
+#include <QComboBox>
+#include <QSpinBox>
+#include <QPainterPath>
+#include <QList>
+
+enum ShapeType { Rectangle, Circle, Square, Arc, Pentagon, Hexagon };
+
+struct Shape {
+    ShapeType type;
+    QColor outlineColor;
+    QColor fillColor;
+    int penWidth;
+    QRect rect;
+};
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
+
+protected:
+    void paintEvent(QPaintEvent *event) override;
 
 private slots:
-    void shapeClicked();
-    void penWidthChanged(int index);
-    void selectOutlineColor();
-    void selectFillColor();
+    void selectShape();
+    void changePenWidth(int);
+    void changeOutlineColor();
+    void changeFillColor();
 
 private:
-    DrawingArea *drawingArea;
+    QWidget *drawingArea;
+    QPushButton *shapeButtons[6];
+    QComboBox *outlineColorBox;
+    QComboBox *fillColorBox;
+    QSpinBox *penWidthSpin;
 
-    QMap<QString, QPushButton*> shapeButtons;
+    ShapeType currentShape;
+    QColor currentOutlineColor;
+    QColor currentFillColor;
+    int currentPenWidth;
 
-    QComboBox *penWidthBox;
-    QPushButton *outlineColorBtn;
-    QPushButton *fillColorBtn;
+    QList<Shape> shapes;
 
-    QString currentShape;
-
-    void updateUIFromShape(const QString &shape);
+    void drawShape(ShapeType type);
+    QColor colorFromName(const QString &name);
 };
-
 #endif // MAINWINDOW_H

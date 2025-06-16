@@ -15,8 +15,8 @@ QSGNode *LineItem::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *)
 
         QSGGeometry *geometry = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), 2);
 
-       // geometry->setDrawingMode(QSGGeometry::DrawLines);
-        geometry->setDrawingMode(GL_LINES);
+       geometry->setDrawingMode(QSGGeometry::DrawLines);
+        //geometry->setDrawingMode(GL_LINES);
 
         QSGGeometry::Point2D *vertices = geometry->vertexDataAsPoint2D();
         vertices[0].set(0, 0);
