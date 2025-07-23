@@ -4,15 +4,23 @@ CONFIG -= app_bundle
 
 SOURCES += \
         auditorium.cpp \
+        auditorium_test.cpp \
         auditoriumbookingmanager.cpp \
+        auditoriumbookingmanager_test.cpp \
         calendar.cpp \
+        calendar_test.cpp \
         calendarui.cpp \
+        calendarui_test.cpp \
         date.cpp \
+        date_test.cpp \
         day.cpp \
+        day_test.cpp \
         debug.cpp \
         main.cpp \
         month.cpp \
-        year.cpp
+        month_test.cpp \
+        year.cpp \
+        year_test.cpp
 
 HEADERS += \
     auditorium.h \
