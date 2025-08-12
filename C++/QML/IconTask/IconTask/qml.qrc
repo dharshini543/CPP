@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Production.qml</file>
+        <file>SetUp.qml</file>
+        <file>Support.qml</file>
+        <file>Tools.qml</file>
+    </qresource>
+</RCC>

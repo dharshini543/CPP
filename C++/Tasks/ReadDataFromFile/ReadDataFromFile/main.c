@@ -4,36 +4,29 @@
 
 struct Node
 {
-    char *lineBuffer;
+    char* lineBuffer;
     struct Node *next;
 };
 
 struct Node* head = NULL;
 
-struct Node* createNewNode(char *text)
-{
-    struct Node *newNode = (struct Node*) malloc(sizeof(struct Node));
-    newNode->lineBuffer = (char *)malloc(strlen(text));
-    strcpy(newNode->lineBuffer, text);
-    newNode->next = NULL;
-    return newNode;
-}
-
 void read()
 {
-    char str[500];
+    char str[250];
     FILE *fp = fopen("Pointer.txt","r");
     if (fp == NULL)
     {
         printf("Error opening file.\n");
-        fclose(fp);
         exit(1);
     }
 
     struct Node *temp = NULL;
     while(fgets(str, sizeof(str),fp) != NULL)
     {
-        struct Node *newNode = createNewNode(str);
+        struct Node *newNode = (struct Node*) malloc(sizeof(struct Node));
+        newNode->lineBuffer = (char *)malloc(strlen(str));
+        strcpy(newNode->lineBuffer, str);
+        newNode->next = NULL;
 
         if(head == NULL)
         {
