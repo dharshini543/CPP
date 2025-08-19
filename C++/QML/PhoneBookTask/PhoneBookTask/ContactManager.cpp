@@ -1,0 +1,72 @@
+#include "ContactManager.h"
+#include <qdebug.h>
+#include <qregularexpression.h>
+
+ContactManager::ContactManager()
+{
+    qDebug()<<Q_FUNC_INFO;
+}
+
+bool ContactManager::addContact(const QString& name, const QString& phoneNum, const QString& url)
+{
+    QRegularExpression nameRegex("^[A-Za-z ]+$");
+    QRegularExpression phoneRegex("^\\d{10}$");
+    if (!nameRegex.match(name).hasMatch()) {
+        qWarning() << "Invalid name";
+        return false;
+    }
+
+    if (!phoneRegex.match(phoneNum).hasMatch()) {
+        qWarning() << "Invalid phone number";
+        return false;
+    }
+    m_contacts.push_back(new Contact(name, phoneNum, url));
+    return true;
+}
+
+bool ContactManager::searchContact(QString &name)
+{
+    for(auto contacts : m_contacts)
+    {
+        if(contacts->getName() == name)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+int ContactManager::rowCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent)
+    return m_contacts.size();
+}
+
+QVariant ContactManager::data(const QModelIndex &index, int role) const
+{
+    const Contact* contact = m_contacts.at(index.row());
+    switch(role)
+    {
+    case NAME:
+        return contact->getName();
+    case PHONE_NUM:
+        return contact->getPhoneNum();
+    case IMAGE:
+        return contact->getUrl();
+    default:
+        return QVariant();
+    }
+    return QVariant();
+}
+
+QHash<int, QByteArray> ContactManager::roleNames() const
+{
+    QHash<int, QByteArray> l_roleNames;
+    l_roleNames.insert(NAME,"ContactName");
+    l_roleNames.insert(PHONE_NUM,"PhoneNum");
+    l_roleNames.insert(IMAGE,"ImageURL");
+    return l_roleNames;
+
+}
+

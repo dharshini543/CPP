@@ -6,25 +6,70 @@ Rectangle {
     anchors.fill: parent
 
     Column {
-        spacing: 10
+        spacing: 40
         anchors.centerIn: parent
 
         Row {
-            spacing: 10
-            Rectangle {
+            spacing: 40
+            Button {
                 width: 70; height: 70
-                color: "orange"
-                border.color: "black"
-                radius: 10
-                Text { anchors.centerIn: parent; text: "Setup 1" }
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Referencing"
+                }
             }
-            Rectangle {
+            Button {
                 width: 70; height: 70
-                color: "orange"
-                border.color: "black"
-                radius: 10
-                Text { anchors.centerIn: parent; text: "Setup 2" }
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Saw Blade"
+                }
+            }
+            Button {
+                width: 70; height: 70
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Saw Management"
+                }
+            }
+        }
+        Row {
+            spacing: 80
+            Button {
+                width: 70; height: 70
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Measurement Dialog"
+                }
+            }
+            Button {
+                width: 70; height: 70
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Hand Stock"
+                }
             }
         }
     }
 }
+

@@ -3,8 +3,9 @@
 #include "Student.h"
 #include<QString>
 #include<QList>
+#include<QAbstractListModel>
 
-class StudentManager
+class StudentManager:public QAbstractListModel
 {
 public:
     StudentManager();
@@ -15,6 +16,24 @@ public:
 
 private:
     QList<Student*> m_students;
+
+    // QAbstractItemModel interface
+public:
+    int rowCount(const QModelIndex &parent) const;
+    QVariant data(const QModelIndex &index, int role) const;
+    QHash<int, QByteArray> roleNames() const;
+
+    Q_INVOKABLE void check();
+
+    enum StudentRoles{
+        STUDENT_NAME = 1,
+        PHONE_NUM,
+        EMAIL,
+        FATHER_NAME,
+        USERNAME,
+        PASSWORD
+
+    };
 };
 
 #endif // STUDENTMANAGER_H

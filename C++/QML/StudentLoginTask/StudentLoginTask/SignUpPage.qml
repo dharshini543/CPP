@@ -5,6 +5,12 @@ Rectangle{
     id:signUpPage
     anchors.centerIn: parent
 
+    signal closeButtonClicked()
+    signal signUpButtonClicked()
+    signal loginButtonClicked()
+    signal submitButtonClicked()
+
+
     Column{
         id:column
         spacing: 10
@@ -119,7 +125,7 @@ Rectangle{
                 width: signUpPage.width/3
                 height:signUpPage.height/14
                 onClicked: {
-                    submitButtonClicked()
+                    submitBtnClicked()
                 }
             }
             Button{
@@ -141,16 +147,18 @@ Rectangle{
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 closeButtonClicked()
-                signUp.source = "WelcomePage.qml"
             }
         }
     }
-    function submitButtonClicked()
+    function submitBtnClicked()
     {
         console.log("Submit Button Clicked")
         var ok = signupHandler.handleSignup(studentNameEdit.text, studenMobileEdit.text,studentmailEdit.text, fatherNameEdit.text, userNameEdit.text, passwordEdit.text, confirmPasswordedit.text)
-        if (ok)
+        if (ok){
+            signUpButtonClicked()
+            submitButtonClicked()
             console.log("SignUp success")
+        }
         else
             console.log("SignUp failed")
     }
@@ -165,13 +173,5 @@ Rectangle{
         passwordEdit.clear()
         confirmPasswordedit.clear()
     }
-    function closeButtonClicked()
-    {
-        console.log("Close button Clicked")
-    }
-    Loader{
-        id:signUp
-        width: parent.width
-        height: parent.height
-    }
+
 }
