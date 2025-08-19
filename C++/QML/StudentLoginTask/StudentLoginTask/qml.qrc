@@ -4,5 +4,6 @@
         <file>WelcomePage.qml</file>
         <file>SignUpPage.qml</file>
         <file>LoginPage.qml</file>
+        <file>Showstudent.qml</file>
     </qresource>
 </RCC>

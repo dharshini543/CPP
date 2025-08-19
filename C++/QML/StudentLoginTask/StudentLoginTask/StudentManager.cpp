@@ -14,7 +14,7 @@ StudentManager::~StudentManager()
 
 bool StudentManager::addStudent(Student &stu)
 {
-    m_students.push_back(new Student(stu.getStudentName(),stu.getPhoneNum(),stu.getEmailID(),stu.getFatherName(),stu.getUsername(),stu.getPassword()));
+    m_students.push_back(new Student(stu.getStudentName(),stu.getPhone(),stu.getEmail(),stu.getFatherName(),stu.getUsername(),stu.getPassword()));
     return true;
 }
 
@@ -40,4 +40,46 @@ bool StudentManager::validateStudentLogin(const QString& username,const QString 
         }
     }
     return false;
+}
+
+int StudentManager::rowCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent)
+    return m_students.size();
+}
+
+QVariant StudentManager::data(const QModelIndex &index, int role) const
+{
+    const Student* student = m_students.at(index.row());
+    switch(role)
+    {
+    case STUDENT_NAME:
+        return student->getStudentName();
+    case PHONE_NUM:
+        return student->getPhone();
+    case EMAIL:
+        return student->getEmail();
+    case FATHER_NAME:
+        return student->getFatherName();
+    case USERNAME:
+        return student->getUsername();
+    case PASSWORD:
+        return student->getPassword();
+    default:
+        return QVariant();
+    }
+    return QVariant();
+}
+
+QHash<int, QByteArray> StudentManager::roleNames() const
+{
+    QHash<int, QByteArray> l_roleNames;
+    l_roleNames.insert(STUDENT_NAME,"studentName");
+    l_roleNames.insert(PHONE_NUM,"phoneNum");
+    l_roleNames.insert(EMAIL,"emailID");
+    l_roleNames.insert(FATHER_NAME,"fatherName");
+    l_roleNames.insert(USERNAME,"userName");
+    l_roleNames.insert(PASSWORD,"passWord");
+    return l_roleNames;
+
 }

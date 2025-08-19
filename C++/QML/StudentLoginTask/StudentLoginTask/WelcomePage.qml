@@ -5,6 +5,12 @@ Rectangle{
     id:welcomepage
     anchors.centerIn: parent
 
+    signal closeButtonClicked()
+    signal signUpButtonClicked()
+    signal loginButtonClicked()
+    signal submitButtonClicked()
+
+
     Column{
         id:column
         spacing: 25
@@ -23,7 +29,7 @@ Rectangle{
             width: welcomepage.width/2
             text:"LOGIN"
             onClicked: {
-                load.source = "LoginPage.qml"
+                loginButtonClicked()
             }
         }
         Button{
@@ -31,15 +37,9 @@ Rectangle{
             width: welcomepage.width/2
             text:"SIGNUP"
             onClicked: {
-                load.source = "SignUpPage.qml"
+                signUpButtonClicked()
             }
 
         }
-    }
-    Loader{
-        id:load
-        width: parent.width
-        height: parent.height
-
     }
 }

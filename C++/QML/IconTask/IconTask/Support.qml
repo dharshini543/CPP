@@ -6,36 +6,61 @@ Rectangle {
     anchors.fill: parent
 
     Column {
-        spacing: 10
+        spacing: 40
         anchors.centerIn: parent
 
         Row {
-            spacing: 10
-            Rectangle {
+            spacing: 100
+            Button {
+                id:rect1
                 width: 70; height: 70
-                color: "orange"
-                border.color: "black"
-                radius: 10
-                Text { anchors.centerIn: parent; text: "Support 1" }
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Maintenance Schedule"
+                }
             }
-            Rectangle {
+            Button {
                 width: 70; height: 70
-                color: "orange"
-                border.color: "black"
-                radius: 10
-                Text { anchors.centerIn: parent; text: "Support 2" }
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Data Backup"
+                }
             }
         }
 
         Row {
-            spacing: 10
-            Rectangle {
+            spacing: 70
+            Button {
                 width: 70; height: 70
-                color: "orange"
-                border.color: "black"
-                radius: 10
-                Text { anchors.centerIn: parent; text: "Support 3" }
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Remote Support"
+                }
+            }
+            Button {
+                width: 70; height: 70
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Status Display"
+                }
             }
         }
     }
 }
+

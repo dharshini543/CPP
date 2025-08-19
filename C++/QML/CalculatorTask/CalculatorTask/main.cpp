@@ -1,9 +1,7 @@
-#include "LoginHandler.h"
-#include "SignUpHandler.h"
-#include "StudentManager.h"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQmlContext>
+#include<QQmlContext>
+#include"Calculator.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,16 +10,10 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
-    StudentManager* manager = new StudentManager;
-
-    SignUpHandler signUphandler(manager);
-    LoginHandler loginHandler(manager);
-
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("signupHandler", &signUphandler);
-    engine.rootContext()->setContextProperty("loginHandler", &loginHandler);
-    engine.rootContext()->setContextProperty("viewModel",manager);
 
+    Calculator calc;
+    engine.rootContext()->setContextProperty("calculator", &calc);
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(
         &engine,

@@ -22,7 +22,7 @@ ApplicationWindow {
         Rectangle {
             width: parent.width * 0.25
             height: parent.height
-            color: "#333"
+            color: "grey"
 
             Column {
                 anchors.centerIn: parent
@@ -60,3 +60,4 @@ ApplicationWindow {
         }
     }
 }
+

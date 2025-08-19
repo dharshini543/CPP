@@ -3,7 +3,12 @@ import QtQuick.Controls
 
 Rectangle{
     id:logInPage
-    anchors.centerIn: parent
+
+    signal closeButtonClicked()
+    signal signUpButtonClicked()
+    signal loginButtonClicked()
+    signal submitButtonClicked()
+
 
     Column{
         id:column
@@ -54,7 +59,7 @@ Rectangle{
                 text:"Submit"
                 width: logInPage.width/3
                 onClicked: {
-                    submitButtonClicked()
+                    submitBtnClicked()
                 }
             }
             Button{
@@ -74,17 +79,18 @@ Rectangle{
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 closeButtonClicked()
-                login.source = "WelcomePage.qml"
             }
         }
 
     }
-    function submitButtonClicked()
+    function submitBtnClicked()
     {
         console.log("Submit Button Clicked")
         var ok = loginHandler.handleLogin(userNameEdit.text, passwordEdit.text)
-        if (ok)
+        if (ok){
             console.log("Login success")
+            loginButtonClicked()
+        }
         else
             console.log("Login failed")
     }
@@ -93,14 +99,5 @@ Rectangle{
         console.log("Cancel Button Clicked")
         userNameEdit.clear()
         passwordEdit.clear()
-    }
-    function closeButtonClicked()
-    {
-        console.log("Close button Clicked")
-    }
-    Loader{
-        id:login
-        width: parent.width
-        height: parent.height
     }
 }

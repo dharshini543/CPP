@@ -6,43 +6,60 @@ Rectangle {
     anchors.fill: parent
 
     Column {
-        spacing: 10
+        spacing: 40
         anchors.centerIn: parent
 
         Row {
-            spacing: 10
-            Rectangle {
+            spacing: 100
+            Button {
                 width: 70; height: 70
-                color: "orange"
-                border.color: "black"
-                radius: 10
-                Text { anchors.centerIn: parent; text: "Tool A" }
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Calculator"
+                }
             }
-            Rectangle {
+            Button {
                 width: 70; height: 70
-                color: "orange"
-                border.color: "black"
-                radius: 10
-                Text { anchors.centerIn: parent; text: "Tool B" }
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Editor"
+                }
             }
         }
 
         Row {
-            spacing: 10
-            Rectangle {
+            spacing: 40
+            Button {
                 width: 70; height: 70
-                color: "orange"
-                border.color: "black"
-                radius: 10
-                Text { anchors.centerIn: parent; text: "Tool C" }
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Manual"
+                }
             }
-            Rectangle {
+            Button {
                 width: 70; height: 70
-                color: "orange"
-                border.color: "black"
-                radius: 10
-                Text { anchors.centerIn: parent; text: "Tool D" }
+                background: Rectangle {
+                    color: "orange"
+                    radius: 8
+                }
+                Text {
+                    anchors.top: parent.bottom
+                    text: "Circuit Diagram"
+                }
             }
         }
     }
 }
+

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ContactList.qml</file>
+        <file>AddContact.qml</file>
+        <file>DisplayContactDetails.qml</file>
+        <file>../../../../../../../Downloads/test.png</file>
+    </qresource>
+</RCC>
