@@ -4,9 +4,6 @@ import QtQuick.Controls
 
 Rectangle {
     id: root
-    width: parent.width
-    height: parent.height
-    border.color: "black"
 
     signal addContactButtonClicked()
     signal closeButtonClicked()
@@ -34,8 +31,10 @@ Rectangle {
         height: root.height/12
         anchors.horizontalCenter: root.horizontalCenter
         anchors.top: root.top
+
+
         onClicked:{
-            editButtonClicked()
+            saveBtn.visible = true
         }
     }
     Button{
@@ -46,13 +45,70 @@ Rectangle {
         anchors.right: root.right
         anchors.top: root.top
         onClicked:{
-            deleteButtonClicked()
+            saveBtn.visible = false
+            myPopup.open()
+        }
+    }
+    Popup {
+        id: myPopup
+        modal: true
+        focus: true
+        width: 250
+        height: 150
+        anchors.centerIn: parent
+        Rectangle {
+            anchors.fill: parent
+            color: "white"
+            radius: 8
+
+            Column {
+                anchors.centerIn: parent
+                spacing: 10
+
+                Text {
+                    text: "Are you sure?"
+                }
+
+                Row {
+                    spacing: 20
+                    Button {
+                        text: "Yes"
+                        onClicked: {
+                            console.log("User clicked Yes")
+                            var OK = ContactManager.deleteContact(root.contactName,root.contactNumber,root.contactURL)
+                            if(OK)
+                            {
+                                console.log("Contact deleted Successfully")
+                                root.contactName = ""
+                                root.contactNumber = ""
+                                root.contactURL = ""
+                                closeButtonClicked()
+
+                            }
+                            else
+                            {
+                                console.log("Failed to delete contact")
+                            }
+                            myPopup.close()
+
+                        }
+                    }
+                    Button {
+                        text: "No"
+                        onClicked: {
+                            console.log("User clicked No")
+                            myPopup.close()
+                        }
+                    }
+                }
+            }
         }
     }
     Column {
         anchors.centerIn: parent
         spacing: 20
         Image{
+            id:imageTxt
             source: root.contactURL
             height: 50
             width: 50
@@ -60,25 +116,35 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        Text {
-            text: "Name: " + root.contactName
+        TextInput {
+            id: nameTxt
+            text: root.contactName === "" ? "" : "Name: " + root.contactName
             font.pixelSize: 20
             anchors.horizontalCenter: parent.horizontalCenter
+            visible: root.isEditing
+            selectByMouse: true
         }
-        Text {
-            text: "Phone: " + root.contactNumber
+        TextInput {
+            id: phoneTxt
+            text: root.contactNumber === "" ? "" : "Phone: " + root.contactNumber
             font.pixelSize: 20
             anchors.horizontalCenter: parent.horizontalCenter
+            visible: root.isEditing
+            selectByMouse: true
+        }
+
+
+        Button{
+            id: saveBtn
+            text: "Save"
+            visible: false
+            anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: {
+                root.contactName = nameTxt.text
+                root.contactNumber = phoneTxt.text
+
+            }
         }
     }
 
-    function editButtonClicked()
-    {
-
-    }
-    function deleteButtonClicked()
-    {
-
-    }
 }
-

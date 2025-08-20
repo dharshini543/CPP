@@ -24,6 +24,32 @@ bool ContactManager::addContact(const QString& name, const QString& phoneNum, co
     return true;
 }
 
+bool ContactManager::deleteContact(const QString &name, const QString &phoneNum, const QString &url)
+{
+    for(auto i = m_contacts.begin();i != m_contacts.end();i++)
+    {
+        if((*i)->getName() == name && (*i)->getPhoneNum() == phoneNum && (*i)->getUrl() == url)
+            {
+                m_contacts.erase(i);
+                return true;
+            }
+    }
+    return false;
+}
+
+bool ContactManager::editContact(const QString &name, const QString &phoneNum, const QString &url)
+{
+    for(auto i = m_contacts.begin();i != m_contacts.end();i++)
+    {
+        if((*i)->getName() == name && (*i)->getPhoneNum() == phoneNum && (*i)->getUrl() == url)
+        {
+            m_contacts.erase(i);
+            return true;
+        }
+    }
+    return false;
+}
+
 bool ContactManager::searchContact(QString &name)
 {
     for(auto contacts : m_contacts)
@@ -34,6 +60,7 @@ bool ContactManager::searchContact(QString &name)
         }
     }
     return false;
+
 }
 
 
