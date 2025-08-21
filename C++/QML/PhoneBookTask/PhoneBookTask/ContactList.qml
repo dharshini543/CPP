@@ -7,31 +7,30 @@ Item {
     signal closeButtonClicked()
     signal contactClicked(string name, string phoneNum, string contactUrl)
 
-
     Column{
         spacing:20
         anchors.topMargin: 20
         anchors.fill: parent
 
-    Rectangle{
-        id:searchbar
-        width:parent.width/1.4
-        height:parent.height/20
-        anchors.horizontalCenter: parent.horizontalCenter
-        radius: 20
-        color: "black"
+        Rectangle{
+            id:searchbar
+            width:parent.width/1.4
+            height:parent.height/20
+            anchors.horizontalCenter: parent.horizontalCenter
+            radius: 20
+            color: "black"
 
-        TextField
-        {
-            id:searchNameEdit
-            anchors.fill: searchbar
-            anchors.leftMargin: 20
-            placeholderText: "Search"
-            font.bold: true
-            background: null
-            anchors.verticalCenter: parent.verticalCenter
+            TextField
+            {
+                id:searchNameEdit
+                anchors.fill: searchbar
+                anchors.leftMargin: 20
+                placeholderText: "Search"
+                font.bold: true
+                background: null
+                anchors.verticalCenter: parent.verticalCenter
+            }
         }
-    }
 
         ListView
         {
@@ -53,17 +52,17 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             radius: 20
             color: "black"
-        Button
-        {
-            id:addContact
-            anchors.fill: addContactbar
-            background: null
-            font.bold: true
-            text: "+  ADD NEW CONTACT"
-            onClicked:{
-                addContactButtonClicked()
+            Button
+            {
+                id:addContact
+                anchors.fill: addContactbar
+                background: null
+                font.bold: true
+                text: "+  ADD NEW CONTACT"
+                onClicked:{
+                    addContactButtonClicked()
+                }
             }
-        }
         }
 
     }
@@ -89,13 +88,13 @@ Item {
                 Text {
                     id: stName
                     anchors.verticalCenter: parent.verticalCenter
-                    text:ContactName
+                    text:CONTACTNAME
                 }
             }
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    contactClicked(ContactName, PhoneNum, ImageURL)
+                    contactClicked(CONTACTNAME, PHONENUM, ImageURL)
                 }
             }
         }

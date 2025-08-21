@@ -35,9 +35,9 @@ Window {
     function onContactClicked(name, phoneNum, contactUrl)
     {
       loader.setSource("DisplayContactDetails.qml", {
-                   contactName: name,
-                   contactNumber: phoneNum,
-                   contactURL: contactUrl
+                         contactName: name,
+                         contactNumber: phoneNum,
+                         contactURL: contactUrl
                        })
     }
   }

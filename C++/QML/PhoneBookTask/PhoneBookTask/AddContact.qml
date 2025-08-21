@@ -7,6 +7,8 @@ Rectangle{
     signal addContactButtonClicked()
     signal closeButtonClicked()
     signal contactClicked(string name, string phoneNum, string contactUrl)
+    signal saveButtonClicked(string name, string phoneNum)
+
 
     Button{
         id:closeBtn
@@ -55,7 +57,7 @@ Rectangle{
             }
 
         }
-        }
+    }
 
     function onSaveButtonClicked()
     {

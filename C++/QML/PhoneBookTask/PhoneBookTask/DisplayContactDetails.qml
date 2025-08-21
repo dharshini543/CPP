@@ -1,9 +1,9 @@
-
 import QtQuick 2.15
 import QtQuick.Controls
 
 Rectangle {
     id: root
+    color: "pink"
 
     signal addContactButtonClicked()
     signal closeButtonClicked()
@@ -13,42 +13,47 @@ Rectangle {
     property string contactNumber: ""
     property string contactURL:""
 
-    Button{
-        id:closeBtn
-        text:"<-"
-        width:root.width/5
-        height: root.height/12
-        anchors.left: root.left
-        anchors.top: root.top
-        onClicked:{
-            closeButtonClicked()
-        }
-    }
-    Button{
-        id:editBtn
-        text:"EDIT"
-        width:root.width/5
-        height: root.height/12
-        anchors.horizontalCenter: root.horizontalCenter
-        anchors.top: root.top
+    Rectangle {
+        id: headerBar
+        width: parent.width
+        height: root.height/11
+        color: "white"
+        anchors.top: parent.top
 
+        Row {
+            anchors.fill: parent
+            anchors.leftMargin: 5
+            spacing: 75
 
-        onClicked:{
-            saveBtn.visible = true
+            Button {
+                id: closeBtn
+                text: "<-"
+                width: headerBar.width/5
+                height: headerBar.height
+                onClicked: closeButtonClicked()
+            }
+
+            Button {
+                id: editBtn
+                text: "EDIT"
+                width: headerBar.width/5
+                height: headerBar.height
+                onClicked: saveBtn.visible = true
+            }
+
+            Button {
+                id: deleteBtn
+                text: "DELETE"
+                width: headerBar.width/5
+                height: headerBar.height
+                onClicked: {
+                    saveBtn.visible = false
+                    myPopup.open()
+                }
+            }
         }
     }
-    Button{
-        id:deleteBtn
-        text:"DELETE"
-        width:root.width/5
-        height: root.height/12
-        anchors.right: root.right
-        anchors.top: root.top
-        onClicked:{
-            saveBtn.visible = false
-            myPopup.open()
-        }
-    }
+
     Popup {
         id: myPopup
         modal: true
@@ -118,19 +123,19 @@ Rectangle {
 
         TextInput {
             id: nameTxt
-            text: root.contactName === "" ? "" : "Name: " + root.contactName
+            // text: root.contactName === "" ? "" : "Name: " + root.contactName
+            text: root.contactName
             font.pixelSize: 20
             anchors.horizontalCenter: parent.horizontalCenter
-            visible: root.isEditing
-            selectByMouse: true
+            visible: true
         }
         TextInput {
             id: phoneTxt
-            text: root.contactNumber === "" ? "" : "Phone: " + root.contactNumber
+            // text: root.contactNumber === "" ? "" : "Phone: " + root.contactNumber
+            text: root.contactNumber
             font.pixelSize: 20
             anchors.horizontalCenter: parent.horizontalCenter
-            visible: root.isEditing
-            selectByMouse: true
+            visible: true
         }
 
 
@@ -140,9 +145,16 @@ Rectangle {
             visible: false
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
-                root.contactName = nameTxt.text
-                root.contactNumber = phoneTxt.text
+                var OK = ContactManager.editContact(root.contactName,nameTxt.text,root.contactNumber,phoneTxt.text)
+                if(OK)
+                {
+                    console.log("Contacts edited successfully")
+                }
+                else{
+                    console.log("Failed to edit contact")
 
+                }
+                closeButtonClicked()
             }
         }
     }
