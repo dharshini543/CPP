@@ -3,10 +3,11 @@ import QtQuick.Window 2.15
 
 Window {
   id:mainwindow
-  width:600
-  height: 1000
+  width:400
+  height: 750
   visible: true
   title: qsTr("Phone Book")
+  color: "pink"
   // flags:Qt.FramelessWindowHint
 
   ContactList{
@@ -15,8 +16,8 @@ Window {
   Loader{
     id: loader
     anchors.centerIn: parent
-    width: parent.width/1.6
-    height: parent.height/1.2
+    width: parent.width
+    height: parent.height
     source:"ContactList.qml"
   }
   Connections
@@ -34,13 +35,10 @@ Window {
     function onContactClicked(name, phoneNum, contactUrl)
     {
       loader.setSource("DisplayContactDetails.qml", {
-                   contactName: name,
-                   contactNumber: phoneNum,
-                   contactURL: contactUrl
+                         contactName: name,
+                         contactNumber: phoneNum,
+                         contactURL: contactUrl
                        })
     }
-
-
-
   }
 }

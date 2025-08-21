@@ -3,13 +3,11 @@ import QtQuick.Controls
 
 Rectangle{
     id:rect1
-    width: parent.width
-    height: parent.height
-    border.color: "black"
-
+    color: "pink"
     signal addContactButtonClicked()
     signal closeButtonClicked()
     signal contactClicked(string name, string phoneNum, string contactUrl)
+    signal saveButtonClicked(string name, string phoneNum)
 
 
     Button{
@@ -31,20 +29,20 @@ Rectangle{
 
         TextField{
             id:contactNameEdit
-            width:rect1.width/1.2
+            width:rect1.width/1.25
             height: rect1.height/12
             placeholderText: "NAME"
         }
         TextField{
             id:contactNumberEdit
-            width:rect1.width/1.2
+            width:rect1.width/1.25
             height: rect1.height/12
             placeholderText: "PhoneNumber"
             maximumLength: 10
         }
         TextField{
             id:contactURLEdit
-            width:rect1.width/1.2
+            width:rect1.width/1.25
             height: rect1.height/12
             placeholderText: "URL"
         }
@@ -59,14 +57,15 @@ Rectangle{
             }
 
         }
-
     }
+
     function onSaveButtonClicked()
     {
         var OK = ContactManager.addContact(contactNameEdit.text, contactNumberEdit.text, contactURLEdit.text)
         if(OK)
         {
             console.log("Contact added Successfully")
+            closeButtonClicked()
 
         }
         else

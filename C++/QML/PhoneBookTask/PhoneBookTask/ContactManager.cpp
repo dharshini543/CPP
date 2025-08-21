@@ -2,6 +2,19 @@
 #include <qdebug.h>
 #include <qregularexpression.h>
 
+QList<Contact *> ContactManager::getContacts() const
+{
+    return m_contacts;
+}
+
+void ContactManager::setContacts(const QList<Contact *> &newContacts)
+{
+    if (m_contacts == newContacts)
+        return;
+    m_contacts = newContacts;
+    emit contactsChanged();
+}
+
 ContactManager::ContactManager()
 {
     qDebug()<<Q_FUNC_INFO;
@@ -24,6 +37,33 @@ bool ContactManager::addContact(const QString& name, const QString& phoneNum, co
     return true;
 }
 
+bool ContactManager::deleteContact(const QString &name, const QString &phoneNum, const QString &url)
+{
+    for(auto i = m_contacts.begin();i != m_contacts.end();i++)
+    {
+        if((*i)->getName() == name && (*i)->getPhoneNum() == phoneNum && (*i)->getUrl() == url)
+            {
+                m_contacts.erase(i);
+                return true;
+            }
+    }
+    return false;
+}
+
+bool ContactManager::editContact(const QString &name, const QString &editedName, const QString &phoneNum, const QString &editedPhoneNum)
+{
+    for(auto contacts : m_contacts)
+    {
+        if(contacts->getName() == name && contacts->getPhoneNum() == phoneNum)
+        {
+            contacts->setName(editedName);
+            contacts->setPhoneNum(editedPhoneNum);
+            return true;
+        }
+    }
+    return false;
+}
+
 bool ContactManager::searchContact(QString &name)
 {
     for(auto contacts : m_contacts)
@@ -34,6 +74,7 @@ bool ContactManager::searchContact(QString &name)
         }
     }
     return false;
+
 }
 
 
@@ -63,8 +104,8 @@ QVariant ContactManager::data(const QModelIndex &index, int role) const
 QHash<int, QByteArray> ContactManager::roleNames() const
 {
     QHash<int, QByteArray> l_roleNames;
-    l_roleNames.insert(NAME,"ContactName");
-    l_roleNames.insert(PHONE_NUM,"PhoneNum");
+    l_roleNames.insert(NAME,"CONTACTNAME");
+    l_roleNames.insert(PHONE_NUM,"PHONENUM");
     l_roleNames.insert(IMAGE,"ImageURL");
     return l_roleNames;
 

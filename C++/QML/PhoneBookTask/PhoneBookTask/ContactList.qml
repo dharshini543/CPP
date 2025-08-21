@@ -1,67 +1,67 @@
 import QtQuick 2.15
 import QtQuick.Controls
 
-Rectangle{
-    id:rect1
-    border.color: "black"
+Item {
 
     signal addContactButtonClicked()
     signal closeButtonClicked()
     signal contactClicked(string name, string phoneNum, string contactUrl)
 
     Column{
-        spacing:10
-        anchors.horizontalCenter: parent.horizontalCenter
+        spacing:20
+        anchors.topMargin: 20
+        anchors.fill: parent
 
-        Row
-        {
+        Rectangle{
+            id:searchbar
+            width:parent.width/1.4
+            height:parent.height/20
+            anchors.horizontalCenter: parent.horizontalCenter
+            radius: 20
+            color: "black"
+
             TextField
             {
                 id:searchNameEdit
-                width:rect1.width/1.2
-                height: rect1.height/12
+                anchors.fill: searchbar
+                anchors.leftMargin: 20
                 placeholderText: "Search"
-
+                font.bold: true
+                background: null
+                anchors.verticalCenter: parent.verticalCenter
             }
-            // Button
-            // {
-            //     id:cancelButton
-            //     text:"X"
-            //     width:rect1.width/8
-            //     height: rect1.height/12
-
-            //     onClicked:
-            //     {
-            //         cancelButtonClicked();
-            //     }
-
-            // }
-
         }
 
         ListView
         {
             id:contactView
-            width: parent.width
-            height: parent.height/2
+            width: parent.width/1.15
+            height: parent.height/1.5
             interactive: true
+            anchors.horizontalCenter: parent.horizontalCenter
             model: ContactManager
             delegate: myComponent
             spacing: 5
 
         }
 
-
-        Button
-        {
-            id:addContact
-            width:rect1.width/1.25
-            height:rect1.height/13
-            anchors.bottom: parent.bottom
-            // anchors.right: parent.right
-            text: "ADD CONTACT"
-            onClicked:{
-                addContactButtonClicked()
+        Rectangle{
+            id:addContactbar
+            width:parent.width/1.4
+            height:parent.height/18
+            anchors.horizontalCenter: parent.horizontalCenter
+            radius: 20
+            color: "black"
+            Button
+            {
+                id:addContact
+                anchors.fill: addContactbar
+                background: null
+                font.bold: true
+                text: "+  ADD NEW CONTACT"
+                onClicked:{
+                    addContactButtonClicked()
+                }
             }
         }
 
@@ -69,11 +69,11 @@ Rectangle{
     Component{
         id:myComponent
 
-
         Rectangle{
             width: contactView.width
-            height: contactView.height/5
-            color: "pink"
+            height: contactView.height/8
+            color: "white"
+            radius: 20
 
             Row{
                 spacing: 30
@@ -88,20 +88,16 @@ Rectangle{
                 Text {
                     id: stName
                     anchors.verticalCenter: parent.verticalCenter
-                    text:ContactName
+                    text:CONTACTNAME
                 }
             }
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    contactClicked(ContactName, PhoneNum, ImageURL)
+                    contactClicked(CONTACTNAME, PHONENUM, ImageURL)
                 }
             }
         }
-    }
-    function cancelButtonClicked()
-    {
-        searchNameEdit.clear()
     }
 
 }
