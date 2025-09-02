@@ -6,7 +6,7 @@
 class PhoneModel:public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(QList<PhoneBook *> phoneBookList READ getPhoneBookList WRITE setPhoneBookList NOTIFY phoneBookListChanged FINAL)
+    // Q_PROPERTY(QList<PhoneBook *> phoneBookList READ getPhoneBookList WRITE setPhoneBookList NOTIFY phoneBookListChanged FINAL)
 
 public:
     PhoneModel();

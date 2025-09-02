@@ -9,7 +9,7 @@ Rectangle{
     border.color: "black"
     anchors.horizontalCenter: parent.horizontalCenter
 
-    property  var  contactNameList: PhoneBook.phoneBookList
+    // property  var  contactNameList: PhoneBook.phoneBookList
     // property  var  contactNumberList: PhoneBook.phoneBookList
 
     signal closeButtonClicked()
@@ -72,7 +72,7 @@ Rectangle{
         width: parent.width
         height: parent.height
         visible: true
-        nameList : contactNameList
+        // nameList : contactNameList
 
     }
 

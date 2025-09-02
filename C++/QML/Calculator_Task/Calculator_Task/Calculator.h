@@ -14,6 +14,9 @@ public:
     Q_INVOKABLE double multiply(double num1,double num2);
     Q_INVOKABLE double divide(double num1,double num2);
 
+private:
+    QStringList m_buttons;
+
 };
 
 #endif // CALCULATOR_H
