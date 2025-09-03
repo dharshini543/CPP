@@ -2,8 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls
 
 Rectangle{
-    property var nameList: []
-    property var phoneList: []
+    // property var nameList: []
+    // property var phoneList: []
     signal closeButtonClicked()
 
     anchors.horizontalCenter: parent.horizontalCenter
@@ -43,7 +43,7 @@ Rectangle{
         id: myListView
         width:parent.width
         height: parent.height
-        model: nameList.length
+        model: PhoneBook
         delegate: myDelegate
         clip: true
         interactive: true
@@ -57,17 +57,17 @@ Rectangle{
             height: myListView.height/5
 
             Text{
-                text:"Name :" + nameList[index].contactName
+                text:"Name :" + CONTACTNAME
                 Component.onCompleted: {
-                    console.log(nameList[index].contactName + " Created")
+                    console.log(CONTACTNAME + " Created")
                 }
                 Component.onDestruction: {
 
-                    console.log(nameList[index].contactName + " Destroyed")
+                    console.log(CONTACTNUM + " Destroyed")
                 }
             }
             Text{
-                text:"Phone :" + nameList[index].contactNumber
+                text:"Phone :" + CONTACTNUM
             }
 
         }
@@ -92,6 +92,4 @@ Rectangle{
             }
         }
     }
-
-
 }

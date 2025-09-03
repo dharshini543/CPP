@@ -38,13 +38,15 @@ void PhoneModel::setPhoneBookList(const QList<PhoneBook *> &newPhoneBookList)
 
 void PhoneModel::addNumberButtonClicked()
 {
+    emit beginResetModel();
     m_phoneBookList.push_back(new PhoneBook("Vidya", "7894561233"));
     m_phoneBookList.push_back(new PhoneBook("Varshini", "7894561233"));
     m_phoneBookList.push_back(new PhoneBook("Likitha", "7894561233"));
     m_phoneBookList.push_back(new PhoneBook("Pallavi", "7894561233"));
 
     qDebug()<<"Size in addFunction:"<<m_phoneBookList.size();
-    emit phoneBookListChanged();
+    emit endResetModel();
+    // emit phoneBookListChanged();
 }
 
 int PhoneModel::getSize()

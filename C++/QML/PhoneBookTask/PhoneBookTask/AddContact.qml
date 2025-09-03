@@ -7,8 +7,6 @@ Rectangle{
     signal addContactButtonClicked()
     signal closeButtonClicked()
     signal contactClicked(string name, string phoneNum, string contactUrl)
-    signal saveButtonClicked(string name, string phoneNum)
-
 
     Button{
         id:closeBtn
@@ -41,6 +39,7 @@ Rectangle{
             maximumLength: 10
         }
         TextField{
+
             id:contactURLEdit
             width:rect1.width/1.25
             height: rect1.height/12

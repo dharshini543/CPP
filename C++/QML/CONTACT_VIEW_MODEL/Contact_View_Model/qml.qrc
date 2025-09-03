@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>PhoneBook.qml</file>
+        <file>WhatsApp.qml</file>
+        <file>HomePage.qml</file>
+        <file>CallHistory.qml</file>
+        <file>Downloads/callhistory.png</file>
+        <file>Downloads/incoming.png</file>
+        <file>Downloads/missedCall.png</file>
+        <file>Downloads/outgoing.png</file>
+        <file>Downloads/phonebook.png</file>
+        <file>Downloads/test.png</file>
+        <file>Downloads/whatsapp.png</file>
+        <file>MyBackButton.qml</file>
+        <file>MySearchBar.qml</file>
+        <file>MyContactImage.qml</file>
+        <file>MyListView.qml</file>
+        <file>Downloads/camera.png</file>
+        <file>Downloads/searchImg.png</file>
+    </qresource>
+</RCC>
